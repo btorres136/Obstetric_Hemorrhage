@@ -45,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
                     pgsBar.setVisibility(VISIBLE);
                     EditText email = (EditText)findViewById(R.id.email);
                     EditText pass = (EditText)findViewById(R.id.password);
-                    email.setVisibility(View.GONE);
-                    pass.setVisibility(View.GONE);
                     CardView sign_in = (CardView) findViewById(R.id.cardView);
                     TextView sign_up = (TextView) findViewById(R.id.sign_up);
+                    email.setVisibility(View.GONE);
+                    pass.setVisibility(View.GONE);
                     sign_in.setVisibility(View.GONE);
                     sign_up.setVisibility(View.GONE);
                 }
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
                             EditText email = (EditText)findViewById(R.id.email);
                             EditText pass = (EditText)findViewById(R.id.password);
                             CardView sign_in = (CardView)findViewById(R.id.cardView);
-                            TextView sign_up = (TextView)findViewById(R.id.textView);
+                            TextView sign_up = (TextView)findViewById(R.id.sign_up);
                             email.setVisibility(VISIBLE);
                             pass.setVisibility(VISIBLE);
                             sign_in.setVisibility(VISIBLE);
