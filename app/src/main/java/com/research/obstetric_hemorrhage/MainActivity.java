@@ -41,16 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 if(!(email.getText().toString().isEmpty()) && !(pass.getText().toString().isEmpty()) )
                 {
                     Signin(email.getText().toString(),pass.getText().toString());
-                    ProgressBar pgsBar = (ProgressBar)findViewById(R.id.progressBar);
-                    pgsBar.setVisibility(VISIBLE);
-                    EditText email = (EditText)findViewById(R.id.email);
-                    EditText pass = (EditText)findViewById(R.id.password);
-                    CardView sign_in = (CardView) findViewById(R.id.cardView);
-                    TextView sign_up = (TextView) findViewById(R.id.sign_up);
-                    email.setVisibility(View.GONE);
-                    pass.setVisibility(View.GONE);
-                    sign_in.setVisibility(View.GONE);
-                    sign_up.setVisibility(View.GONE);
+                    showprogressbar();
                 }
                 else
                 {
@@ -68,16 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 if(!(email.getText().toString().isEmpty()) && !(pass.getText().toString().isEmpty()) )
                 {
                     Signup(email.getText().toString(),pass.getText().toString());
-                    ProgressBar pgsBar = (ProgressBar)findViewById(R.id.progressBar);
-                    pgsBar.setVisibility(VISIBLE);
-                    EditText email = (EditText)findViewById(R.id.email);
-                    EditText pass = (EditText)findViewById(R.id.password);
-                    CardView sign_in = (CardView) findViewById(R.id.cardView);
-                    TextView sign_up = (TextView)findViewById(R.id.sign_up);
-                    email.setVisibility(View.GONE);
-                    pass.setVisibility(View.GONE);
-                    sign_in.setVisibility(View.GONE);
-                    sign_up.setVisibility(View.GONE);
+                    showprogressbar();
                 }
                 else
                 {
@@ -87,6 +69,18 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void showprogressbar(){
+        ProgressBar pgsBar = (ProgressBar)findViewById(R.id.progressBar);
+        pgsBar.setVisibility(VISIBLE);
+        EditText email = (EditText)findViewById(R.id.email);
+        EditText pass = (EditText)findViewById(R.id.password);
+        CardView sign_in = (CardView) findViewById(R.id.cardView);
+        TextView sign_up = (TextView)findViewById(R.id.sign_up);
+        email.setVisibility(View.GONE);
+        pass.setVisibility(View.GONE);
+        sign_in.setVisibility(View.GONE);
+        sign_up.setVisibility(View.GONE);
+    }
 
     public void Signup(String email, String password){
         mAuth.createUserWithEmailAndPassword(email, password)
@@ -97,22 +91,10 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(MainActivity.this, "Successfully Signed Up", Toast.LENGTH_SHORT).show();
-                            updateUI(user);
+                            updateUI(user, null);
                         } else {
                             // If sign in fails, display a message to the user.
-                            ProgressBar pgsBar = (ProgressBar)findViewById(R.id.progressBar);
-                            pgsBar.setVisibility(View.GONE);
-                            FirebaseAuthException e = (FirebaseAuthException )task.getException();
-                            EditText email = (EditText)findViewById(R.id.email);
-                            EditText pass = (EditText)findViewById(R.id.password);
-                            CardView sign_in = (CardView)findViewById(R.id.cardView);
-                            TextView sign_up = (TextView) findViewById(R.id.sign_up);
-                            email.setVisibility(VISIBLE);
-                            pass.setVisibility(VISIBLE);
-                            sign_in.setVisibility(VISIBLE);
-                            sign_up.setVisibility(VISIBLE);
-                            Toast.makeText(MainActivity.this, "Failed Registration: "+e.getMessage(), Toast.LENGTH_SHORT).show();
-
+                           updateUI(null, task);
                         }
                     }
 
@@ -120,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void Signin(String email, String password)
     {
+        Toast.makeText(MainActivity.this, password, Toast.LENGTH_SHORT).show();
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -128,29 +111,33 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(MainActivity.this, "Successfully Signed In", Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
+                            updateUI(user, null);
                         } else {
                             // If sign in fails, display a message to the user.
-                            ProgressBar pgsBar = (ProgressBar)findViewById(R.id.progressBar);
-                            pgsBar.setVisibility(View.GONE);
-                            FirebaseAuthException e = (FirebaseAuthException )task.getException();
-                            EditText email = (EditText)findViewById(R.id.email);
-                            EditText pass = (EditText)findViewById(R.id.password);
-                            CardView sign_in = (CardView)findViewById(R.id.cardView);
-                            TextView sign_up = (TextView)findViewById(R.id.sign_up);
-                            email.setVisibility(VISIBLE);
-                            pass.setVisibility(VISIBLE);
-                            sign_in.setVisibility(VISIBLE);
-                            sign_up.setVisibility(VISIBLE);
-                            Toast.makeText(MainActivity.this, "Failed Registration: "+ e.getMessage(), Toast.LENGTH_SHORT).show();
+                            updateUI(null, task);
                         }
                     }
                 });
     }
-    public void updateUI(FirebaseUser user){
+    public void updateUI(FirebaseUser user, Task<AuthResult>  task){
         if(user != null){
             //Intent intent = new Intent(this, .class);
             //startActivity(intent);
+        }
+        else
+        {
+            ProgressBar pgsBar = (ProgressBar)findViewById(R.id.progressBar);
+            pgsBar.setVisibility(View.GONE);
+            FirebaseAuthException e = (FirebaseAuthException )task.getException();
+            EditText email = (EditText)findViewById(R.id.email);
+            EditText pass = (EditText)findViewById(R.id.password);
+            CardView sign_in = (CardView)findViewById(R.id.cardView);
+            TextView sign_up = (TextView)findViewById(R.id.sign_up);
+            email.setVisibility(VISIBLE);
+            pass.setVisibility(VISIBLE);
+            sign_in.setVisibility(VISIBLE);
+            sign_up.setVisibility(VISIBLE);
+            Toast.makeText(MainActivity.this, "Failed Registration: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
     @Override
