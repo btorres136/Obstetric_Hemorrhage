@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "646400738499",
+    "firebase_url": "https://obstetric-hemorrhage-4da5a.firebaseio.com",
+    "project_id": "obstetric-hemorrhage-4da5a",
+    "storage_bucket": "obstetric-hemorrhage-4da5a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:646400738499:android:90385542682acf07748e76",
+        "android_client_info": {
+          "package_name": "com.research.obstetric_hemorrhage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "646400738499-qflf6unnk0olt02o8t6l8j2a5qpapn9t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.research.obstetric_hemorrhage",
+            "certificate_hash": "ddccaf3203f89dbb5e3e15e2dd7a3135a538e1b4"
+          }
+        },
+        {
+          "client_id": "646400738499-60l1jo400jdm52q2q8rjjtfsi26crunp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGUUMJ9nMVHVrFQdjv7Vs7RyVqKaEeI3I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "646400738499-60l1jo400jdm52q2q8rjjtfsi26crunp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
