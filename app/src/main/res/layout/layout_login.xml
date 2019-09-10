@@ -24,7 +24,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/icono_principal" />
+        app:layout_constraintTop_toBottomOf="@+id/principal_icon" />
 
     <EditText
         android:id="@+id/password"
@@ -92,7 +92,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <ImageView
-        android:id="@+id/icono_principal"
+        android:id="@+id/principal_icon"
         android:layout_width="193dp"
         android:layout_height="131dp"
         android:layout_marginTop="70dp"
@@ -101,7 +101,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.51"/>
+        app:layout_constraintVertical_bias="0.51"
+        app:srcCompat="@drawable/startup_icon"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
