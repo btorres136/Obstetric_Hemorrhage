@@ -7,7 +7,7 @@
     android:background="@drawable/gradient"
     android:orientation="vertical"
     android:visibility="visible"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <EditText
         android:id="@+id/email"
