@@ -15,7 +15,7 @@
         android:background="#11000000"
         android:drawableLeft="@drawable/ic_action_user"
         android:ems="10"
-        android:hint="Username"
+        android:hint="Email"
         android:inputType="textPersonName"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -75,16 +75,30 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="296dp"
-        android:layout_height="37dp"
+    android:id="@+id/spinner1"
+    android:layout_width="295dp"
+    android:layout_height="39dp"
+    android:background="#11000000"
+    android:hint="Security Questions"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.465"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/editText3"
+    app:layout_constraintVertical_bias="0.099" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="295dp"
+        android:layout_height="39dp"
         android:background="#11000000"
+        android:hint="Security Questions"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.245"
+        app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3"
-        app:layout_constraintVertical_bias="0.109" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner1"
+        app:layout_constraintVertical_bias="0.099" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
