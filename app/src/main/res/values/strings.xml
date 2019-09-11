@@ -1,13 +1,3 @@
 <resources>
     <string name="app_name">Obstetric_Hemorrhage</string>
-
-    <string-array name="Security_Questions">
-        <item></item>
-        <item>Tercer Cielo</item>
-        <item>Camila</item>
-        <item>Reik</item>
-        <item>Bad Bunny</item>
-
-    </string-array>
-
 </resources>

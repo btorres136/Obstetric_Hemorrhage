@@ -53,10 +53,10 @@ public class SignupActivity extends AppCompatActivity implements AdapterView.OnI
                 EditText email = (EditText)findViewById(R.id.email);
                 EditText password = (EditText)findViewById(R.id.password);
 
-                if(!(email.getText().toString().isEmpty()) && !(pass.getText().toString().isEmpty()) && verifypassword())
+                if(!(email.getText().toString().isEmpty()) && !(password.getText().toString().isEmpty()) && verifypassword())
                 {
                     Signup(email.getText().toString(), password.getText().toString());
-                    showprogressbar();
+                    //showprogressbar();
                 }
                 else
                 {
@@ -82,10 +82,9 @@ public class SignupActivity extends AppCompatActivity implements AdapterView.OnI
 
     public boolean verifypassword(){
         EditText password = (EditText)findViewById(R.id.password);
-        EditText repassword = (EditText)findViewById(R.id.retypepass);
+        EditText repassword = (EditText)findViewById(R.id.retypepassword);
         if(password.getText().toString().equals(repassword.getText().toString()))
         {
-            Toast.makeText(SignupActivity.this, "Same", Toast.LENGTH_SHORT).show();
             return true;
         }else
         {
