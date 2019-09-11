@@ -40,6 +40,12 @@ public class SignupActivity extends AppCompatActivity implements AdapterView.OnI
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
+        Spinner spinner2 = findViewById(R.id.spinner2);
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.Security_Questions, android.R.layout.simple_spinner_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner2.setAdapter(adapter2);
+        spinner2.setOnItemSelectedListener(this);
+
     }
 
     public void Signup(String email, String password) {
