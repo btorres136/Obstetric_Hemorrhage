@@ -49,21 +49,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        TextView sign_up = (TextView)findViewById(R.id.sign_up);
+        final TextView sign_up = (TextView)findViewById(R.id.sign_up);
         sign_up.setOnClickListener(new View.OnClickListener() {
             EditText email = (EditText)findViewById(R.id.email);
             EditText pass = (EditText)findViewById(R.id.password);
             @Override
             public void onClick(View view) {
-                if(!(email.getText().toString().isEmpty()) && !(pass.getText().toString().isEmpty()) )
-                {
-                    Signup(email.getText().toString(),pass.getText().toString());
-                    showprogressbar();
-                }
-                else
-                {
-                    Toast.makeText(LoginActivity.this, "Please provide all requested fields", Toast.LENGTH_SHORT).show();
-                }
+                Signup();
             }
         });
     }
@@ -89,27 +81,12 @@ public class LoginActivity extends AppCompatActivity {
         sign_up.setVisibility(View.GONE);
     }
 
-    public void Signup(String email, String password){
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(LoginActivity.this, "Successfully Signed Up", Toast.LENGTH_SHORT).show();
-                            updateUI(user, null);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                           updateUI(null, task);
-                        }
-                    }
-
-                });
+    public void Signup(){
+        Intent intent = new Intent(this, SignupActivity.class);
+        startActivity(intent);
     }
     public void Signin(String email, String password)
     {
-        Toast.makeText(LoginActivity.this, password, Toast.LENGTH_SHORT).show();
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -155,6 +132,11 @@ public class LoginActivity extends AppCompatActivity {
     public void onBackPressed()
     {
         moveTaskToBack(true);
+    }
+
+    public void Register(){
+        Intent intent = new Intent(this, SignupActivity.class);
+        startActivity(intent);
     }
 
 }
