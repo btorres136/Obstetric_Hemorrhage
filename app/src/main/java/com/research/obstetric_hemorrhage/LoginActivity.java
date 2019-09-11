@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         ProgressBar pgsBar = (ProgressBar)findViewById(R.id.progressBar);
         pgsBar.setVisibility(View.GONE);
 
-        CardView sign_in = (CardView)findViewById(R.id.cardView);
+        CardView sign_in = (CardView)findViewById(R.id.Register);
         sign_in.setOnClickListener(new View.OnClickListener() {
             EditText email = (EditText)findViewById(R.id.email);
             EditText pass = (EditText)findViewById(R.id.password);
@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
         pgsBar.setVisibility(VISIBLE);
         EditText email = (EditText)findViewById(R.id.email);
         EditText pass = (EditText)findViewById(R.id.password);
-        CardView sign_in = (CardView) findViewById(R.id.cardView);
+        CardView sign_in = (CardView) findViewById(R.id.Register);
         TextView sign_up = (TextView)findViewById(R.id.sign_up);
         email.setVisibility(View.GONE);
         pass.setVisibility(View.GONE);
@@ -115,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
             FirebaseAuthException e = (FirebaseAuthException )task.getException();
             EditText email = (EditText)findViewById(R.id.email);
             EditText pass = (EditText)findViewById(R.id.password);
-            CardView sign_in = (CardView)findViewById(R.id.cardView);
+            CardView sign_in = (CardView)findViewById(R.id.Register);
             TextView sign_up = (TextView)findViewById(R.id.sign_up);
             email.setVisibility(VISIBLE);
             pass.setVisibility(VISIBLE);

@@ -9,7 +9,7 @@
     tools:context=".SignupActivity" >
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/email"
         android:layout_width="220dp"
         android:layout_height="41dp"
         android:background="#11000000"
@@ -26,9 +26,9 @@
         app:layout_constraintVertical_bias="0.188" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/answer1"
         android:layout_width="295dp"
-        android:layout_height="50dp"
+        android:layout_height="39dp"
         android:background="#11000000"
         android:ems="10"
         android:hint="Answer "
@@ -40,12 +40,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.602" />
+        app:layout_constraintVertical_bias="0.592" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/answer2"
         android:layout_width="295dp"
         android:layout_height="50dp"
+        android:layout_marginTop="8dp"
         android:background="#11000000"
         android:ems="10"
         android:hint="Answer "
@@ -53,14 +54,12 @@
         android:textAlignment="center"
         android:textIsSelectable="false"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.844" />
+        app:layout_constraintTop_toBottomOf="@+id/Questions2" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/password"
         android:layout_width="220dp"
         android:layout_height="41dp"
         android:layout_marginTop="20dp"
@@ -73,11 +72,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/email"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/retypepassword"
         android:layout_width="220dp"
         android:layout_height="41dp"
         android:layout_marginTop="20dp"
@@ -90,7 +89,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        app:layout_constraintTop_toBottomOf="@+id/password"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -101,7 +100,7 @@
         android:text="Sign Up"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +108,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Spinner
-        android:id="@+id/spinner1"
+        android:id="@+id/Questions1"
         android:layout_width="295dp"
         android:layout_height="39dp"
         android:background="#11000000"
@@ -117,20 +116,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3"
+        app:layout_constraintTop_toBottomOf="@+id/retypepassword"
         app:layout_constraintVertical_bias="0.17" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/Questions2"
         android:layout_width="295dp"
         android:layout_height="39dp"
+        android:layout_marginBottom="168dp"
         android:background="#11000000"
         android:hint="Security Questions"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner1"
-        app:layout_constraintVertical_bias="0.422" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
@@ -139,21 +137,20 @@
         android:text="Security Question 2:"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/spinner2"
+        app:layout_constraintBottom_toTopOf="@+id/Questions2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3"
+        app:layout_constraintTop_toBottomOf="@+id/retypepassword"
         app:layout_constraintVertical_bias="1.0" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/Register"
         android:layout_width="239dp"
         android:layout_height="46dp"
         android:layout_gravity="center|center_horizontal"
         android:layout_marginStart="55dp"
         android:layout_marginLeft="55dp"
-        android:layout_marginTop="90dp"
         android:layout_marginEnd="55dp"
         android:layout_marginRight="55dp"
         app:cardBackgroundColor="#07decc"
@@ -162,8 +159,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2"
-        app:layout_constraintVertical_bias="0.488">
+        app:layout_constraintTop_toBottomOf="@+id/answer2">
 
         <RelativeLayout
             android:layout_width="264dp"
@@ -175,7 +171,10 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
                 android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
                 android:text="Register"
                 android:textColor="#ffffff"
                 android:textSize="20sp" />
@@ -190,11 +189,11 @@
         android:text="Security Question 1:"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/spinner1"
+        app:layout_constraintBottom_toTopOf="@+id/Questions1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3"
+        app:layout_constraintTop_toBottomOf="@+id/retypepassword"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

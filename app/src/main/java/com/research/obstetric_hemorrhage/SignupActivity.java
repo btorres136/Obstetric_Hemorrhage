@@ -34,20 +34,65 @@ public class SignupActivity extends AppCompatActivity implements AdapterView.OnI
         mAuth = FirebaseAuth.getInstance();
 
 
-        Spinner spinner = findViewById(R.id.spinner1);
+        Spinner spinner = findViewById(R.id.Questions1);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Security_Questions, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
-        Spinner spinner2 = findViewById(R.id.spinner2);
+        Spinner spinner2 = findViewById(R.id.Questions2);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.Security_Questions, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
         spinner2.setOnItemSelectedListener(this);
 
+        CardView Register =(CardView)findViewById(R.id.Register);
+        Register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText email = (EditText)findViewById(R.id.email);
+                EditText password = (EditText)findViewById(R.id.password);
+
+                if(!(email.getText().toString().isEmpty()) && !(pass.getText().toString().isEmpty()) && verifypassword())
+                {
+                    Signup(email.getText().toString(), password.getText().toString());
+                    showprogressbar();
+                }
+                else
+                {
+                    Toast.makeText(SignupActivity.this, "Please provide all requested fields", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
     }
 
+    public void showprogressbar(){
+        ProgressBar pgsBar = (ProgressBar)findViewById(R.id.progressBar);
+        pgsBar.setVisibility(VISIBLE);
+        EditText email = (EditText)findViewById(R.id.email);
+        EditText pass = (EditText)findViewById(R.id.password);
+        CardView sign_in = (CardView) findViewById(R.id.Register);
+        TextView sign_up = (TextView)findViewById(R.id.sign_up);
+        email.setVisibility(View.GONE);
+        pass.setVisibility(View.GONE);
+        sign_in.setVisibility(View.GONE);
+        sign_up.setVisibility(View.GONE);
+    }
+
+    public boolean verifypassword(){
+        EditText password = (EditText)findViewById(R.id.password);
+        EditText repassword = (EditText)findViewById(R.id.retypepass);
+        if(password.getText().toString().equals(repassword.getText().toString()))
+        {
+            Toast.makeText(SignupActivity.this, "Same", Toast.LENGTH_SHORT).show();
+            return true;
+        }else
+        {
+            Toast.makeText(SignupActivity.this, "Passwords are not the same", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+    }
     public void Signup(String email, String password) {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -72,17 +117,7 @@ public class SignupActivity extends AppCompatActivity implements AdapterView.OnI
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         } else if (user == null && task != null) {
-            ProgressBar pgsBar = (ProgressBar) findViewById(R.id.progressBar);
-            pgsBar.setVisibility(View.GONE);
             FirebaseAuthException e = (FirebaseAuthException) task.getException();
-            EditText email = (EditText) findViewById(R.id.email);
-            EditText pass = (EditText) findViewById(R.id.password);
-            CardView sign_in = (CardView) findViewById(R.id.cardView);
-            TextView sign_up = (TextView) findViewById(R.id.sign_up);
-            email.setVisibility(VISIBLE);
-            pass.setVisibility(VISIBLE);
-            sign_in.setVisibility(VISIBLE);
-            sign_up.setVisibility(VISIBLE);
             Toast.makeText(SignupActivity.this, "Failed Registration: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         } else {
             //Blank
