@@ -43,8 +43,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="274dp"
-        android:layout_height="65dp"
+        android:layout_width="239dp"
+        android:layout_height="46dp"
         android:layout_gravity="center|center_horizontal"
         android:layout_marginStart="55dp"
         android:layout_marginLeft="55dp"
@@ -72,7 +72,7 @@
                 android:layout_centerInParent="true"
                 android:text="Login"
                 android:textColor="#ffffff"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
         </RelativeLayout>
 
@@ -85,7 +85,7 @@
         android:layout_marginBottom="80dp"
         android:text="Sign Up"
         android:textColor="#ffffff"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
