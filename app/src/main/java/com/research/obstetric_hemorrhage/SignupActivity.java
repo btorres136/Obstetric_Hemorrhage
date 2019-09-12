@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,21 +28,20 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static android.view.View.VISIBLE;
 
 public class SignupActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private FirebaseAuth mAuth;
-    private ArrayList<String> Questions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         mAuth = FirebaseAuth.getInstance();
-        Questions = new ArrayList<String>();
 
-        FirebaseDatabase.getInstance().getReference().child("/Questions")
+        /*FirebaseDatabase.getInstance().getReference().child("/Questions")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -52,19 +52,23 @@ public class SignupActivity extends AppCompatActivity implements AdapterView.OnI
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
                     }
-                });
+                });*/
 
 
         Spinner spinner = findViewById(R.id.Questions1);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, Questions);
-
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Questions, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
+
+
         Spinner spinner2 = findViewById(R.id.Questions2);
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, Questions);
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.Questions, android.R.layout.simple_spinner_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
         spinner2.setOnItemSelectedListener(this);
+
 
         CardView Register =(CardView)findViewById(R.id.Register);
         Register.setOnClickListener(new View.OnClickListener() {
@@ -146,6 +150,7 @@ public class SignupActivity extends AppCompatActivity implements AdapterView.OnI
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         String text = adapterView.getItemAtPosition(i).toString();
+        ((TextView) adapterView.getChildAt(0)).setTextColor(Color.WHITE);
     }
 
     @Override

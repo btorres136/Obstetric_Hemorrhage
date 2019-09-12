@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Obstetric_Hemorrhage</string>
+    <string-array name="Questions">
+        <item>What was your favorite place to visit as a child?</item>
+        <item>What is the name of your favorite pet?</item>
+        <item>In what city were you born?</item>
+        <item>What high school did you attend?</item>
+        <item>What is the name of your first school?</item>
+        <item>What is your favorite movie?</item>
+        <item>What is your mothers maiden name?</item>
+        <item>What street did you grow up on?</item>
+        <item>What was the make of your first car?</item>
+        <item>What is your favorite color?</item>
+    </string-array>
 </resources>
