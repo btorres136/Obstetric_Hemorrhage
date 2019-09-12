@@ -57,6 +57,7 @@ public class SignupActivity extends AppCompatActivity implements AdapterView.OnI
 
         Spinner spinner = findViewById(R.id.Questions1);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, Questions);
+
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
