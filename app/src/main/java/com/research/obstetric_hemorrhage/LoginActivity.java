@@ -18,6 +18,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import static android.view.View.VISIBLE;
 
@@ -105,6 +107,7 @@ public class LoginActivity extends AppCompatActivity {
     }
     public void updateUI(FirebaseUser user, Task<AuthResult>  task){
         if(user != null && task == null){
+
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }

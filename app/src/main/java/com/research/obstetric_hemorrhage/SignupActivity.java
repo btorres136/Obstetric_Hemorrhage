@@ -1,6 +1,7 @@
 package com.research.obstetric_hemorrhage;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.widget.AutoSizeableTextView;
@@ -28,8 +29,12 @@ import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.view.View.VISIBLE;
 
@@ -46,6 +51,7 @@ public class SignupActivity extends AppCompatActivity implements AdapterView.OnI
         pgsBar.setVisibility(View.GONE);
         ImageView icon = findViewById(R.id.principal_icon2);
         icon.setVisibility(View.GONE);
+
 
         /*FirebaseDatabase.getInstance().getReference().child("/Questions")
                 .addValueEventListener(new ValueEventListener() {
@@ -82,19 +88,28 @@ public class SignupActivity extends AppCompatActivity implements AdapterView.OnI
             public void onClick(View view) {
                 EditText email = (EditText)findViewById(R.id.email);
                 EditText password = (EditText)findViewById(R.id.password);
+                EditText answer = findViewById(R.id.answer1);
+                EditText answer2 = findViewById(R.id.answer2);
 
-                if(!(email.getText().toString().isEmpty()) && !(password.getText().toString().isEmpty()) && verifypassword())
+                if(!(email.getText().toString().isEmpty()) && !(password.getText().toString().isEmpty()) && verifypassword() && !(answer.getText().toString().isEmpty()) && !(answer2.getText().toString().isEmpty()) && verifyquestions())
                 {
                     Signup(email.getText().toString(), password.getText().toString());
                     showprogressbar();
                 }
-                else
-                {
-                    Toast.makeText(SignupActivity.this, "Please provide all requested fields", Toast.LENGTH_SHORT).show();
-                }
             }
         });
 
+    }
+
+    public boolean verifyquestions(){
+        Spinner spinner = findViewById(R.id.Questions1);
+        Spinner spinner2 = findViewById(R.id.Questions2);
+        if(!(spinner.getSelectedItem().equals(spinner2.getSelectedItem()))) {
+            return true;
+        } else  {
+            Toast.makeText(SignupActivity.this, "Questions can't be the same", Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 
     public void showprogressbar(){
@@ -160,13 +175,49 @@ public class SignupActivity extends AppCompatActivity implements AdapterView.OnI
 
     public void updateUI(FirebaseUser user, Task<AuthResult> task) {
         if (user != null && task == null) {
+            EditText answer1 = findViewById(R.id.answer1);
+            EditText answer2 = findViewById(R.id.answer2);
+            Spinner question1 = findViewById(R.id.Questions1);
+            Spinner question2 = findViewById(R.id.Questions2);
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            String uid = mAuth.getCurrentUser().getUid();
+            DatabaseReference emailref = database.getReference("/Users").child(uid);
+            emailref.child(question1.getSelectedItem().toString()).setValue(answer1.getText().toString());
+            emailref.child(question2.getSelectedItem().toString()).setValue(answer2.getText().toString());
+
+
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         } else if (user == null && task != null) {
             FirebaseAuthException e = (FirebaseAuthException) task.getException();
+            ProgressBar pgsBar = (ProgressBar)findViewById(R.id.progressBar2);
+            pgsBar.setVisibility(View.GONE);
+            ImageView icon = findViewById(R.id.principal_icon2);
+            icon.setVisibility(View.GONE);
+
+            TextView text = findViewById(R.id.Sign_upLabel);
+            text.setVisibility(VISIBLE);
+            TextView text2 = findViewById(R.id.SQ1);
+            text2.setVisibility(VISIBLE);
+            TextView text3 = findViewById(R.id.SQ2);
+            text3.setVisibility(VISIBLE);
+            EditText answer = findViewById(R.id.answer1);
+            answer.setVisibility(VISIBLE);
+            EditText answer2 = findViewById(R.id.answer2);
+            answer2.setVisibility(VISIBLE);
+            Spinner spinner = findViewById(R.id.Questions1);
+            spinner.setVisibility(VISIBLE);
+            Spinner spinner2 = findViewById(R.id.Questions2);
+            spinner2.setVisibility(VISIBLE);
+            CardView Register =(CardView)findViewById(R.id.Register);
+            Register.setVisibility(VISIBLE);
+            EditText email = (EditText)findViewById(R.id.email);
+            email.setVisibility(VISIBLE);
+            EditText password = (EditText)findViewById(R.id.password);
+            password.setVisibility(VISIBLE);
+            EditText repassword = (EditText)findViewById(R.id.retypepassword);
+            repassword.setVisibility(VISIBLE);
             Toast.makeText(SignupActivity.this, "Failed Registration: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-        } else {
-            //Blank
         }
     }
 
