@@ -1,216 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/gradient"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
-    android:visibility="visible"
     tools:context=".SignupActivity">
 
-    <ProgressBar
-        android:id="@+id/progressBar2"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="167dp"
-        android:layout_height="169dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        tools:context=".SignupActivity">
 
-    <ImageView
-        android:id="@+id/principal_icon2"
-        android:layout_width="wrap_content"
-        android:layout_height="131dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/startup_icon" />
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="167dp"
+            android:layout_height="169dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/Sign_upLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Sign Up"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/principal_icon2"
+            android:layout_width="wrap_content"
+            android:layout_height="131dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/startup_icon" />
 
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="250dp"
-        android:layout_height="37dp"
-        android:background="#11000000"
-        android:drawableLeft="@drawable/ic_action_user"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:textColor="#ffffff"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Sign_upLabel" />
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="250dp"
-        android:layout_height="37dp"
-        android:background="#11000000"
-        android:drawableLeft="@drawable/ic_action_pass"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toTopOf="@+id/retypepassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
-
-    <EditText
-        android:id="@+id/retypepassword"
-        android:layout_width="250dp"
-        android:layout_height="37dp"
-        android:background="#11000000"
-        android:drawableLeft="@drawable/ic_action_pass"
-        android:ems="10"
-        android:hint="Re-type Password"
-        android:inputType="textPassword"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toTopOf="@+id/SQ1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
-
-    <TextView
-        android:id="@+id/SQ1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Security Question 1:"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/Questions1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/retypepassword" />
-
-    <Spinner
-        android:id="@+id/Questions1"
-        android:layout_width="250dp"
-        android:layout_height="37dp"
-        android:background="#11000000"
-        android:hint="Security Questions"
-        app:layout_constraintBottom_toTopOf="@+id/answer1"
-        app:layout_constraintEnd_toEndOf="@+id/Questions2"
-        app:layout_constraintStart_toStartOf="@+id/answer1"
-        app:layout_constraintTop_toBottomOf="@+id/SQ1" />
-
-    <EditText
-        android:id="@+id/answer1"
-        android:layout_width="250dp"
-        android:layout_height="37dp"
-        android:background="#11000000"
-        android:ems="10"
-        android:hint="Answer "
-        android:inputType="textEmailAddress"
-        android:textAlignment="center"
-        android:textColor="#ffffff"
-        android:textIsSelectable="false"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/SQ2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Questions1" />
-
-    <TextView
-        android:id="@+id/SQ2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Security Question 2:"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/Questions2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/answer1" />
-
-
-    <Spinner
-        android:id="@+id/Questions2"
-        android:layout_width="250dp"
-        android:layout_height="37dp"
-        android:background="#11000000"
-        android:hint="Security Questions"
-        app:layout_constraintBottom_toTopOf="@+id/answer2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SQ2" />
-
-    <EditText
-        android:id="@+id/answer2"
-        android:layout_width="250dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="73dp"
-        android:layout_marginLeft="73dp"
-        android:layout_marginEnd="73dp"
-        android:layout_marginRight="73dp"
-        android:layout_marginBottom="30dp"
-        android:background="#11000000"
-        android:ems="10"
-        android:hint="Answer "
-        android:textColor="#ffffff"
-        android:inputType="textEmailAddress"
-        android:textAlignment="center"
-        android:textIsSelectable="false"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/Register"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Questions2" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/Register"
-        android:layout_width="267dp"
-        android:layout_height="49dp"
-        android:layout_gravity="center|center_horizontal"
-        android:layout_marginStart="74dp"
-        android:layout_marginLeft="74dp"
-        android:layout_marginEnd="74dp"
-        android:layout_marginRight="74dp"
-        android:layout_marginBottom="30dp"
-        app:cardBackgroundColor="#07decc"
-        app:cardCornerRadius="25dp"
-        app:cardElevation="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/answer2">
-
-        <RelativeLayout
-            android:layout_width="241dp"
+        <TextView
+            android:id="@+id/Sign_upLabel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="Sign Up"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="250dp"
+            android:layout_height="37dp"
+            android:background="#11000000"
+            android:drawableLeft="@drawable/ic_action_user"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Sign_upLabel" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="250dp"
+            android:layout_height="37dp"
+            android:background="#11000000"
+            android:drawableLeft="@drawable/ic_action_pass"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textColor="#ffffff"
+            app:layout_constraintBottom_toTopOf="@+id/retypepassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email" />
+
+        <EditText
+            android:id="@+id/retypepassword"
+            android:layout_width="250dp"
+            android:layout_height="37dp"
+            android:background="#11000000"
+            android:drawableLeft="@drawable/ic_action_pass"
+            android:ems="10"
+            android:hint="Re-type Password"
+            android:inputType="textPassword"
+            android:textColor="#ffffff"
+            app:layout_constraintBottom_toTopOf="@+id/SQ1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/password" />
+
+        <TextView
+            android:id="@+id/SQ1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Security Question 1:"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/Questions1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/retypepassword" />
+
+        <Spinner
+            android:id="@+id/Questions1"
+            android:layout_width="250dp"
+            android:layout_height="37dp"
+            android:background="#11000000"
+            android:hint="Security Questions"
+            app:layout_constraintBottom_toTopOf="@+id/answer1"
+            app:layout_constraintEnd_toEndOf="@+id/Questions2"
+            app:layout_constraintStart_toStartOf="@+id/answer1"
+            app:layout_constraintTop_toBottomOf="@+id/SQ1" />
+
+        <EditText
+            android:id="@+id/answer1"
+            android:layout_width="250dp"
+            android:layout_height="37dp"
+            android:background="#11000000"
+            android:ems="10"
+            android:hint="Answer "
+            android:inputType="textEmailAddress"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textIsSelectable="false"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/SQ2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Questions1" />
+
+        <TextView
+            android:id="@+id/SQ2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Security Question 2:"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/Questions2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/answer1" />
+
+
+        <Spinner
+            android:id="@+id/Questions2"
+            android:layout_width="250dp"
+            android:layout_height="37dp"
+            android:background="#11000000"
+            android:hint="Security Questions"
+            app:layout_constraintBottom_toTopOf="@+id/answer2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/SQ2" />
+
+        <EditText
+            android:id="@+id/answer2"
+            android:layout_width="250dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="73dp"
+            android:layout_marginLeft="73dp"
+            android:layout_marginEnd="73dp"
+            android:layout_marginRight="73dp"
+            android:layout_marginBottom="30dp"
+            android:background="#11000000"
+            android:ems="10"
+            android:hint="Answer "
+            android:textColor="#ffffff"
+            android:inputType="textEmailAddress"
+            android:textAlignment="center"
+            android:textIsSelectable="false"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/Register"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Questions2" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/Register"
+            android:layout_width="267dp"
+            android:layout_height="49dp"
             android:layout_gravity="center|center_horizontal"
-            android:gravity="center">
+            android:layout_marginStart="74dp"
+            android:layout_marginLeft="74dp"
+            android:layout_marginEnd="74dp"
+            android:layout_marginRight="74dp"
+            android:layout_marginBottom="30dp"
+            app:cardBackgroundColor="#07decc"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/answer2">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="241dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="1dp"
-                android:text="Register"
-                android:textColor="#ffffff"
-                android:textSize="20sp" />
+                android:layout_gravity="center|center_horizontal"
+                android:gravity="center">
 
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="1dp"
+                    android:text="Register"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
