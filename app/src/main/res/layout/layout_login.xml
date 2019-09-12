@@ -20,7 +20,6 @@
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:textSize="16dp"
-
         android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
