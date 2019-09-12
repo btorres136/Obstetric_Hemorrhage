@@ -118,7 +118,7 @@
         app:layout_constraintBottom_toTopOf="@+id/SQ2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Questions1"/>
+        app:layout_constraintTop_toBottomOf="@+id/Questions1" />
 
     <TextView
         android:id="@+id/SQ2"
