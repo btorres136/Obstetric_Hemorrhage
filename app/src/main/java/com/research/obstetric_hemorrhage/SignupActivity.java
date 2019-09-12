@@ -3,14 +3,18 @@ package com.research.obstetric_hemorrhage;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.widget.AutoSizeableTextView;
+import androidx.core.widget.TextViewCompat;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -27,9 +31,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static android.view.View.VISIBLE;
 
 public class SignupActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -40,6 +41,11 @@ public class SignupActivity extends AppCompatActivity implements AdapterView.OnI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         mAuth = FirebaseAuth.getInstance();
+
+        ProgressBar pgsBar = (ProgressBar)findViewById(R.id.progressBar2);
+        pgsBar.setVisibility(View.GONE);
+        ImageView icon = findViewById(R.id.principal_icon2);
+        icon.setVisibility(View.GONE);
 
         /*FirebaseDatabase.getInstance().getReference().child("/Questions")
                 .addValueEventListener(new ValueEventListener() {
@@ -80,7 +86,7 @@ public class SignupActivity extends AppCompatActivity implements AdapterView.OnI
                 if(!(email.getText().toString().isEmpty()) && !(password.getText().toString().isEmpty()) && verifypassword())
                 {
                     Signup(email.getText().toString(), password.getText().toString());
-                    //showprogressbar();
+                    showprogressbar();
                 }
                 else
                 {
@@ -92,16 +98,33 @@ public class SignupActivity extends AppCompatActivity implements AdapterView.OnI
     }
 
     public void showprogressbar(){
-        ProgressBar pgsBar = (ProgressBar)findViewById(R.id.progressBar);
+        ProgressBar pgsBar = (ProgressBar)findViewById(R.id.progressBar2);
         pgsBar.setVisibility(VISIBLE);
+        ImageView icon = findViewById(R.id.principal_icon2);
+        icon.setVisibility(VISIBLE);
+
+        TextView text = findViewById(R.id.Sign_upLabel);
+        text.setVisibility(View.GONE);
+        TextView text2 = findViewById(R.id.SQ1);
+        text2.setVisibility(View.GONE);
+        TextView text3 = findViewById(R.id.SQ2);
+        text3.setVisibility(View.GONE);
+        EditText answer = findViewById(R.id.answer1);
+        answer.setVisibility(View.GONE);
+        EditText answer2 = findViewById(R.id.answer2);
+        answer2.setVisibility(View.GONE);
+        Spinner spinner = findViewById(R.id.Questions1);
+        spinner.setVisibility(View.GONE);
+        Spinner spinner2 = findViewById(R.id.Questions2);
+        spinner2.setVisibility(View.GONE);
+        CardView Register =(CardView)findViewById(R.id.Register);
+        Register.setVisibility(View.GONE);
         EditText email = (EditText)findViewById(R.id.email);
-        EditText pass = (EditText)findViewById(R.id.password);
-        CardView sign_in = (CardView) findViewById(R.id.Register);
-        TextView sign_up = (TextView)findViewById(R.id.sign_up);
         email.setVisibility(View.GONE);
-        pass.setVisibility(View.GONE);
-        sign_in.setVisibility(View.GONE);
-        sign_up.setVisibility(View.GONE);
+        EditText password = (EditText)findViewById(R.id.password);
+        password.setVisibility(View.GONE);
+        EditText repassword = (EditText)findViewById(R.id.retypepassword);
+        repassword.setVisibility(View.GONE);
     }
 
     public boolean verifypassword(){
@@ -151,6 +174,7 @@ public class SignupActivity extends AppCompatActivity implements AdapterView.OnI
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         String text = adapterView.getItemAtPosition(i).toString();
         ((TextView) adapterView.getChildAt(0)).setTextColor(Color.WHITE);
+
     }
 
     @Override

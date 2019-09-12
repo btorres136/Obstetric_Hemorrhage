@@ -8,6 +8,26 @@
     android:visibility="visible"
     tools:context=".SignupActivity">
 
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="167dp"
+        android:layout_height="169dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/principal_icon2"
+        android:layout_width="wrap_content"
+        android:layout_height="131dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/startup_icon" />
+
     <TextView
         android:id="@+id/Sign_upLabel"
         android:layout_width="wrap_content"
@@ -92,7 +112,6 @@
         android:layout_marginBottom="10dp"
         android:background="#11000000"
         android:hint="Security Questions"
-        android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/answer1"
         app:layout_constraintEnd_toEndOf="@+id/Questions2"
         app:layout_constraintStart_toStartOf="@+id/answer1"
@@ -144,7 +163,6 @@
         android:layout_marginRight="73dp"
         android:layout_marginBottom="10dp"
         android:background="#11000000"
-        android:textColor="#ffffff"
         android:hint="Security Questions"
         app:layout_constraintBottom_toTopOf="@+id/answer2"
         app:layout_constraintEnd_toEndOf="parent"
