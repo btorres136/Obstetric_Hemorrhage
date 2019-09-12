@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "646400738499-qpt1r5pnq65sqi5btqiqb4m1q0bnnmf6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.research.obstetric_hemorrhage",
+            "certificate_hash": "fb94378cd3d4c0983dfbe490ede316a221a8b2bb"
+          }
+        },
+        {
           "client_id": "646400738499-qflf6unnk0olt02o8t6l8j2a5qpapn9t.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
