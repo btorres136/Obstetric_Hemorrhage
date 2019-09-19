@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
 
-        Button button = (Button)findViewById(R.id.button);
+        /*Button button = (Button)findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Successfully Singed Out", Toast.LENGTH_SHORT).show();
                 updateUI(null);
             }
-        });
+        });*/
     }
 
     public void updateUI(FirebaseUser user){

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#FFFFFF</color>
-    <color name="colorPrimaryDark">#07decc</color>
+    <color name="colorPrimaryDark">#00537E</color>
     <color name="colorAccent"></color>
+    <color name="Gradient_First">#00537E</color>
 </resources>
