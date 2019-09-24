@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:layout_marginTop="10dp">
+
+    <TextView
+        android:id="@+id/patient_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="patient_name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        app:fontFamily="sans-serif-black" />
+
+    <TextView
+        android:id="@+id/patient_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/patient_name"
+        android:layout_alignParentLeft="true"
+        android:text="patient_id"
+        android:textColor="#000"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/patient_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/patient_name"
+        android:layout_centerHorizontal="true"
+        android:text="patient_age"
+        android:textColor="#000"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/patient_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/patient_name"
+        android:layout_alignParentRight="true"
+        android:text="patient_state"
+        android:textColor="#000"
+        android:textSize="17sp" />
+
+    <Button
+        android:id="@+id/add_to_actual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/patient_id"
+        android:layout_alignParentLeft="true"
+        android:text="Add to Actual Patient" />
+
+    <Button
+        android:id="@+id/see_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/patient_id"
+        android:layout_alignParentRight="true"
+        android:text="See Patient Info" />
+</RelativeLayout>
