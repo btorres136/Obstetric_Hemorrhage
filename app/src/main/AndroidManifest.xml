@@ -12,7 +12,8 @@
         <activity android:name=".SignupActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"></activity>
         <activity android:name=".MainActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"/>
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/MainTheme"/>
         <activity android:name=".LoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter>

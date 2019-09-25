@@ -1,6 +1,7 @@
 package com.research.obstetric_hemorrhage;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -15,6 +16,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         Nav.setOnNavigationItemSelectedListener(this);
 
         loadFragment(new Patient_Fragment());
+
+        this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setCustomView(R.layout.custom_actionbar);
+        getSupportActionBar().setElevation(0);
     }
 
     public void updateUI(FirebaseUser user){

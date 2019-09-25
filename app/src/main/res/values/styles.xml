@@ -9,4 +9,8 @@
 
     </style>
 
+    <style name="MainTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">#FFFFFF</item>
+
+    </style>
 </resources>
