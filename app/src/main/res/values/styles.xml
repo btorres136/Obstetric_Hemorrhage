@@ -11,6 +11,7 @@
 
     <style name="MainTheme" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorPrimaryDark">#c4c4c4</item>
 
     </style>
 </resources>

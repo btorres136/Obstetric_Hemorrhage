@@ -3,33 +3,32 @@ package com.research.obstetric_hemorrhage;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
+public class Patients_RecyclerView extends RecyclerView.Adapter<Patients_RecyclerView.ViewHolder>{
 
-    private static final String TAG = "com.research.obstetric_hemorrhage.RecyclerViewAdapter";
     private ArrayList<String> mPatientNames = new ArrayList<>();
-    private ArrayList<String> mAges =  new ArrayList<>();
+    private ArrayList<Integer> mAges =  new ArrayList<>();
     private ArrayList<String> mid = new ArrayList<>();
     private ArrayList<String> mstatus = new ArrayList<>();
-    private Context mContext;
+    private int mPosition;
+    private Actual_Patient actual = new Actual_Patient();
 
-    public RecyclerViewAdapter(ArrayList<String> PatientNames, ArrayList<String> Ages, ArrayList<String> id, ArrayList<String> status, Context context){
+    public Patients_RecyclerView(ArrayList<String> PatientNames, ArrayList<Integer> Ages, ArrayList<String> id, ArrayList<String> status){
         mPatientNames= PatientNames;
         mAges = Ages;
         mid = id;
         mstatus = status;
-        mContext = context;
     }
+
 
 
     @NonNull
@@ -41,11 +40,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.textView_Patient.setText("Patient: " + mPatientNames.get(position));
         holder.textView_Age.setText("Age: " + mAges.get(position));
         holder.textView_id.setText("ID: " + mid.get(position));
         holder.textView_status.setText("Status: " + mstatus.get(position));
+        mPosition=position;
+
+        holder.cardView_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                actual.add(mPatientNames.get(mPosition), mAges.get(mPosition), mid.get(mPosition), mstatus.get(mPosition));
+            }
+        });
     }
 
     @Override
@@ -59,9 +66,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView textView_id;
         TextView textView_status;
         RelativeLayout parentLayout;
+        CardView cardView_add;
         public ViewHolder(View itemView)
         {
             super(itemView);
+            cardView_add = itemView.findViewById(R.id.add_mypat);
             textView_Patient = itemView.findViewById(R.id.patient_name);
             textView_Age = itemView.findViewById(R.id.patient_age);
             textView_id = itemView.findViewById(R.id.patient_id);
