@@ -18,7 +18,7 @@ public class Patient_Fragment extends Fragment {
 
     //vars
     private ArrayList<String> mPatientNames = new ArrayList<>();
-    private ArrayList<Integer> mAges =  new ArrayList<>();
+    private ArrayList<String> mAges =  new ArrayList<>();
     private ArrayList<String> mid = new ArrayList<>();
     private ArrayList<String> mstatus = new ArrayList<>();
     private RecyclerView recyclerView;
@@ -30,80 +30,66 @@ public class Patient_Fragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_patient_, container, false);
         recyclerView = rootView.findViewById(R.id.patient_recycle);
+
         mPatientNames.add("Giana Alvarado");
-        mAges.add(22);
+        mAges.add("22");
+        mid.add("AS453AD");
+        mstatus.add("Stage 3");
+
+        mPatientNames.add("Giana Torres");
+        mAges.add("22");
+        mid.add("AS453AD12");
+        mstatus.add("Stage 3");
+
+        mPatientNames.add("Giana Alvarado");
+        mAges.add("22");
         mid.add("AS453AD");
         mstatus.add("Stage 3");
 
         mPatientNames.add("Giana Alvarado");
-        mAges.add(22);
+        mAges.add("22");
         mid.add("AS453AD");
         mstatus.add("Stage 3");
 
         mPatientNames.add("Giana Alvarado");
-        mAges.add(22);
+        mAges.add("22");
         mid.add("AS453AD");
         mstatus.add("Stage 3");
 
         mPatientNames.add("Giana Alvarado");
-        mAges.add(22);
+        mAges.add("22");
         mid.add("AS453AD");
         mstatus.add("Stage 3");
 
         mPatientNames.add("Giana Alvarado");
-        mAges.add(22);
+        mAges.add("22");
         mid.add("AS453AD");
         mstatus.add("Stage 3");
 
         mPatientNames.add("Giana Alvarado");
-        mAges.add(22);
+        mAges.add("22");
         mid.add("AS453AD");
         mstatus.add("Stage 3");
 
         mPatientNames.add("Giana Alvarado");
-        mAges.add(22);
+        mAges.add("22");
         mid.add("AS453AD");
         mstatus.add("Stage 3");
 
         mPatientNames.add("Giana Alvarado");
-        mAges.add(22);
+        mAges.add("22");
         mid.add("AS453AD");
         mstatus.add("Stage 3");
 
         mPatientNames.add("Giana Alvarado");
-        mAges.add(22);
+        mAges.add("22");
         mid.add("AS453AD");
         mstatus.add("Stage 3");
 
-        mPatientNames.add("Giana Alvarado");
-        mAges.add(22);
-        mid.add("AS453AD");
-        mstatus.add("Stage 3");
-
-        mPatientNames.add("Giana Alvarado");
-        mAges.add(22);
-        mid.add("AS453AD");
-        mstatus.add("Stage 3");
-
-        mPatientNames.add("Giana Alvarado");
-        mAges.add(22);
-        mid.add("AS453AD");
-        mstatus.add("Stage 3");
-
-        mPatientNames.add("Giana Alvarado");
-        mAges.add(22);
-        mid.add("AS453AD");
-        mstatus.add("Stage 3");
 
         Patients_RecyclerView adapter = new Patients_RecyclerView(mPatientNames,mAges,mid,mstatus);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-
-
-
-
-
         return rootView;
     }
 

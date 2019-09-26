@@ -1,12 +1,15 @@
 package com.research.obstetric_hemorrhage;
 
 
+import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -26,10 +29,11 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
     private ArrayList<Integer> mSaturation = new ArrayList<>();
     private ArrayList<Integer> mShockIndex = new ArrayList<>();
 
-    public ActualPatient_RecyclerView(ArrayList<String> PatientName, ArrayList<Integer> Age){
+
+    public ActualPatient_RecyclerView(ArrayList<String> PatientName){
         mPatName = PatientName;
-        mAge = Age;
     }
+
 
     @NonNull
     @Override
@@ -43,7 +47,6 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         holder.textView_Patient.setText("Patient: " + mPatName.get(position));
-
     }
 
     @Override

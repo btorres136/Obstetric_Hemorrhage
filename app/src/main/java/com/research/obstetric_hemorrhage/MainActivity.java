@@ -7,21 +7,40 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
-    private FirebaseAuth mAuth;
-
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    ArrayList<String> info = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mAuth = FirebaseAuth.getInstance();
+
+
+
+
+
 
         /*Button button = (Button)findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +63,29 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         getSupportActionBar().setElevation(0);
     }
 
+    public void add(String Pat_Name, String Age, String id, String mStatus){
+        Map<String, Object> usermap = new HashMap<>();
+        usermap.put("Patient Name", Pat_Name);
+        usermap.put("Age", Age);
+        usermap.put("Status", mStatus);
+        usermap.put("mid",id);
+        db.collection("User_Pat").document(mAuth.getUid()).collection(id).document("Registry").set(usermap);
+    }
+
+    public ArrayList get(){
+        db.collection("User_Pat").document(mAuth.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    Log.v("Data", "Cached document data: " + document.getData());
+                } else {
+                    Log.d("Error: ", "Error getting documents: ", task.getException());
+                }
+            }
+        });
+        return info;
+    }
     public void updateUI(FirebaseUser user){
         if(user == null){
             Intent intent = new Intent(this, LoginActivity.class);

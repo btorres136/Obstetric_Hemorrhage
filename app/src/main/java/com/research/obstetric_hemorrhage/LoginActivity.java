@@ -24,6 +24,9 @@ import static android.view.View.VISIBLE;
 
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
+    public LoginActivity(){
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
 
     @Override
     public void onStart() {
@@ -110,6 +114,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
+
     public void updateUI(FirebaseUser user, Task<AuthResult>  task){
         if(user != null && task == null){
 
