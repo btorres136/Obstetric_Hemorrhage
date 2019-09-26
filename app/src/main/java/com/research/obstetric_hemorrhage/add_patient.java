@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.sql.Statement;
+
 
 public class add_patient extends Fragment {
 
