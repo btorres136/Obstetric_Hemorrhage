@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".add_patient"
-    >
+    android:background="#E6E6E6"
+    tools:context=".add_patient">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,209 +14,158 @@
         android:visibility="visible"
         tools:context=".LoginActivity">
 
-        <TextView
-            android:id="@+id/add_patient_screen"
-            android:layout_width="173dp"
-            android:layout_height="56dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="283dp"
-            android:layout_marginRight="283dp"
-            android:layout_marginBottom="30dp"
-            android:text="Add Patient:"
-            android:textColor="#000000"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/patient_first_name"
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.047">
 
-        <TextView
-            android:id="@+id/patient_first_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="320dp"
-            android:layout_marginRight="320dp"
-            android:layout_marginBottom="4dp"
-            android:text="First Name:"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/input_firstName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/patient_first_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="First Name:"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/input_firstName"
-            android:layout_width="164dp"
-            android:layout_height="44dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="236dp"
-            android:layout_marginRight="236dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textColor="#000000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patient_first_name" />
+            <EditText
+                android:id="@+id/input_firstName"
+                android:layout_width="164dp"
+                android:layout_height="44dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textColor="#000000"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"/>
 
-        <TextView
-            android:id="@+id/patient_last_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
-            android:text="Last Name:"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="#000000"
-            app:layout_constraintBottom_toTopOf="@+id/input_LastName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/input_firstName" />
+            <TextView
+                android:id="@+id/patient_last_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Last Name:"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/input_LastName"
-            android:layout_width="164dp"
-            android:layout_height="44dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="236dp"
-            android:layout_marginRight="236dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textColor="#000000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patient_last_name" />
+            <EditText
+                android:id="@+id/input_lastName"
+                android:layout_width="164dp"
+                android:layout_height="44dp"
+                android:ems="10"
+                android:layout_marginBottom="10dp"
+                android:inputType="textPersonName"
+                android:textColor="#000000" />
 
-        <TextView
-            android:id="@+id/patient_Age"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="316dp"
-            android:layout_marginRight="316dp"
-            android:text="Patient Age:"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/input_Age"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/input_LastName" />
+            <TextView
+                android:id="@+id/patient_age_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Patient Age:"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/input_Age"
-            android:layout_width="164dp"
-            android:layout_height="44dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="115dp"
-            android:layout_marginRight="115dp"
-            android:ems="10"
-            android:inputType="number"
-            android:textColor="#000000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.044"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patient_Age" />
+            <EditText
+                android:id="@+id/input_Age"
+                android:layout_width="164dp"
+                android:layout_height="44dp"
+                android:ems="10"
+                android:layout_marginBottom="10dp"
+                android:inputType="number"
+                android:textColor="#000000" />
 
-        <TextView
-            android:id="@+id/patient_Room"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="304dp"
-            android:layout_marginRight="304dp"
-            android:text="Patient Room:"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/input_Room"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/input_Age" />
+            <TextView
+                android:id="@+id/patient_room"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Patient Room:"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/input_Room"
-            android:layout_width="164dp"
-            android:layout_height="44dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="115dp"
-            android:layout_marginRight="115dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textColor="#000000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.044"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patient_Room" />
+            <EditText
+                android:id="@+id/input_room"
+                android:layout_width="164dp"
+                android:layout_height="44dp"
+                android:ems="10"
+                android:layout_marginBottom="10dp"
+                android:inputType="textPersonName"
+                android:textColor="#000000" />
 
-        <TextView
-            android:id="@+id/patient_Stage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="312dp"
-            android:layout_marginRight="312dp"
-            android:text="Patient Stage:"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/input_Stage"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/input_Room" />
+            <TextView
+                android:id="@+id/patient_stage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Stage level:"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/input_Stage"
-            android:layout_width="164dp"
-            android:layout_height="44dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="115dp"
-            android:layout_marginRight="115dp"
-            android:ems="10"
-            android:inputType="number"
-            android:textColor="#000000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.039"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/patient_Stage" />
+            <EditText
+                android:id="@+id/input_Stage"
+                android:layout_width="164dp"
+                android:layout_height="44dp"
+                android:ems="10"
+                android:layout_marginBottom="10dp"
+                android:inputType="number"
+                android:textColor="#000000" />
 
-        <Button
-            android:id="@+id/add_patient_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="150dp"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="600dp"
-            android:layout_marginEnd="150dp"
-            android:layout_marginRight="150dp"
-            android:layout_marginBottom="40dp"
-            android:background="#11000000"
-            android:text="Add Patient"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/add_to_patients"
+                android:layout_width="267dp"
+                android:layout_height="49dp"
+                android:layout_gravity="center|center_horizontal"
+                android:layout_marginStart="74dp"
+                android:layout_marginLeft="74dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="74dp"
+                android:layout_marginRight="74dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#3aa17a"
+                app:cardCornerRadius="25dp"
+                app:cardElevation="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
+                <RelativeLayout
+                    android:layout_width="241dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|center_horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/add_to_patients_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="1dp"
+                        android:text="Add to Patients"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
-
