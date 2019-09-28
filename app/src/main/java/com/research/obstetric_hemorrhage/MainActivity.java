@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,6 +33,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -118,25 +120,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         get_pat();
         get();
         wait=true;
-
-        DatabaseReference reference = database.getReference();
-        reference.child("/Patients").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Iterable<DataSnapshot> childre = dataSnapshot.getChildren();
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
-
-
+        FirebaseMessaging.getInstance().subscribeToTopic("PatientAdded");
     }
 
     public void add(String Pat_Name, String Age, String mStatus){
