@@ -11,7 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.ProgressBar;
 
 
 import java.util.ArrayList;
@@ -33,6 +33,7 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
                              Bundle savedInstanceState) {
         main.get();
         rootView = inflater.inflate(R.layout.fragment_actual__patient, container, false);
+
         swipe = rootView.findViewById(R.id.swipeRefresh);
         swipe.setOnRefreshListener(this);
         adapter = new ActualPatient_RecyclerView(mPatientNames);
@@ -44,7 +45,6 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
 
     public static void getList(ArrayList<String> name){
             mPatientNames=name;
-
     }
 
 

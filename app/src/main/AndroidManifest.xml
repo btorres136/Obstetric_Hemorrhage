@@ -8,14 +8,25 @@
         android:label="Douhla"
         android:roundIcon="@mipmap/d2icon_round"
         android:supportsRtl="true"
-
         android:theme="@style/AppTheme">
-        <activity android:name=".SignupActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"></activity>
-        <activity android:name=".MainActivity"
+        <service
+            android:name=".FirebaseCloudFunctions"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".SignupActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@style/MainTheme"/>
-        <activity android:name=".LoginActivity"
+            android:theme="@style/MainTheme" />
+        <activity
+            android:name=".LoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
