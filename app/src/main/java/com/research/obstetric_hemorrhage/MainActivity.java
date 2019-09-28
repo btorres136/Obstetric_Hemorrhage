@@ -121,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         get();
         wait=true;
         FirebaseMessaging.getInstance().subscribeToTopic("PatientAdded");
+        FirebaseMessaging.getInstance().subscribeToTopic("PatientDeleted");
     }
 
     public void add(String Pat_Name, String Age, String mStatus){
