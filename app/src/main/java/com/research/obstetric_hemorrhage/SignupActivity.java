@@ -7,7 +7,6 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,8 +23,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +33,8 @@ import static android.view.View.VISIBLE;
 
 public class SignupActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private FirebaseAuth mAuth;
-    private FirebaseFirestore db;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +42,10 @@ public class SignupActivity extends AppCompatActivity implements AdapterView.OnI
         setContentView(R.layout.activity_signup);
         mAuth = FirebaseAuth.getInstance();
 
-        db = FirebaseFirestore.getInstance();
 
         ProgressBar pgsBar = (ProgressBar)findViewById(R.id.progressBar2);
         pgsBar.setVisibility(View.GONE);
-        ImageView icon = findViewById(R.id.principal_icon2);
-        icon.setVisibility(View.GONE);
+
 
 
         /*FirebaseDatabase.getInstance().getReference().child("/Questions")
@@ -112,8 +110,6 @@ public class SignupActivity extends AppCompatActivity implements AdapterView.OnI
     public void showprogressbar(){
         ProgressBar pgsBar = (ProgressBar)findViewById(R.id.progressBar2);
         pgsBar.setVisibility(VISIBLE);
-        ImageView icon = findViewById(R.id.principal_icon2);
-        icon.setVisibility(VISIBLE);
 
         TextView text = findViewById(R.id.Sign_upLabel);
         text.setVisibility(View.GONE);
@@ -176,18 +172,16 @@ public class SignupActivity extends AppCompatActivity implements AdapterView.OnI
             EditText answer2 = findViewById(R.id.answer2);
             Spinner question1 = findViewById(R.id.Questions1);
             Spinner question2 = findViewById(R.id.Questions2);
-            String uid = mAuth.getCurrentUser().getUid();
             String squestion1= question1.getSelectedItem().toString();
             String squestion2 = question2.getSelectedItem().toString();
 
-            Map<String, Object> usermap = new HashMap<>();
-            usermap.put("Question1", squestion1);
-            usermap.put("Question2", squestion2);
-            usermap.put("Answer1", answer1.getText().toString());
-            usermap.put("Answer2",answer2.getText().toString());
+            /////////////////////////////////////////////////////////////////////////////////////////////
 
-            db.collection("Users").document(uid)
-                    .set(usermap);
+            Map<String, Object> usermap = new HashMap<>();
+            usermap.put(squestion1, answer1.getText().toString());
+            usermap.put(squestion2,answer2.getText().toString());
+            DatabaseReference myRef = database.getReference("/Users/"+mAuth.getUid());
+            myRef.setValue(usermap);
 
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
@@ -195,8 +189,6 @@ public class SignupActivity extends AppCompatActivity implements AdapterView.OnI
             FirebaseAuthException e = (FirebaseAuthException) task.getException();
             ProgressBar pgsBar = (ProgressBar)findViewById(R.id.progressBar2);
             pgsBar.setVisibility(View.GONE);
-            ImageView icon = findViewById(R.id.principal_icon2);
-            icon.setVisibility(View.GONE);
 
             TextView text = findViewById(R.id.Sign_upLabel);
             text.setVisibility(VISIBLE);

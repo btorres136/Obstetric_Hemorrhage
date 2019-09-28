@@ -7,50 +7,94 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.util.Log;
 import android.view.MenuItem;
 
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+
+import static com.research.obstetric_hemorrhage.Actual_Patient.getList;
+import static com.research.obstetric_hemorrhage.Patient_Fragment.getallpat;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    ArrayList<String> info = new ArrayList<>();
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference patientsdb;
+    private ArrayList<String> pat_name = new ArrayList<>();
+    private ArrayList<String> allpat_name = new ArrayList<>();
+    private ArrayList<String> allpat_age = new ArrayList<>();
+    private ArrayList<String> allpat_id = new ArrayList<>();
+    private ArrayList<String> allpat_status = new ArrayList<>();
+
+
+    public void get(){
+        database.getReference().child("User_Patients/"+mAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                pat_name.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String name = snapshot.child("Patient Name").getValue().toString();
+                    pat_name.add(name);
+                }
+                getList(pat_name);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void get_pat(){
+        database.getReference().child("/Patients").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                allpat_name.clear();
+                allpat_age.clear();
+                allpat_id.clear();
+                allpat_status.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String name = snapshot.child("Patient Name").getValue().toString();
+                    String age = snapshot.child("Age").getValue().toString();
+                    String status = snapshot.child("Status").getValue().toString();
+                    String id = snapshot.child("mid").getValue().toString();
+                    allpat_name.add(name);
+                    allpat_age.add(age);
+                    allpat_id.add(id);
+                    allpat_status.add(status);
+                    Log.v("Hola", name);
+
+                }
+                getallpat(allpat_name, allpat_age,allpat_id,allpat_status);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        patientsdb = FirebaseDatabase.getInstance().getReference().child("/User_Patients/"+mAuth.getUid());
+        patientsdb.keepSynced(true);
 
 
-
-
-
-
-        /*Button button = (Button)findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mAuth.signOut();
-                Toast.makeText(MainActivity.this, "Successfully Singed Out", Toast.LENGTH_SHORT).show();
-                updateUI(null);
-            }
-        });*/
 
         BottomNavigationView Nav = (BottomNavigationView)findViewById(R.id.bottomNavigationView);
         Nav.setOnNavigationItemSelectedListener(this);
@@ -63,29 +107,28 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         getSupportActionBar().setElevation(0);
     }
 
-    public void add(String Pat_Name, String Age, String id, String mStatus){
+    public void add(String Pat_Name, String Age, String mStatus){
+        DatabaseReference myRef = database.getReference("/User_Patients/"+mAuth.getUid()+"/");
         Map<String, Object> usermap = new HashMap<>();
         usermap.put("Patient Name", Pat_Name);
         usermap.put("Age", Age);
         usermap.put("Status", mStatus);
-        usermap.put("mid",id);
-        db.collection("User_Pat").document(mAuth.getUid()).collection(id).document("Registry").set(usermap);
+        String key = myRef.push().getKey();
+        usermap.put("mid",key);
+        myRef.child(key).setValue(usermap);
+    }
+    public void addtopat(String Pat_Name, String Age, String mStatus){
+        DatabaseReference myRef = database.getReference("/Patients/");
+        Map<String, Object> usermap = new HashMap<>();
+        usermap.put("Patient Name", Pat_Name);
+        usermap.put("Age", Age);
+        usermap.put("Status", mStatus);
+        String key = myRef.push().getKey();
+        usermap.put("mid",key);
+        usermap.put("Added by: ", mAuth.getUid());
+        myRef.child(key).setValue(usermap);
     }
 
-    public ArrayList get(){
-        db.collection("User_Pat").document(mAuth.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    Log.v("Data", "Cached document data: " + document.getData());
-                } else {
-                    Log.d("Error: ", "Error getting documents: ", task.getException());
-                }
-            }
-        });
-        return info;
-    }
     public void updateUI(FirebaseUser user){
         if(user == null){
             Intent intent = new Intent(this, LoginActivity.class);
@@ -107,7 +150,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                     .beginTransaction()
                     .replace(R.id.FramePatients, fragment)
                     .commit();
-
             return true;
         }
         return false;
@@ -128,7 +170,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                  fragment = new add_patient();
                  break;
          }
-
         return loadFragment(fragment);
     }
 }

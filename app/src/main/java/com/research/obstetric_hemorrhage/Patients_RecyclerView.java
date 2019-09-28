@@ -48,7 +48,7 @@ public class Patients_RecyclerView extends RecyclerView.Adapter<Patients_Recycle
         holder.cardView_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                main.add(mPatientNames.get(position),mAges.get(position),mid.get(position),mstatus.get(position));
+                main.add(mPatientNames.get(position),mAges.get(position),mstatus.get(position));
             }
         });
     }

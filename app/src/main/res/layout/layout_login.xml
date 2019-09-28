@@ -112,6 +112,16 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/pgrsbar_icon"
+            android:layout_width="147dp"
+            android:layout_height="132dp"
+            app:layout_constraintBottom_toBottomOf="@+id/progressBar"
+            app:layout_constraintEnd_toEndOf="@+id/progressBar"
+            app:layout_constraintStart_toStartOf="@+id/progressBar"
+            app:layout_constraintTop_toTopOf="@+id/progressBar"
+            app:srcCompat="@drawable/d" />
+
+        <ImageView
             android:id="@+id/principal_icon"
             android:layout_width="264dp"
             android:layout_height="175dp"
@@ -123,16 +133,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.51"
             app:srcCompat="@drawable/douhla" />
-
-        <ImageView
-            android:id="@+id/pgrsbar_icon"
-            android:layout_width="147dp"
-            android:layout_height="132dp"
-            app:layout_constraintBottom_toBottomOf="@+id/progressBar"
-            app:layout_constraintEnd_toEndOf="@+id/progressBar"
-            app:layout_constraintStart_toStartOf="@+id/progressBar"
-            app:layout_constraintTop_toTopOf="@+id/progressBar"
-            app:srcCompat="@drawable/d" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

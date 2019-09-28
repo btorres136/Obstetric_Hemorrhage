@@ -28,6 +28,8 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
     private ArrayList<Integer> mPulse = new ArrayList<>();
     private ArrayList<Integer> mSaturation = new ArrayList<>();
     private ArrayList<Integer> mShockIndex = new ArrayList<>();
+    //private Patient patient = new Patient();
+
 
 
     public ActualPatient_RecyclerView(ArrayList<String> PatientName){
