@@ -24,6 +24,7 @@ import android.widget.ProgressBar;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private ArrayList<String> allpat_id = new ArrayList<>();
     private ArrayList<String> allpat_status = new ArrayList<>();
     public static boolean wait;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
 
     public void get(){
@@ -109,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         BottomNavigationView Nav = (BottomNavigationView)findViewById(R.id.bottomNavigationView);
         Nav.setOnNavigationItemSelectedListener(this);
