@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Obstetric Hemorrhage"
-        android:textColor="#3aa17e"
+        android:textColor="#3aa16e"
         android:textSize="24sp"
         app:fontFamily="sans-serif-black" />
 </LinearLayout>
