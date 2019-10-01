@@ -114,7 +114,7 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
             textView_id = itemView.findViewById(R.id.patient_id_actual);
             textView_Age = itemView.findViewById(R.id.patient_age_actual);
             textView_status =itemView.findViewById(R.id.patient_state_actual);
-            linegraph_sis = itemView.findViewById(R.id.graph_presion_sis);
+            linegraph_sis = itemView.findViewById(R.id.graph_presion);
 
         }
     }

@@ -58,7 +58,7 @@
         android:layout_height="200dp"
         android:layout_below="@id/patient_state_actual"
         android:layout_marginTop="10dp"
-        android:id="@+id/graph_presion_dias"/>
+        android:id="@+id/graph_presion"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -68,7 +68,7 @@
         android:id="@+id/graphBlood_Lost"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_below="@id/graph_presion_dias"
+        android:layout_below="@id/graph_presion"
         android:layout_marginTop="10dp" />
 
 </RelativeLayout>
