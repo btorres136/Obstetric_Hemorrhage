@@ -84,6 +84,9 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
         holder.linegraph_sis.addSeries(lineSeries);
         holder.linegraph_sis.addSeries(lineSeries2);
         holder.linegraph_sis.setTitle("Systolic Pressure");
+        lineSeries.setColor(Color.GREEN);
+        lineSeries2.setColor(Color.RED);
+
         lineSeries.setOnDataPointTapListener(new OnDataPointTapListener() {
             @Override
             public void onTap(Series series, DataPointInterface dataPoint) {
