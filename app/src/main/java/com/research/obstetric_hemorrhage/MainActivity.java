@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private ArrayList<String> pat_age = new ArrayList<>();
     private ArrayList<String> pat_id = new ArrayList<>();
     private ArrayList<String> pat_status = new ArrayList<>();
+    private ArrayList<String> pat_room = new ArrayList<>();
     private ArrayList<String> allpat_name = new ArrayList<>();
     private ArrayList<String> allpat_age = new ArrayList<>();
     private ArrayList<String> allpat_id = new ArrayList<>();
@@ -67,19 +68,22 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 pat_age.clear();
                 pat_id.clear();
                 pat_status.clear();
+                pat_room.clear();
                 if(dataSnapshot.exists()){
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         String name = snapshot.child("Patient Name").getValue().toString();
                         String id = snapshot.child("mid").getValue().toString();
                         String status = snapshot.child("Status").getValue().toString();
                         String age = snapshot.child("Age").getValue().toString();
+                        String room = snapshot.child("Room").getValue().toString();
                         pat_name.add(name);
                         pat_age.add(age);
                         pat_status.add(status);
                         pat_id.add(id);
+                        pat_room.add(room);
                     }
                 }
-                getList(pat_name, pat_age, pat_id, pat_status);
+                getList(pat_name, pat_age, pat_id, pat_status,pat_room);
 
             }
             @Override
@@ -143,12 +147,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         FirebaseMessaging.getInstance().subscribeToTopic("PatientDeleted");
     }
 
-    public void add(String Pat_Name, String Age, String mStatus){
+    public void add(String Pat_Name, String Age, String mStatus, String room){
         DatabaseReference myRef = database.getReference("/User_Patients/"+mAuth.getUid()+"/");
         Map<String, Object> usermap = new HashMap<>();
         usermap.put("Patient Name", Pat_Name);
         usermap.put("Age", Age);
         usermap.put("Status", mStatus);
+        usermap.put("Room",room);
         String key = myRef.push().getKey();
         usermap.put("mid",key);
         myRef.child(key).setValue(usermap);

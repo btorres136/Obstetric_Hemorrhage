@@ -30,6 +30,7 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
     private ArrayList<String> mAgepat = new ArrayList<>();
     private ArrayList<String> midpat = new ArrayList<>();
     private ArrayList<String> mstatuspat =  new ArrayList<>();
+    private ArrayList<String> mroompat = new ArrayList<>();
     private ArrayList<Integer> mSisPresion = new ArrayList<>();
     private ArrayList<Integer> mDiasPresion = new ArrayList<>();
     private ArrayList<Integer> mBloodLost = new ArrayList<>();
@@ -43,11 +44,12 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
 
 
     public ActualPatient_RecyclerView(ArrayList<String> PatientName, ArrayList<String> Age,
-                                      ArrayList<String> id, ArrayList<String> status){
+                                      ArrayList<String> id, ArrayList<String> status, ArrayList<String> room){
         mPatName = PatientName;
         mAgepat = Age;
         midpat = id;
         mstatuspat = status;
+        mroompat=room;
     }
 
 
@@ -66,6 +68,7 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
         holder.textView_Age.setText("Age: " + mAgepat.get(position));
         holder.textView_id.setText("ID: " + midpat.get(position));
         holder.textView_status.setText("Status: " + mstatuspat.get(position));
+        holder.textView_room.setText("Room: " + mroompat.get(position));
 
         LineGraphSeries<DataPoint> lineSeries = new LineGraphSeries<DataPoint>(new DataPoint[] {
                 new DataPoint(0, 1),
@@ -107,6 +110,7 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
         TextView textView_id;
         TextView textView_status;
         TextView textView_Age;
+        TextView textView_room;
 
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
@@ -114,6 +118,7 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
             textView_id = itemView.findViewById(R.id.patient_id_actual);
             textView_Age = itemView.findViewById(R.id.patient_age_actual);
             textView_status =itemView.findViewById(R.id.patient_state_actual);
+            textView_room=itemView.findViewById(R.id.patient_room_actual);
             linegraph_sis = itemView.findViewById(R.id.graph_presion);
 
         }

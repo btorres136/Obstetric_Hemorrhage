@@ -26,6 +26,7 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
     private static ArrayList<String> mAges =  new ArrayList<>();
     private static ArrayList<String> mid = new ArrayList<>();
     private static ArrayList<String> mstatus = new ArrayList<>();
+    private static ArrayList<String> mroom = new ArrayList<>();
     private ActualPatient_RecyclerView adapter;
     private RecyclerView recyclerView;
     private MainActivity main = new MainActivity();
@@ -40,25 +41,26 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
 
         swipe = rootView.findViewById(R.id.swipeRefresh);
         swipe.setOnRefreshListener(this);
-        adapter = new ActualPatient_RecyclerView(mPatientNames, mAges, mid, mstatus);
+        adapter = new ActualPatient_RecyclerView(mPatientNames, mAges, mid, mstatus, mroom);
         recyclerView = rootView.findViewById(R.id.recycler_mypat);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         return rootView;
     }
 
-    public static void getList(ArrayList<String> name, ArrayList<String> age, ArrayList<String> id, ArrayList<String> status){
+    public static void getList(ArrayList<String> name, ArrayList<String> age, ArrayList<String> id, ArrayList<String> status, ArrayList<String> room){
             mPatientNames=name;
             mAges=age;
             mid=id;
             mstatus=status;
+            mroom=room;
     }
 
 
     @Override
     public void onRefresh() {
         swipe.setRefreshing(true);
-        adapter = new ActualPatient_RecyclerView(mPatientNames, mAges, mid, mstatus);
+        adapter = new ActualPatient_RecyclerView(mPatientNames, mAges, mid, mstatus, mroom);
         recyclerView = rootView.findViewById(R.id.recycler_mypat);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
