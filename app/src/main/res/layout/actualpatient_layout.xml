@@ -13,11 +13,65 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="10dp"
         android:text="patient_name"
-        android:textColor="#000"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="#000"
+        android:layout_marginLeft="10dp"
         app:fontFamily="sans-serif-black" />
+
+    <TextView
+        android:id="@+id/patient_id_actual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/patient_name_actual"
+        android:layout_alignParentLeft="true"
+        android:text="patient_id"
+        android:textColor="#000"
+        android:layout_marginLeft="10dp"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/patient_age_actual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/patient_id_actual"
+        android:layout_centerHorizontal="true"
+        android:text="patient_age"
+        android:textColor="#000"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/patient_state_actual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/patient_id_actual"
+        android:layout_alignParentRight="true"
+        android:text="patient_state"
+        android:textColor="#000"
+        android:layout_marginRight="10dp"
+        android:textSize="17sp" />
+
+
+    <com.jjoe64.graphview.GraphView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/patient_state_actual"
+        android:layout_marginTop="10dp"
+        android:id="@+id/graph_presion_dias"/>
+
+    <com.jjoe64.graphview.GraphView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/graph_presion_dias"
+        android:layout_marginTop="10dp"
+        android:id="@+id/graph_presion_sis"/>
+
+    <com.jjoe64.graphview.GraphView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/graph_presion_sis"
+        android:layout_marginTop="10dp"
+        android:id="@+id/graphBlood_Lost"/>
 
 </RelativeLayout>

@@ -47,6 +47,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private ArrayList<String> pat_name = new ArrayList<>();
+    private ArrayList<String> pat_age = new ArrayList<>();
+    private ArrayList<String> pat_id = new ArrayList<>();
+    private ArrayList<String> pat_status = new ArrayList<>();
     private ArrayList<String> allpat_name = new ArrayList<>();
     private ArrayList<String> allpat_age = new ArrayList<>();
     private ArrayList<String> allpat_id = new ArrayList<>();
@@ -60,13 +63,22 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 pat_name.clear();
+                pat_age.clear();
+                pat_id.clear();
+                pat_status.clear();
                 if(dataSnapshot.exists()){
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         String name = snapshot.child("Patient Name").getValue().toString();
+                        String id = snapshot.child("mid").getValue().toString();
+                        String status = snapshot.child("Status").getValue().toString();
+                        String age = snapshot.child("Age").getValue().toString();
                         pat_name.add(name);
+                        pat_age.add(age);
+                        pat_status.add(status);
+                        pat_id.add(id);
                     }
                 }
-                getList(pat_name);
+                getList(pat_name, pat_age, pat_id, pat_status);
 
             }
             @Override

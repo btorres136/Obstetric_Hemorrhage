@@ -14,14 +14,18 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
 import java.util.ArrayList;
 
 
 public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private static ArrayList<String> mPatientNames = new ArrayList<>();
-    private ArrayList<String> mAges =  new ArrayList<>();
-    private ArrayList<String> mid = new ArrayList<>();
-    private ArrayList<String> mstatus = new ArrayList<>();
+    private static ArrayList<String> mAges =  new ArrayList<>();
+    private static ArrayList<String> mid = new ArrayList<>();
+    private static ArrayList<String> mstatus = new ArrayList<>();
     private ActualPatient_RecyclerView adapter;
     private RecyclerView recyclerView;
     private MainActivity main = new MainActivity();
@@ -36,22 +40,25 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
 
         swipe = rootView.findViewById(R.id.swipeRefresh);
         swipe.setOnRefreshListener(this);
-        adapter = new ActualPatient_RecyclerView(mPatientNames);
+        adapter = new ActualPatient_RecyclerView(mPatientNames, mAges, mid, mstatus);
         recyclerView = rootView.findViewById(R.id.recycler_mypat);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         return rootView;
     }
 
-    public static void getList(ArrayList<String> name){
+    public static void getList(ArrayList<String> name, ArrayList<String> age, ArrayList<String> id, ArrayList<String> status){
             mPatientNames=name;
+            mAges=age;
+            mid=id;
+            mstatus=status;
     }
 
 
     @Override
     public void onRefresh() {
         swipe.setRefreshing(true);
-        adapter = new ActualPatient_RecyclerView(mPatientNames);
+        adapter = new ActualPatient_RecyclerView(mPatientNames, mAges, mid, mstatus);
         recyclerView = rootView.findViewById(R.id.recycler_mypat);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
