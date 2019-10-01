@@ -35,14 +35,13 @@ public class add_patient extends Fragment {
                 TextView lname = rootView.findViewById(R.id.input_lastName);
                 TextView room = rootView.findViewById(R.id.input_Room);
                 TextView age = rootView.findViewById(R.id.input_Age);
-                main.addtopat(name.getText().toString()+" "+lname.getText().toString(),
-                        age.getText().toString(),text, room.getText().toString());
-                if (R.id.input_Age > 65 || R.id.input_Age< 14){
-                    //Toast.makeText(add_patient.this, "Age should be between 14 and 65", Toast.LENGTH_SHORT).show();
-                    return;
+                if (Integer.parseInt(age.getText().toString()) > 65 || Integer.parseInt(age.getText().toString()) < 14){
+                    Toast.makeText(view.getContext(), "Age should be between 14 and 65", Toast.LENGTH_SHORT).show();
                 }
-
-
+                else{
+                    main.addtopat(name.getText().toString()+" "+lname.getText().toString(),
+                            age.getText().toString(),text, room.getText().toString());
+                }
             }
         });
 
