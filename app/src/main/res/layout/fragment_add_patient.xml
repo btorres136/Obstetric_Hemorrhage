@@ -138,17 +138,21 @@
                 android:layout_marginBottom="16dp"
                 app:cardBackgroundColor="#3aa16a"
                 app:cardCornerRadius="25dp"
-                app:cardElevation="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                android:foreground="?attr/selectableItemBackground"
+                android:stateListAnimator="@drawable/lift_on_touch"
+                android:clickable="true"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true">
 
             <RelativeLayout
-                    android:layout_width="241dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center|center_horizontal"
-                    android:gravity="center">
+                android:layout_width="241dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_horizontal"
+                android:gravity="center">
 
                     <TextView
                         android:id="@+id/add_to_patients_tv"

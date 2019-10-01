@@ -55,8 +55,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/add_mypat"
-        android:layout_width="150dp"
-        android:layout_height="46dp"
+        android:layout_width="165dp"
+        android:layout_height="86dp"
         app:cardBackgroundColor="#3aa17e"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
@@ -64,7 +64,12 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:stateListAnimator="@drawable/lift_on_touch"
+        android:clickable="true"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
 
         <RelativeLayout
             android:layout_width="150dp"
@@ -87,8 +92,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/see_info"
-        android:layout_width="150dp"
-        android:layout_height="46dp"
+        android:layout_width="165dp"
+        android:layout_height="86dp"
         app:cardBackgroundColor="#3aa17e"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
@@ -96,7 +101,12 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:stateListAnimator="@drawable/lift_on_touch"
+        android:clickable="true"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
 
         <RelativeLayout
             android:layout_width="150dp"
