@@ -22,13 +22,15 @@ public class Patients_RecyclerView extends RecyclerView.Adapter<Patients_Recycle
     private ArrayList<String> mAges =  new ArrayList<>();
     private ArrayList<String> mid = new ArrayList<>();
     private ArrayList<String> mstatus = new ArrayList<>();
+    private ArrayList<String> mroom = new ArrayList<>();
     private MainActivity main = new MainActivity();
 
-    public Patients_RecyclerView(ArrayList<String> PatientNames, ArrayList<String> Ages, ArrayList<String> id, ArrayList<String> status){
+    public Patients_RecyclerView(ArrayList<String> PatientNames, ArrayList<String> Ages, ArrayList<String> id, ArrayList<String> status, ArrayList<String> room){
         mPatientNames= PatientNames;
         mAges = Ages;
         mid = id;
         mstatus = status;
+        mroom = room;
     }
 
     @NonNull
@@ -45,6 +47,7 @@ public class Patients_RecyclerView extends RecyclerView.Adapter<Patients_Recycle
         holder.textView_Age.setText("Age: " + mAges.get(position));
         holder.textView_id.setText("ID: " + mid.get(position));
         holder.textView_status.setText("Status: " + mstatus.get(position));
+        holder.textView_room.setText("Room: " + mroom.get(position));
         holder.cardView_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,6 +67,7 @@ public class Patients_RecyclerView extends RecyclerView.Adapter<Patients_Recycle
         TextView textView_Age;
         TextView textView_id;
         TextView textView_status;
+        TextView textView_room;
         RelativeLayout parentLayout;
         CardView cardView_add;
         CardView see_info;
@@ -74,6 +78,7 @@ public class Patients_RecyclerView extends RecyclerView.Adapter<Patients_Recycle
             textView_Patient = itemView.findViewById(R.id.patient_name);
             textView_Age = itemView.findViewById(R.id.patient_age);
             textView_id = itemView.findViewById(R.id.patient_id);
+            textView_room = itemView.findViewById(R.id.room);
             textView_status = itemView.findViewById(R.id.patient_state);
             parentLayout = itemView.findViewById(R.id.parent_layout);
             cardView_add = itemView.findViewById(R.id.add_mypat);

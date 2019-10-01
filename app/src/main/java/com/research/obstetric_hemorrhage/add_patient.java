@@ -33,10 +33,10 @@ public class add_patient extends Fragment {
             public void onClick(View view) {
                 TextView name = rootView.findViewById(R.id.input_firstName);
                 TextView lname = rootView.findViewById(R.id.input_lastName);
+                TextView room = rootView.findViewById(R.id.input_Room);
                 TextView age = rootView.findViewById(R.id.input_Age);
-                //TextView stage = rootView.findViewById(R.id.input_Stage);
                 main.addtopat(name.getText().toString()+" "+lname.getText().toString(),
-                        age.getText().toString(),text);
+                        age.getText().toString(),text, room.getText().toString());
             }
         });
 

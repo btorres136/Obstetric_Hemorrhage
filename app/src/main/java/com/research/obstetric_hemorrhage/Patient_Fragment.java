@@ -27,6 +27,7 @@ public class Patient_Fragment extends Fragment implements SwipeRefreshLayout.OnR
     private static ArrayList<String> mAges =  new ArrayList<>();
     private static ArrayList<String> mid = new ArrayList<>();
     private static ArrayList<String> mstatus = new ArrayList<>();
+    private static ArrayList<String> mroom = new ArrayList<>();
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipe;
     private MainActivity main = new MainActivity();
@@ -53,7 +54,7 @@ public class Patient_Fragment extends Fragment implements SwipeRefreshLayout.OnR
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Patients_RecyclerView adapter = new Patients_RecyclerView(mPatientNames,mAges,mid,mstatus);
+                    Patients_RecyclerView adapter = new Patients_RecyclerView(mPatientNames,mAges,mid,mstatus,mroom);
                     recyclerView.setAdapter(adapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                     bar.setVisibility(View.GONE);
@@ -65,7 +66,7 @@ public class Patient_Fragment extends Fragment implements SwipeRefreshLayout.OnR
 
         }
         else{
-            Patients_RecyclerView adapter = new Patients_RecyclerView(mPatientNames,mAges,mid,mstatus);
+            Patients_RecyclerView adapter = new Patients_RecyclerView(mPatientNames,mAges,mid,mstatus,mroom);
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             bar.setVisibility(View.GONE);
@@ -73,11 +74,12 @@ public class Patient_Fragment extends Fragment implements SwipeRefreshLayout.OnR
         }
     }
 
-    public static void getallpat(ArrayList<String> name, ArrayList<String> age, ArrayList<String> id, ArrayList<String> status){
+    public static void getallpat(ArrayList<String> name, ArrayList<String> age, ArrayList<String> id, ArrayList<String> status, ArrayList<String> room){
         mPatientNames=name;
         mAges=age;
         mid=id;
         mstatus=status;
+        mroom = room;
     }
 
     @Override
@@ -85,7 +87,7 @@ public class Patient_Fragment extends Fragment implements SwipeRefreshLayout.OnR
         swipe.setRefreshing(true);
 
         main.get_pat();
-        Patients_RecyclerView adapter = new Patients_RecyclerView(mPatientNames,mAges,mid,mstatus);
+        Patients_RecyclerView adapter = new Patients_RecyclerView(mPatientNames,mAges,mid,mstatus,mroom);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 

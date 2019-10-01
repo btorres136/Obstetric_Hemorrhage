@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private ArrayList<String> allpat_age = new ArrayList<>();
     private ArrayList<String> allpat_id = new ArrayList<>();
     private ArrayList<String> allpat_status = new ArrayList<>();
+    private ArrayList<String> allpat_room = new ArrayList<>();
     public static boolean wait;
     private FirebaseAnalytics mFirebaseAnalytics;
 
@@ -96,19 +97,22 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 allpat_age.clear();
                 allpat_id.clear();
                 allpat_status.clear();
+                allpat_room.clear();
                 if(dataSnapshot.exists()){
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         String name = snapshot.child("Patient Name").getValue().toString();
                         String age = snapshot.child("Age").getValue().toString();
                         String status = snapshot.child("Status").getValue().toString();
                         String id = snapshot.child("mid").getValue().toString();
+                        String room = snapshot.child("Room").getValue().toString();
                         allpat_name.add(name);
                         allpat_age.add(age);
                         allpat_id.add(id);
                         allpat_status.add(status);
+                        allpat_room.add(room);
                     }
                 }
-                getallpat(allpat_name, allpat_age,allpat_id,allpat_status);
+                getallpat(allpat_name, allpat_age,allpat_id,allpat_status,allpat_room);
 
             }
             @Override
@@ -149,11 +153,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         usermap.put("mid",key);
         myRef.child(key).setValue(usermap);
     }
-    public void addtopat(String Pat_Name, String Age, String mStatus){
+    public void addtopat(String Pat_Name, String Age, String mStatus, String room){
         DatabaseReference myRef = database.getReference("/Patients/");
         Map<String, Object> usermap = new HashMap<>();
         usermap.put("Patient Name", Pat_Name);
         usermap.put("Age", Age);
+        usermap.put("Room",room);
         usermap.put("Status", mStatus);
         String key = myRef.push().getKey();
         usermap.put("mid",key);
