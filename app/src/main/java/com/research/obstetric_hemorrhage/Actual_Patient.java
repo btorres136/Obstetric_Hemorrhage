@@ -27,9 +27,12 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
     private static ArrayList<String> mid = new ArrayList<>();
     private static ArrayList<String> mstatus = new ArrayList<>();
     private static ArrayList<String> mroom = new ArrayList<>();
+    private static LineGraphSeries<DataPoint> systolic;
+    private static LineGraphSeries<DataPoint> distolic;
     private ActualPatient_RecyclerView adapter;
     private RecyclerView recyclerView;
-    private MainActivity main = new MainActivity();
+    private static MainActivity main = new MainActivity();
+    private static ArrayList<Patient_Medical> Pat_graph_info = new ArrayList<>();
     private SwipeRefreshLayout swipe;
     private View rootView;
 
@@ -37,11 +40,12 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         main.get();
+        getgraph();
         rootView = inflater.inflate(R.layout.fragment_actual__patient, container, false);
 
         swipe = rootView.findViewById(R.id.swipeRefresh);
         swipe.setOnRefreshListener(this);
-        adapter = new ActualPatient_RecyclerView(mPatientNames, mAges, mid, mstatus, mroom);
+        adapter = new ActualPatient_RecyclerView(mPatientNames, mAges, mid, mstatus, mroom, Pat_graph_info);
         recyclerView = rootView.findViewById(R.id.recycler_mypat);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -49,18 +53,29 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
     }
 
     public static void getList(ArrayList<String> name, ArrayList<String> age, ArrayList<String> id, ArrayList<String> status, ArrayList<String> room){
-            mPatientNames=name;
-            mAges=age;
-            mid=id;
-            mstatus=status;
-            mroom=room;
+        mPatientNames=name;
+        mAges=age;
+        mid=id;
+        mstatus=status;
+        mroom=room;
     }
 
+    public static void getgraph(){
+        for(int i=0; i<mid.size();i++)
+        {
+            main.getgraphdata(mid.get(i));
+        }
+    }
+    public static void setgraphsinfo(Patient_Medical pat_info){
+        Pat_graph_info.add(pat_info);
+    }
 
     @Override
     public void onRefresh() {
         swipe.setRefreshing(true);
-        adapter = new ActualPatient_RecyclerView(mPatientNames, mAges, mid, mstatus, mroom);
+        main.get();
+        getgraph();
+        adapter = new ActualPatient_RecyclerView(mPatientNames, mAges, mid, mstatus, mroom, Pat_graph_info);
         recyclerView = rootView.findViewById(R.id.recycler_mypat);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

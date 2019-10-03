@@ -39,17 +39,22 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
     private ArrayList<Integer> mPulse = new ArrayList<>();
     private ArrayList<Integer> mSaturation = new ArrayList<>();
     private ArrayList<Integer> mShockIndex = new ArrayList<>();
+    private LineGraphSeries<DataPoint> graph_sis;
+    private LineGraphSeries<DataPoint> graph_dias;
+    private ArrayList<Patient_Medical> Pat_graph_info = new ArrayList<>();
     //private Patient patient = new Patient();
 
 
 
+
     public ActualPatient_RecyclerView(ArrayList<String> PatientName, ArrayList<String> Age,
-                                      ArrayList<String> id, ArrayList<String> status, ArrayList<String> room){
+                                      ArrayList<String> id, ArrayList<String> status, ArrayList<String> room, ArrayList<Patient_Medical> Pat_graph){
         mPatName = PatientName;
         mAgepat = Age;
         midpat = id;
         mstatuspat = status;
         mroompat=room;
+        Pat_graph_info = Pat_graph;
     }
 
 
@@ -70,21 +75,10 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
         holder.textView_status.setText("Status: " + mstatuspat.get(position));
         holder.textView_room.setText("Room: " + mroompat.get(position));
 
-        LineGraphSeries<DataPoint> lineSeries = new LineGraphSeries<DataPoint>(new DataPoint[] {
-                new DataPoint(0, 1),
-                new DataPoint(1, 5),
-                new DataPoint(2, 3),
-                new DataPoint(3, 2),
-                new DataPoint(4, 6)
-        });
-        LineGraphSeries<DataPoint> lineSeries2 = new LineGraphSeries<DataPoint>(new DataPoint[] {
-                new DataPoint(0, 1),
-                new DataPoint(1, 6),
-                new DataPoint(2, 9),
-                new DataPoint(3, 6),
-                new DataPoint(4, 8)
-        });
-        holder.linegraph_sis.addSeries(lineSeries);
+
+        //holder.linegraph_pressure.addSeries(Pat_graph_info.get(position).getDatapoint_dias());
+        //holder.linegraph_pressure.addSeries(Pat_graph_info.get(position).getDatapoint_sis());
+        /*holder.linegraph_sis.addSeries(lineSeries);
         holder.linegraph_sis.addSeries(lineSeries2);
         holder.linegraph_sis.setTitle("Systolic Pressure");
         lineSeries.setColor(Color.GREEN);
@@ -95,7 +89,7 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
             public void onTap(Series series, DataPointInterface dataPoint) {
                 Toast.makeText(holder.itemView.getContext(), "Series1: On Data Point clicked: "+dataPoint, Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
     }
 
     @Override
@@ -105,7 +99,7 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        GraphView linegraph_sis;
+        GraphView linegraph_pressure;
         TextView textView_Patient;
         TextView textView_id;
         TextView textView_status;
@@ -119,7 +113,7 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
             textView_Age = itemView.findViewById(R.id.patient_age_actual);
             textView_status =itemView.findViewById(R.id.patient_state_actual);
             textView_room=itemView.findViewById(R.id.patient_room_actual);
-            linegraph_sis = itemView.findViewById(R.id.graph_presion);
+            linegraph_pressure = itemView.findViewById(R.id.graph_presion);
 
         }
     }

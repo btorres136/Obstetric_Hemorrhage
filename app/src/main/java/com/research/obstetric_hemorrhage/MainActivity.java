@@ -35,12 +35,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import static com.research.obstetric_hemorrhage.Actual_Patient.getList;
+import static com.research.obstetric_hemorrhage.Actual_Patient.setgraphsinfo;
 import static com.research.obstetric_hemorrhage.Patient_Fragment.getallpat;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -51,11 +54,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private ArrayList<String> pat_id = new ArrayList<>();
     private ArrayList<String> pat_status = new ArrayList<>();
     private ArrayList<String> pat_room = new ArrayList<>();
+    private LineGraphSeries<DataPoint> systolic;
+    private LineGraphSeries<DataPoint> distolic;
+    private ArrayList<String> pat_datapoints = new ArrayList<>();
     private ArrayList<String> allpat_name = new ArrayList<>();
     private ArrayList<String> allpat_age = new ArrayList<>();
     private ArrayList<String> allpat_id = new ArrayList<>();
     private ArrayList<String> allpat_status = new ArrayList<>();
     private ArrayList<String> allpat_room = new ArrayList<>();
+    Patient_Medical patient_medical = new Patient_Medical();
     public static boolean wait;
     private FirebaseAnalytics mFirebaseAnalytics;
 
@@ -68,7 +75,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 pat_age.clear();
                 pat_id.clear();
                 pat_status.clear();
-                pat_room.clear();
                 if(dataSnapshot.exists()){
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         String name = snapshot.child("Patient Name").getValue().toString();
@@ -83,8 +89,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                         pat_room.add(room);
                     }
                 }
-                getList(pat_name, pat_age, pat_id, pat_status,pat_room);
-
+                getList(pat_name, pat_age, pat_id, pat_status, pat_room);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -117,13 +122,46 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                     }
                 }
                 getallpat(allpat_name, allpat_age,allpat_id,allpat_status,allpat_room);
-
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
+    }
+
+    public void getgraphdata(String id){
+        database.getReference().child("/Patients_Graphs/"+id+"/Pressure/Diastolic").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                DataSnapshot data;
+                if(dataSnapshot.exists()){
+                    ArrayList<String> pressure = new ArrayList<>();
+                    pressure = (ArrayList<String>) dataSnapshot.getValue();
+                    patient_medical.setDiastolic(pressure);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        database.getReference().child("/Patients_Graphs/"+id+"/Pressure/Systolic").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    ArrayList<String> pressure = new ArrayList<>();
+                    pressure = (ArrayList<String>) dataSnapshot.getValue();
+                    patient_medical.setSystolic(pressure);
+                    setgraphsinfo(patient_medical);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
 
@@ -147,14 +185,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         FirebaseMessaging.getInstance().subscribeToTopic("PatientDeleted");
     }
 
-    public void add(String Pat_Name, String Age, String mStatus, String room){
+    public void add(String Pat_Name, String Age, String mStatus, String room, String key){
         DatabaseReference myRef = database.getReference("/User_Patients/"+mAuth.getUid()+"/");
         Map<String, Object> usermap = new HashMap<>();
         usermap.put("Patient Name", Pat_Name);
         usermap.put("Age", Age);
         usermap.put("Status", mStatus);
         usermap.put("Room",room);
-        String key = myRef.push().getKey();
         usermap.put("mid",key);
         myRef.child(key).setValue(usermap);
     }
@@ -169,6 +206,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         usermap.put("mid",key);
         usermap.put("Added by", mAuth.getUid());
         myRef.child(key).setValue(usermap);
+        Map<String, String> pressure = new HashMap<>();
+        pressure.put("0","0");
+        DatabaseReference myRef2 = database.getReference("/Patients_Graphs/");
+        myRef2.child(key).child("Pressure").child("Diastolic").setValue(pressure);
+        myRef2.child(key).child("Pressure").child("Systolic").setValue(pressure);
     }
 
     public void updateUI(FirebaseUser user){
