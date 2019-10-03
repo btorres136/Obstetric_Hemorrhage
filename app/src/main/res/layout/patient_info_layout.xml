@@ -171,7 +171,7 @@
         android:textSize="17dp" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/back_to_patients"
+        android:id="@+id/back_to_patientsCV"
         android:layout_width="165dp"
         android:layout_height="76dp"
         android:layout_below="@+id/graph_liquids"
@@ -197,7 +197,7 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/textView_see_info"
+                android:id="@+id/back_to_patients"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"

@@ -172,4 +172,43 @@
         android:textSize="17dp"
         android:textStyle="bold" />
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/update_infoCV"
+        android:layout_width="165dp"
+        android:layout_height="76dp"
+        android:layout_below="@+id/graph_liquids"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center|center_horizontal"
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="124dp"
+        android:layout_marginRight="124dp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:stateListAnimator="@drawable/lift_on_touch"
+        app:cardBackgroundColor="#3aa16e"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="150dp"
+            android:layout_height="46dp"
+            android:layout_gravity="center|center_horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/update_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Update info"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
 </RelativeLayout>
