@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.research.obstetric_hemorrhage">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/d2icon"
@@ -9,7 +11,7 @@
         android:roundIcon="@mipmap/d2icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".patient_info"></activity>
 
         <service
             android:name=".FirebaseCloudFunctions"
@@ -37,5 +39,5 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.VIBRATE" />
+
 </manifest>

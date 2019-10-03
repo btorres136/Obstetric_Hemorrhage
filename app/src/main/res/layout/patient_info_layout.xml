@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/actualpat_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/patient_name_actual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="patient_name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#000"
+        android:layout_marginLeft="10dp"
+        app:fontFamily="sans-serif-black" />
+
+    <TextView
+        android:id="@+id/patient_id_actual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/patient_name_actual"
+        android:layout_alignParentLeft="true"
+        android:text="patient_id"
+        android:textColor="#000"
+        android:layout_marginLeft="10dp"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/patient_room_actual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/patient_id_actual"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:text="room"
+        android:textColor="#000"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/patient_age_actual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/patient_id_actual"
+        android:layout_centerHorizontal="true"
+        android:text="patient_age"
+        android:textColor="#000"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/patient_state_actual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/patient_id_actual"
+        android:layout_alignParentRight="true"
+        android:text="patient_state"
+        android:textColor="#000"
+        android:layout_marginRight="10dp"
+        android:textSize="17sp" />
+
+
+    <com.jjoe64.graphview.GraphView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/patient_state_actual"
+        android:layout_marginTop="10dp"
+        android:id="@+id/graph_presion"/>
+
+    <TextView
+        android:id="@+id/pres_sys"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Systolic Pressure:"
+        android:layout_marginLeft="10dp"
+        android:textSize="17dp"
+        android:textColor="#000000"
+        android:layout_below="@+id/graph_presion"
+        android:layout_alignParentLeft="true"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/pres_dias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diastolic Pressure:"
+        android:textSize="17dp"
+        android:layout_marginRight="10dp"
+        android:textColor="#000000"
+        android:layout_below="@+id/graph_presion"
+        android:layout_alignParentRight="true"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/input_syspres"
+        android:layout_width="139dp"
+        android:layout_height="45dp"
+        android:layout_below="@id/pres_sys"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:text="actual_syspress"
+        android:textColor="#000000"
+        android:textSize="17dp" />
+
+    <TextView
+        android:id="@+id/input_diaspres"
+        android:layout_width="144dp"
+        android:layout_height="45dp"
+        android:layout_below="@id/pres_dias"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:text="actual_diaspres"
+        android:textColor="#000000"
+        android:textSize="17dp" />
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph_liquids"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/input_syspres"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/ing_liquid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/graph_liquids"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:text="Liquid Entry:"/>
+
+    <TextView
+        android:id="@+id/dis_liquid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/graph_liquids"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:textStyle="bold"
+        android:textSize="17dp"
+        android:textColor="#000000"
+        android:text="Liquid Discharge:"/>
+
+    <TextView
+        android:id="@+id/input_ing_liquid"
+        android:layout_width="96dp"
+        android:layout_height="45dp"
+        android:layout_below="@+id/ing_liquid"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:text="actual_ing_liquid"
+        android:textColor="#000000"
+        android:textSize="17dp" />
+
+    <TextView
+        android:id="@+id/input_dis_liquid"
+        android:layout_width="131dp"
+        android:layout_height="45dp"
+        android:layout_below="@+id/dis_liquid"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:text="actual_dis_liquid"
+        android:textColor="#000000"
+        android:textSize="17dp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/back_to_patients"
+        android:layout_width="165dp"
+        android:layout_height="76dp"
+        android:layout_below="@+id/graph_liquids"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center|center_horizontal"
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="124dp"
+        android:layout_marginRight="124dp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:stateListAnimator="@drawable/lift_on_touch"
+        app:cardBackgroundColor="#3aa16e"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="150dp"
+            android:layout_height="46dp"
+            android:layout_gravity="center|center_horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textView_see_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Back to Patients"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
