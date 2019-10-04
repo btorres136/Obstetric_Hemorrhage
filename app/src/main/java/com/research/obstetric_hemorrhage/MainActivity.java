@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private ArrayList<String> allpat_id = new ArrayList<>();
     private ArrayList<String> allpat_status = new ArrayList<>();
     private ArrayList<String> allpat_room = new ArrayList<>();
-    Patient_Medical patient_medical = new Patient_Medical();
     public static boolean wait;
     private FirebaseAnalytics mFirebaseAnalytics;
 
@@ -131,6 +130,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     public void getgraphdata(String id){
+        final Patient_Medical patient_medical = new Patient_Medical();
         database.getReference().child("/Patients_Graphs/"+id+"/Pressure/Diastolic").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -153,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                     ArrayList<String> pressure = new ArrayList<>();
                     pressure = (ArrayList<String>) dataSnapshot.getValue();
                     patient_medical.setSystolic(pressure);
+                    Log.v("size111","1");
                     setgraphsinfo(patient_medical);
                 }
             }
@@ -191,8 +192,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         usermap.put("Patient Name", Pat_Name);
         usermap.put("Age", Age);
         usermap.put("Status", mStatus);
-        usermap.put("Room",room);
-        usermap.put("mid",key);
+        usermap.put("Room", room);
+        usermap.put("mid", key);
         myRef.child(key).setValue(usermap);
     }
     public void addtopat(String Pat_Name, String Age, String mStatus, String room){

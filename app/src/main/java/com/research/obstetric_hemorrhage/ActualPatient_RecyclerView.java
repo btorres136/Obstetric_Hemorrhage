@@ -1,27 +1,18 @@
 package com.research.obstetric_hemorrhage;
 
 
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.DataPointInterface;
 import com.jjoe64.graphview.series.LineGraphSeries;
-import com.jjoe64.graphview.series.OnDataPointTapListener;
-import com.jjoe64.graphview.series.Series;
 
 import java.util.ArrayList;
 
@@ -55,6 +46,7 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
         mstatuspat = status;
         mroompat=room;
         Pat_graph_info = Pat_graph;
+        notifyDataSetChanged();
     }
 
 
@@ -67,7 +59,9 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        //holder.setIsRecyclable(true);
+
 
         holder.textView_Patient.setText("Patient: " + mPatName.get(position));
         holder.textView_Age.setText("Age: " + mAgepat.get(position));
@@ -75,9 +69,19 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
         holder.textView_status.setText("Status: " + mstatuspat.get(position));
         holder.textView_room.setText("Room: " + mroompat.get(position));
 
+        Log.v("size",""+Pat_graph_info.size());
 
-        //holder.linegraph_pressure.addSeries(Pat_graph_info.get(position).getDatapoint_dias());
-        //holder.linegraph_pressure.addSeries(Pat_graph_info.get(position).getDatapoint_sis());
+
+        if(Pat_graph_info.size()>0){
+            //Log.v("size",""+Pat_graph_info.get(1).getDiastolic().get(2));
+            holder.linegraph_pressure.addSeries(Pat_graph_info.get(position).getDatapoint_dias());
+            holder.linegraph_pressure.addSeries(Pat_graph_info.get(position).getDatapoint_sis());
+        }
+        else{
+            Log.v("0","Slow Internet");
+        }
+        //holder.notifyAll();
+
         /*holder.linegraph_sis.addSeries(lineSeries);
         holder.linegraph_sis.addSeries(lineSeries2);
         holder.linegraph_sis.setTitle("Systolic Pressure");
@@ -106,15 +110,14 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
         TextView textView_Age;
         TextView textView_room;
 
-        public ViewHolder(@NonNull final View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textView_Patient = itemView.findViewById(R.id.patient_name_actual);
             textView_id = itemView.findViewById(R.id.patient_id_actual);
             textView_Age = itemView.findViewById(R.id.patient_age_actual);
             textView_status =itemView.findViewById(R.id.patient_state_actual);
-            textView_room=itemView.findViewById(R.id.patient_room_actual);
-            linegraph_pressure = itemView.findViewById(R.id.graph_presion);
-
+            textView_room = itemView.findViewById(R.id.patient_room_actual);
+            linegraph_pressure = itemView.findViewById(R.id.pressure);
         }
     }
 }

@@ -43,7 +43,7 @@ public class Patient_Medical {
         for(int i=0; i<Diastolic.size(); i++){
             point[i]=new DataPoint(i,Integer.parseInt(Diastolic.get(i)));
         }
-        datapoint_sis = new LineGraphSeries<>(point);
+        datapoint_dias = new LineGraphSeries<>(point);
         return datapoint_dias;
     }
 
