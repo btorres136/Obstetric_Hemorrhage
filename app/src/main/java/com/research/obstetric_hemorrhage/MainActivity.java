@@ -66,35 +66,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         FirebaseMessaging.getInstance().subscribeToTopic("PatientDeleted");
     }
 
-    public void add(String Pat_Name, String Age, String mStatus, String room, String key){
-        DatabaseReference myRef = database.getReference("/User_Patients/"+mAuth.getUid()+"/");
-        Map<String, Object> usermap = new HashMap<>();
-        usermap.put("Patient Name", Pat_Name);
-        usermap.put("Age", Age);
-        usermap.put("Status", mStatus);
-        usermap.put("Room", room);
-        usermap.put("mid", key);
-        myRef.child(key).setValue(usermap);
-    }
-
-    public void addtopat(String Pat_Name, String Age, String mStatus, String room){
-        DatabaseReference myRef = database.getReference("/Patients/");
-        Map<String, Object> usermap = new HashMap<>();
-        usermap.put("Patient Name", Pat_Name);
-        usermap.put("Age", Age);
-        usermap.put("Room",room);
-        usermap.put("Status", mStatus);
-        String key = myRef.push().getKey();
-        usermap.put("mid",key);
-        usermap.put("Added by", mAuth.getUid());
-        myRef.child(key).setValue(usermap);
-        Map<String, String> pressure = new HashMap<>();
-        pressure.put("0","0");
-        DatabaseReference myRef2 = database.getReference("/Patients_Graphs/");
-        myRef2.child(key).child("Pressure").child("Diastolic").setValue(pressure);
-        myRef2.child(key).child("Pressure").child("Systolic").setValue(pressure);
-    }
-
     public void updateUI(FirebaseUser user){
         if(user == null){
             Intent intent = new Intent(this, LoginActivity.class);

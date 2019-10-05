@@ -39,8 +39,8 @@ public class add_patient extends Fragment {
                     Toast.makeText(view.getContext(), "Age should be between 14 and 65", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    main.addtopat(name.getText().toString()+" "+lname.getText().toString(),
-                            age.getText().toString(),text, room.getText().toString());
+                    //main.addtopat(name.getText().toString()+" "+lname.getText().toString(),
+                            //age.getText().toString(),text, room.getText().toString());
                 }
             }
         });

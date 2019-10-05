@@ -58,60 +58,22 @@ public class Patient_Fragment extends Fragment implements SwipeRefreshLayout.OnR
         swipe.setOnRefreshListener(this);
         bar=rootView.findViewById(R.id.waittime);
 
-
+        //recyclerView.smoothScrollToPosition(0);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         bar.setVisibility(View.GONE);
 
-        //waittime();
         return rootView;
     }
-
-    /*public void waittime(){
-        if(wait == true){
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Patients_RecyclerView adapter = new Patients_RecyclerView(mPatientNames,mAges,mid,mstatus,mroom);
-                    recyclerView.setAdapter(adapter);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    bar.setVisibility(View.GONE);
-                    if(adapter.getItemCount() == 0){
-                        Log.v("Slow internet", "Refresh");
-                    }
-                }}, 2000);
-            wait=false;
-
-        }
-        else{
-            Patients_RecyclerView adapter = new Patients_RecyclerView(mPatientNames,mAges,mid,mstatus,mroom);
-            recyclerView.setAdapter(adapter);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            bar.setVisibility(View.GONE);
-            wait=false;
-        }
-    }*/
 
 
     @Override
     public void onRefresh() {
         swipe.setRefreshing(true);
-        Reload();
-        swipe.setRefreshing(false);
-    }
-
-    public void Reload(){
-        DatabaseTransactions databaseTransactions = new DatabaseTransactions();
-        ArrayList<Patient_Medical> data = new ArrayList<>();
-        /*data = databaseTransactions.getnewdata();
-        if(All_Patients_Array.size() < data.size()){
-            Log.v("Siiiii","kkkkkkkk");
-            All_Patients_Array = databaseTransactions.getnewdata();
-        }*/
         Patients_RecyclerView adapter = new Patients_RecyclerView(All_Patients_Array);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
+        swipe.setRefreshing(false);
     }
 }

@@ -1,12 +1,9 @@
 package com.research.obstetric_hemorrhage;
 
-import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
+
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -20,6 +17,7 @@ public class Patients_RecyclerView extends RecyclerView.Adapter<Patients_Recycle
 
     private ArrayList<Patient_Medical> All_Patients_Array;
     private Patient_Medical Patient_Selected;
+    private DatabaseTransactions databaseTransactions = new DatabaseTransactions(0);
 
     Patients_RecyclerView(){
         All_Patients_Array= new ArrayList<>();
@@ -51,15 +49,13 @@ public class Patients_RecyclerView extends RecyclerView.Adapter<Patients_Recycle
         holder.cardView_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setPatient_Selected(All_Patients_Array.get(position));
+                databaseTransactions.add(All_Patients_Array.get(position).getName(),All_Patients_Array.get(position).getAge(), All_Patients_Array.get(position).getStatus(),
+                        All_Patients_Array.get(position).getRoom(),All_Patients_Array.get(position).getId());
 
             }
         });
     }
 
-    public void setPatient_Selected(Patient_Medical Selected){
-        Patient_Selected=Selected;
-    }
 
 
 

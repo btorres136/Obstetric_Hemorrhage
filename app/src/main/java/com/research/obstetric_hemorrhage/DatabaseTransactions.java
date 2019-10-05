@@ -11,10 +11,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DatabaseTransactions {
     private ArrayList<Patient_Medical> My_Patients_Array;
@@ -31,34 +34,13 @@ public class DatabaseTransactions {
         patient_fragment = new Patient_Fragment();
         All_Patients_Array = new ArrayList<>();
         My_Patients_Array = new ArrayList<>();
-        //snapshot = null;
+    }
+    DatabaseTransactions(int i){
+
+
+
     }
 
-    /*public Actual_Patient get(){
-        database.getReference().child("User_Patients/"+mAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        String name = snapshot.child("Patient Name").getValue().toString();
-                        String id = snapshot.child("mid").getValue().toString();
-                        String status = snapshot.child("Status").getValue().toString();
-                        String age = snapshot.child("Age").getValue().toString();
-                        String room = snapshot.child("Room").getValue().toString();
-                        patient_medical = new Patient_Medical(name, id,room,
-                                Integer.parseInt(age), Integer.parseInt(status));
-                        My_Patients_Array.add(patient_medical);
-                        actual_patient.setMy_Patients_Array(My_Patients_Array);
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        return actual_patient;
-    }*/
 
     public Patient_Fragment ListenToDatabaseOnAllPatients(){
         database.getReference().child("/Patients").addChildEventListener(new ChildEventListener() {
@@ -71,7 +53,7 @@ public class DatabaseTransactions {
                 String room = dataSnapshot.child("Room").getValue().toString();
                 patient_medical = new Patient_Medical(name, id,room,
                         Integer.parseInt(age), Integer.parseInt(status));
-                All_Patients_Array.add(patient_medical);
+                All_Patients_Array.add(0,patient_medical);
                 patient_fragment.setAll_Patients_Array(All_Patients_Array);
             }
 
@@ -84,7 +66,7 @@ public class DatabaseTransactions {
                 String room = dataSnapshot.child("Room").getValue().toString();
                 patient_medical = new Patient_Medical(name, id,room,
                         Integer.parseInt(age), Integer.parseInt(status));
-                My_Patients_Array.add(patient_medical);
+                My_Patients_Array.add(0,patient_medical);
                 patient_fragment.setAll_Patients_Array(All_Patients_Array);
             }
 
@@ -97,7 +79,7 @@ public class DatabaseTransactions {
                 String room = dataSnapshot.child("Room").getValue().toString();
                 patient_medical = new Patient_Medical(name, id,room,
                         Integer.parseInt(age), Integer.parseInt(status));
-                All_Patients_Array.add(patient_medical);
+                All_Patients_Array.add(0,patient_medical);
                 patient_fragment.setAll_Patients_Array(All_Patients_Array);
             }
 
@@ -110,7 +92,7 @@ public class DatabaseTransactions {
                 String room = dataSnapshot.child("Room").getValue().toString();
                 patient_medical = new Patient_Medical(name, id,room,
                         Integer.parseInt(age), Integer.parseInt(status));
-                All_Patients_Array.add(patient_medical);
+                All_Patients_Array.add(0,patient_medical);
                 patient_fragment.setAll_Patients_Array(All_Patients_Array);
             }
 
@@ -133,7 +115,7 @@ public class DatabaseTransactions {
                 String room = dataSnapshot.child("Room").getValue().toString();
                 patient_medical = new Patient_Medical(name, id,room,
                         Integer.parseInt(age), Integer.parseInt(status));
-                My_Patients_Array.add(patient_medical);
+                My_Patients_Array.add(0,patient_medical);
                 actual_patient.setMy_Patients_Array(My_Patients_Array);
             }
 
@@ -146,7 +128,7 @@ public class DatabaseTransactions {
                 String room = dataSnapshot.child("Room").getValue().toString();
                 patient_medical = new Patient_Medical(name, id,room,
                         Integer.parseInt(age), Integer.parseInt(status));
-                My_Patients_Array.add(patient_medical);
+                My_Patients_Array.add(0,patient_medical);
                 actual_patient.setMy_Patients_Array(My_Patients_Array);
             }
 
@@ -159,7 +141,7 @@ public class DatabaseTransactions {
                 String room = dataSnapshot.child("Room").getValue().toString();
                 patient_medical = new Patient_Medical(name, id,room,
                         Integer.parseInt(age), Integer.parseInt(status));
-                My_Patients_Array.add(patient_medical);
+                My_Patients_Array.add(0,patient_medical);
                 actual_patient.setMy_Patients_Array(My_Patients_Array);
             }
 
@@ -172,7 +154,7 @@ public class DatabaseTransactions {
                 String room = dataSnapshot.child("Room").getValue().toString();
                 patient_medical = new Patient_Medical(name, id,room,
                         Integer.parseInt(age), Integer.parseInt(status));
-                My_Patients_Array.add(patient_medical);
+                My_Patients_Array.add(0,patient_medical);
                 actual_patient.setMy_Patients_Array(My_Patients_Array);
             }
 
@@ -182,6 +164,35 @@ public class DatabaseTransactions {
             }
         });
         return actual_patient;
+    }
+
+    public void add(String Pat_Name, int Age, int mStatus, String room, String key){
+        DatabaseReference myRef = database.getReference("/User_Patients/"+mAuth.getUid()+"/");
+        Map<String, Object> usermap = new HashMap<>();
+        usermap.put("Patient Name", Pat_Name);
+        usermap.put("Age", Age);
+        usermap.put("Status", mStatus);
+        usermap.put("Room", room);
+        usermap.put("mid", key);
+        myRef.child(key).setValue(usermap);
+    }
+
+    public void addtopat(String Pat_Name, String Age, String mStatus, String room){
+        DatabaseReference myRef = database.getReference("/Patients/");
+        Map<String, Object> usermap = new HashMap<>();
+        usermap.put("Patient Name", Pat_Name);
+        usermap.put("Age", Age);
+        usermap.put("Room",room);
+        usermap.put("Status", mStatus);
+        String key = myRef.push().getKey();
+        usermap.put("mid",key);
+        usermap.put("Added by", mAuth.getUid());
+        myRef.child(key).setValue(usermap);
+        Map<String, String> pressure = new HashMap<>();
+        pressure.put("0","0");
+        DatabaseReference myRef2 = database.getReference("/Patients_Graphs/");
+        myRef2.child(key).child("Pressure").child("Diastolic").setValue(pressure);
+        myRef2.child(key).child("Pressure").child("Systolic").setValue(pressure);
     }
 
     /*public Patient_Fragment get_pat(){
