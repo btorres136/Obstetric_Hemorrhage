@@ -47,10 +47,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     //public static boolean wait;
     private FirebaseAnalytics mFirebaseAnalytics;
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
