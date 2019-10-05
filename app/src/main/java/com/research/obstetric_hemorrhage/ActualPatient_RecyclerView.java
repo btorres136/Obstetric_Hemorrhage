@@ -17,36 +17,13 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 import java.util.ArrayList;
 
 public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatient_RecyclerView.ViewHolder>{
-    private ArrayList<String> mPatName = new ArrayList<>();
-    private ArrayList<String> mAgepat = new ArrayList<>();
-    private ArrayList<String> midpat = new ArrayList<>();
-    private ArrayList<String> mstatuspat =  new ArrayList<>();
-    private ArrayList<String> mroompat = new ArrayList<>();
-    private ArrayList<Integer> mSisPresion = new ArrayList<>();
-    private ArrayList<Integer> mDiasPresion = new ArrayList<>();
-    private ArrayList<Integer> mBloodLost = new ArrayList<>();
-    private ArrayList<Integer> mIngLiquid = new ArrayList<>();
-    private ArrayList<Integer> mEgreLiquid = new ArrayList<>();
-    private ArrayList<Integer> mPulse = new ArrayList<>();
-    private ArrayList<Integer> mSaturation = new ArrayList<>();
-    private ArrayList<Integer> mShockIndex = new ArrayList<>();
-    private LineGraphSeries<DataPoint> graph_sis;
-    private LineGraphSeries<DataPoint> graph_dias;
-    private ArrayList<Patient_Medical> Pat_graph_info = new ArrayList<>();
-    //private Patient patient = new Patient();
 
+    private ArrayList<Patient_Medical> My_Patients_Array;
 
+    public ActualPatient_RecyclerView(ArrayList<Patient_Medical> My_Patients){
 
-
-    public ActualPatient_RecyclerView(ArrayList<String> PatientName, ArrayList<String> Age,
-                                      ArrayList<String> id, ArrayList<String> status, ArrayList<String> room, ArrayList<Patient_Medical> Pat_graph){
-        mPatName = PatientName;
-        mAgepat = Age;
-        midpat = id;
-        mstatuspat = status;
-        mroompat=room;
-        Pat_graph_info = Pat_graph;
-        notifyDataSetChanged();
+        My_Patients_Array = new ArrayList<>(My_Patients);
+        //notifyDataSetChanged();
     }
 
 
@@ -63,16 +40,16 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
         //holder.setIsRecyclable(true);
 
 
-        holder.textView_Patient.setText("Patient: " + mPatName.get(position));
-        holder.textView_Age.setText("Age: " + mAgepat.get(position));
-        holder.textView_id.setText("ID: " + midpat.get(position));
-        holder.textView_status.setText("Status: " + mstatuspat.get(position));
-        holder.textView_room.setText("Room: " + mroompat.get(position));
+        holder.textView_Patient.setText("Patient: " + My_Patients_Array.get(position).getName());
+        holder.textView_Age.setText("Age: " + My_Patients_Array.get(position).getAge());
+        holder.textView_id.setText("ID: " + My_Patients_Array.get(position).getId());
+        holder.textView_status.setText("Status: " + My_Patients_Array.get(position).getStatus());
+        holder.textView_room.setText("Room: " + My_Patients_Array.get(position).getRoom());
 
-        Log.v("size",""+Pat_graph_info.size());
+        //Log.v("size",""+Pat_graph_info.size());
 
 
-        if(Pat_graph_info.size()>0){
+        /*if(Pat_graph_info.size()>0){
             //Log.v("size",""+Pat_graph_info.get(1).getDiastolic().get(2));
             holder.linegraph_pressure.addSeries(Pat_graph_info.get(position).getDatapoint_dias());
             holder.linegraph_pressure.addSeries(Pat_graph_info.get(position).getDatapoint_sis());
@@ -98,7 +75,7 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
 
     @Override
     public int getItemCount() {
-        return mPatName.size();
+        return My_Patients_Array.size();
     }
 
 

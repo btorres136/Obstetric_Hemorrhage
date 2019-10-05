@@ -18,19 +18,20 @@ import java.util.ArrayList;
 
 public class Patients_RecyclerView extends RecyclerView.Adapter<Patients_RecyclerView.ViewHolder>{
 
-    private ArrayList<String> mPatientNames = new ArrayList<>();
-    private ArrayList<String> mAges =  new ArrayList<>();
-    private ArrayList<String> mid = new ArrayList<>();
-    private ArrayList<String> mstatus = new ArrayList<>();
-    private ArrayList<String> mroom = new ArrayList<>();
-    private MainActivity main = new MainActivity();
+    private ArrayList<Patient_Medical> All_Patients_Array;
+    private Patient_Medical Patient_Selected;
 
-    public Patients_RecyclerView(ArrayList<String> PatientNames, ArrayList<String> Ages, ArrayList<String> id, ArrayList<String> status, ArrayList<String> room){
-        mPatientNames= PatientNames;
-        mAges = Ages;
-        mid = id;
-        mstatus = status;
-        mroom = room;
+    Patients_RecyclerView(){
+        All_Patients_Array= new ArrayList<>();
+        Patient_Selected = new Patient_Medical();
+    }
+
+
+
+    Patients_RecyclerView(ArrayList<Patient_Medical> All_Patients){
+        All_Patients_Array= new ArrayList<>(All_Patients);
+        Log.v("hola",""+All_Patients.size());
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -43,23 +44,29 @@ public class Patients_RecyclerView extends RecyclerView.Adapter<Patients_Recycle
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        holder.textView_Patient.setText("Patient: " + mPatientNames.get(position));
-        holder.textView_Age.setText("Age: " + mAges.get(position));
-        holder.textView_id.setText("ID: " + mid.get(position));
-        holder.textView_status.setText("Status: " + mstatus.get(position));
-        holder.textView_room.setText("Room: " + mroom.get(position));
+        holder.textView_Patient.setText("Patient: " + All_Patients_Array.get(position).getName());
+        holder.textView_Age.setText("Age: " + All_Patients_Array.get(position).getAge());
+        holder.textView_id.setText("ID: " + All_Patients_Array.get(position).getId());
+        holder.textView_status.setText("Status: " + All_Patients_Array.get(position).getStatus());
+        holder.textView_room.setText("Room: " + All_Patients_Array.get(position).getRoom());
         holder.cardView_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                main.add(mPatientNames.get(position),mAges.get(position),mstatus.get(position), mroom.get(position), mid.get(position));
+                setPatient_Selected(All_Patients_Array.get(position));
+
             }
         });
     }
 
+    public void setPatient_Selected(Patient_Medical Selected){
+        Patient_Selected=Selected;
+    }
+
+
 
     @Override
     public int getItemCount() {
-        return mPatientNames.size();
+        return All_Patients_Array.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

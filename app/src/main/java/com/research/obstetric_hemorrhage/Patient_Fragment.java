@@ -18,20 +18,34 @@ import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 
-import static com.research.obstetric_hemorrhage.MainActivity.wait;
+
 
 public class Patient_Fragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
-    //vars
-    private static ArrayList<String> mPatientNames = new ArrayList<>();
-    private static ArrayList<String> mAges =  new ArrayList<>();
-    private static ArrayList<String> mid = new ArrayList<>();
-    private static ArrayList<String> mstatus = new ArrayList<>();
-    private static ArrayList<String> mroom = new ArrayList<>();
+
+    private ArrayList<Patient_Medical> All_Patients_Array;
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipe;
-    private MainActivity main = new MainActivity();
+    Patients_RecyclerView adapter;
+
     private ProgressBar bar;
+
+    Patient_Fragment(){
+        All_Patients_Array = new ArrayList<>();
+        adapter = new Patients_RecyclerView();
+    }
+
+    public void setAll_Patients_Array(ArrayList<Patient_Medical> All_Patients){
+        All_Patients_Array = All_Patients;
+        adapter = new Patients_RecyclerView(All_Patients_Array);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+    }
+
+    public ArrayList<Patient_Medical> getAll_Patients_Array(){
+        return All_Patients_Array;
+    }
+
 
 
     @Override
@@ -44,12 +58,17 @@ public class Patient_Fragment extends Fragment implements SwipeRefreshLayout.OnR
         swipe.setOnRefreshListener(this);
         bar=rootView.findViewById(R.id.waittime);
 
-        main.get_pat();
-        waittime();
+
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        bar.setVisibility(View.GONE);
+
+        //waittime();
         return rootView;
     }
 
-    public void waittime(){
+    /*public void waittime(){
         if(wait == true){
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -72,26 +91,27 @@ public class Patient_Fragment extends Fragment implements SwipeRefreshLayout.OnR
             bar.setVisibility(View.GONE);
             wait=false;
         }
-    }
+    }*/
 
-    public static void getallpat(ArrayList<String> name, ArrayList<String> age, ArrayList<String> id, ArrayList<String> status, ArrayList<String> room){
-        mPatientNames=name;
-        mAges=age;
-        mid=id;
-        mstatus=status;
-        mroom = room;
-    }
 
     @Override
     public void onRefresh() {
         swipe.setRefreshing(true);
+        Reload();
+        swipe.setRefreshing(false);
+    }
 
-        main.get_pat();
-        Patients_RecyclerView adapter = new Patients_RecyclerView(mPatientNames,mAges,mid,mstatus,mroom);
+    public void Reload(){
+        DatabaseTransactions databaseTransactions = new DatabaseTransactions();
+        ArrayList<Patient_Medical> data = new ArrayList<>();
+        data = databaseTransactions.getnewdata();
+        if(All_Patients_Array.size() < data.size()){
+            Log.v("Siiiii","kkkkkkkk");
+            All_Patients_Array = databaseTransactions.getnewdata();
+        }
+        Patients_RecyclerView adapter = new Patients_RecyclerView(All_Patients_Array);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        swipe.setRefreshing(false);
 
     }
 }
