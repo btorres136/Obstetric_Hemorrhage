@@ -59,14 +59,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         BottomNavigationView Nav = (BottomNavigationView)findViewById(R.id.bottomNavigationView);
         Nav.setOnNavigationItemSelectedListener(this);
-        patient_fragment = databaseTransactions.get_pat();
+        patient_fragment = databaseTransactions.ListenToDatabaseOnAllPatients();
+        actual_patient = databaseTransactions.ListenToDatabaseOnMyPatients();
         loadFragment(patient_fragment);
         this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
         getSupportActionBar().setCustomView(R.layout.custom_actionbar);
         getSupportActionBar().setElevation(0);
-        actual_patient = databaseTransactions.get();
-        //wait=true;
         FirebaseMessaging.getInstance().subscribeToTopic("PatientAdded");
         FirebaseMessaging.getInstance().subscribeToTopic("PatientDeleted");
     }
@@ -81,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         usermap.put("mid", key);
         myRef.child(key).setValue(usermap);
     }
+
     public void addtopat(String Pat_Name, String Age, String mStatus, String room){
         DatabaseReference myRef = database.getReference("/Patients/");
         Map<String, Object> usermap = new HashMap<>();
@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
         Fragment fragment = null;
+
 
          switch (menuItem.getItemId()){
              case R.id.Patients:

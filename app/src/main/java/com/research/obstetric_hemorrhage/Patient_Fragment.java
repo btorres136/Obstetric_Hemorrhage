@@ -104,11 +104,11 @@ public class Patient_Fragment extends Fragment implements SwipeRefreshLayout.OnR
     public void Reload(){
         DatabaseTransactions databaseTransactions = new DatabaseTransactions();
         ArrayList<Patient_Medical> data = new ArrayList<>();
-        data = databaseTransactions.getnewdata();
+        /*data = databaseTransactions.getnewdata();
         if(All_Patients_Array.size() < data.size()){
             Log.v("Siiiii","kkkkkkkk");
             All_Patients_Array = databaseTransactions.getnewdata();
-        }
+        }*/
         Patients_RecyclerView adapter = new Patients_RecyclerView(All_Patients_Array);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

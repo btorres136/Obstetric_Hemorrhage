@@ -3,9 +3,12 @@ package com.research.obstetric_hemorrhage;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -31,7 +34,7 @@ public class DatabaseTransactions {
         //snapshot = null;
     }
 
-    public Actual_Patient get(){
+    /*public Actual_Patient get(){
         database.getReference().child("User_Patients/"+mAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -55,9 +58,133 @@ public class DatabaseTransactions {
             }
         });
         return actual_patient;
+    }*/
+
+    public Patient_Fragment ListenToDatabaseOnAllPatients(){
+        database.getReference().child("/Patients").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                String name = dataSnapshot.child("Patient Name").getValue().toString();
+                String id = dataSnapshot.child("mid").getValue().toString();
+                String status = dataSnapshot.child("Status").getValue().toString();
+                String age = dataSnapshot.child("Age").getValue().toString();
+                String room = dataSnapshot.child("Room").getValue().toString();
+                patient_medical = new Patient_Medical(name, id,room,
+                        Integer.parseInt(age), Integer.parseInt(status));
+                All_Patients_Array.add(patient_medical);
+                patient_fragment.setAll_Patients_Array(All_Patients_Array);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                String name = dataSnapshot.child("Patient Name").getValue().toString();
+                String id = dataSnapshot.child("mid").getValue().toString();
+                String status = dataSnapshot.child("Status").getValue().toString();
+                String age = dataSnapshot.child("Age").getValue().toString();
+                String room = dataSnapshot.child("Room").getValue().toString();
+                patient_medical = new Patient_Medical(name, id,room,
+                        Integer.parseInt(age), Integer.parseInt(status));
+                My_Patients_Array.add(patient_medical);
+                patient_fragment.setAll_Patients_Array(All_Patients_Array);
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                String name = dataSnapshot.child("Patient Name").getValue().toString();
+                String id = dataSnapshot.child("mid").getValue().toString();
+                String status = dataSnapshot.child("Status").getValue().toString();
+                String age = dataSnapshot.child("Age").getValue().toString();
+                String room = dataSnapshot.child("Room").getValue().toString();
+                patient_medical = new Patient_Medical(name, id,room,
+                        Integer.parseInt(age), Integer.parseInt(status));
+                All_Patients_Array.add(patient_medical);
+                patient_fragment.setAll_Patients_Array(All_Patients_Array);
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                String name = dataSnapshot.child("Patient Name").getValue().toString();
+                String id = dataSnapshot.child("mid").getValue().toString();
+                String status = dataSnapshot.child("Status").getValue().toString();
+                String age = dataSnapshot.child("Age").getValue().toString();
+                String room = dataSnapshot.child("Room").getValue().toString();
+                patient_medical = new Patient_Medical(name, id,room,
+                        Integer.parseInt(age), Integer.parseInt(status));
+                All_Patients_Array.add(patient_medical);
+                patient_fragment.setAll_Patients_Array(All_Patients_Array);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        return patient_fragment;
     }
 
-    public Patient_Fragment get_pat(){
+    public Actual_Patient ListenToDatabaseOnMyPatients(){
+        database.getReference().child("/User_Patients/"+mAuth.getUid()).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                String name = dataSnapshot.child("Patient Name").getValue().toString();
+                String id = dataSnapshot.child("mid").getValue().toString();
+                String status = dataSnapshot.child("Status").getValue().toString();
+                String age = dataSnapshot.child("Age").getValue().toString();
+                String room = dataSnapshot.child("Room").getValue().toString();
+                patient_medical = new Patient_Medical(name, id,room,
+                        Integer.parseInt(age), Integer.parseInt(status));
+                My_Patients_Array.add(patient_medical);
+                actual_patient.setMy_Patients_Array(My_Patients_Array);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                String name = dataSnapshot.child("Patient Name").getValue().toString();
+                String id = dataSnapshot.child("mid").getValue().toString();
+                String status = dataSnapshot.child("Status").getValue().toString();
+                String age = dataSnapshot.child("Age").getValue().toString();
+                String room = dataSnapshot.child("Room").getValue().toString();
+                patient_medical = new Patient_Medical(name, id,room,
+                        Integer.parseInt(age), Integer.parseInt(status));
+                My_Patients_Array.add(patient_medical);
+                actual_patient.setMy_Patients_Array(My_Patients_Array);
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                String name = dataSnapshot.child("Patient Name").getValue().toString();
+                String id = dataSnapshot.child("mid").getValue().toString();
+                String status = dataSnapshot.child("Status").getValue().toString();
+                String age = dataSnapshot.child("Age").getValue().toString();
+                String room = dataSnapshot.child("Room").getValue().toString();
+                patient_medical = new Patient_Medical(name, id,room,
+                        Integer.parseInt(age), Integer.parseInt(status));
+                My_Patients_Array.add(patient_medical);
+                actual_patient.setMy_Patients_Array(My_Patients_Array);
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                String name = dataSnapshot.child("Patient Name").getValue().toString();
+                String id = dataSnapshot.child("mid").getValue().toString();
+                String status = dataSnapshot.child("Status").getValue().toString();
+                String age = dataSnapshot.child("Age").getValue().toString();
+                String room = dataSnapshot.child("Room").getValue().toString();
+                patient_medical = new Patient_Medical(name, id,room,
+                        Integer.parseInt(age), Integer.parseInt(status));
+                My_Patients_Array.add(patient_medical);
+                actual_patient.setMy_Patients_Array(My_Patients_Array);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        return actual_patient;
+    }
+
+    /*public Patient_Fragment get_pat(){
         database.getReference().child("/Patients").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -81,9 +208,9 @@ public class DatabaseTransactions {
             }
         });
         return patient_fragment;
-    }
+    }*/
 
-    public ArrayList<Patient_Medical> getnewdata(){
+    /*public ArrayList<Patient_Medical> getnewdata(){
         database.getReference().child("User_Patients/"+mAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -122,9 +249,9 @@ public class DatabaseTransactions {
             }
         });
         return datasnapshot;
-    }
+    }*/
 
-    public void getgraphdata(String id){
+    /*public void getgraphdata(String id){
         final Patient_Medical patient_medical = new Patient_Medical();
         database.getReference().child("/Patients_Graphs/"+id+"/Pressure/Diastolic").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -158,5 +285,5 @@ public class DatabaseTransactions {
             }
         });
 
-    }
+    }*/
 }

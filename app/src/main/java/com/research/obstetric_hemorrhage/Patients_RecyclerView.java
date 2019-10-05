@@ -30,7 +30,6 @@ public class Patients_RecyclerView extends RecyclerView.Adapter<Patients_Recycle
 
     Patients_RecyclerView(ArrayList<Patient_Medical> All_Patients){
         All_Patients_Array= new ArrayList<>(All_Patients);
-        Log.v("hola",""+All_Patients.size());
         notifyDataSetChanged();
     }
 
