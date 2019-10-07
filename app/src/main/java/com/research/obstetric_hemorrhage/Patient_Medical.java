@@ -1,12 +1,5 @@
 package com.research.obstetric_hemorrhage;
 
-import android.provider.ContactsContract;
-
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
-
-import java.util.ArrayList;
-
 public class Patient_Medical {
 
     private String name;

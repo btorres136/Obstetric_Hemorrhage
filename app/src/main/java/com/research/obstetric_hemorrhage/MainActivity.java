@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
-import android.util.Log;
 import android.view.MenuItem;
 
 
@@ -19,24 +18,18 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
 
-import java.util.ArrayList;
-
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
-    //private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     private Actual_Patient actual_patient = new Actual_Patient();
     private Patient_Fragment patient_fragment = new Patient_Fragment();
     private DatabaseTransactions databaseTransactions = new DatabaseTransactions();
-    private Systolic_Pressure systolic_pressure = new Systolic_Pressure();
 
     private FirebaseAnalytics mFirebaseAnalytics;
 
@@ -46,14 +39,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        database.setPersistenceEnabled(true);
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         BottomNavigationView Nav = findViewById(R.id.bottomNavigationView);
         Nav.setOnNavigationItemSelectedListener(this);
         patient_fragment = databaseTransactions.ListenToDatabaseOnAllPatients();
         actual_patient = databaseTransactions.ListenToDatabaseOnMyPatients();
-
 
         loadFragment(patient_fragment);
         this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
