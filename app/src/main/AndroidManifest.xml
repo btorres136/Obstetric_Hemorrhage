@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/d2icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".patient_info"></activity>
+        <activity android:name=".mypatient_info"></activity>
+        <activity android:name=".patient_info" />
 
         <service
             android:name=".FirebaseCloudFunctions"

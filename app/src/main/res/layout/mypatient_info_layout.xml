@@ -20,55 +20,12 @@
         android:layout_marginLeft="10dp"
         app:fontFamily="sans-serif-black" />
 
-    <TextView
-        android:id="@+id/patient_id_actual"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/patient_name_actual"
-        android:layout_alignParentLeft="true"
-        android:text="patient_id"
-        android:textColor="#000"
-        android:layout_marginLeft="10dp"
-        android:textSize="17sp" />
-
-    <TextView
-        android:id="@+id/patient_room_actual"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/patient_id_actual"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="10dp"
-        android:text="room"
-        android:textColor="#000"
-        android:textSize="17sp" />
-
-    <TextView
-        android:id="@+id/patient_age_actual"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/patient_id_actual"
-        android:layout_centerHorizontal="true"
-        android:text="patient_age"
-        android:textColor="#000"
-        android:textSize="17sp" />
-
-    <TextView
-        android:id="@+id/patient_state_actual"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/patient_id_actual"
-        android:layout_alignParentRight="true"
-        android:text="patient_state"
-        android:textColor="#000"
-        android:layout_marginRight="10dp"
-        android:textSize="17sp" />
-
     <com.jjoe64.graphview.GraphView
+        android:id="@+id/pressure"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/patient_state_actual"
-        android:id="@+id/graph_presion"/>
+        android:layout_below="@id/patient_name_actual"
+        android:layout_marginTop="14dp" />
 
     <TextView
         android:id="@+id/pres_sys"
@@ -78,7 +35,7 @@
         android:layout_marginLeft="10dp"
         android:textSize="17dp"
         android:textColor="#000000"
-        android:layout_below="@+id/graph_presion"
+        android:layout_below="@+id/pressure"
         android:layout_alignParentLeft="true"
         android:textStyle="bold"/>
 
@@ -90,29 +47,29 @@
         android:textSize="17dp"
         android:layout_marginRight="10dp"
         android:textColor="#000000"
-        android:layout_below="@+id/graph_presion"
+        android:layout_below="@+id/pressure"
         android:layout_alignParentRight="true"
         android:textStyle="bold"/>
 
-    <TextView
+    <EditText
         android:id="@+id/input_syspres"
         android:layout_width="139dp"
         android:layout_height="45dp"
         android:layout_below="@id/pres_sys"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp"
-        android:text="actual_syspress"
+        android:inputType="number"
         android:textColor="#000000"
         android:textSize="17dp" />
 
-    <TextView
+    <EditText
         android:id="@+id/input_diaspres"
-        android:layout_width="144dp"
+        android:layout_width="145dp"
         android:layout_height="45dp"
         android:layout_below="@id/pres_dias"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
-        android:text="actual_diaspres"
+        android:inputType="number"
         android:textColor="#000000"
         android:textSize="17dp" />
 
@@ -147,36 +104,38 @@
         android:textColor="#000000"
         android:text="Liquid Discharge:"/>
 
-    <TextView
+    <EditText
         android:id="@+id/input_ing_liquid"
         android:layout_width="96dp"
         android:layout_height="45dp"
         android:layout_below="@+id/ing_liquid"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp"
-        android:text="actual_ing_liquid"
+        android:inputType="number"
         android:textColor="#000000"
-        android:textSize="17dp" />
+        android:textSize="17dp"
+        android:textStyle="bold" />
 
-    <TextView
+    <EditText
         android:id="@+id/input_dis_liquid"
         android:layout_width="131dp"
         android:layout_height="45dp"
         android:layout_below="@+id/dis_liquid"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
-        android:text="actual_dis_liquid"
+        android:inputType="number"
         android:textColor="#000000"
-        android:textSize="17dp" />
+        android:textSize="17dp"
+        android:textStyle="bold" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/back_to_patientsCV"
+        android:id="@+id/update_infoCV"
         android:layout_width="165dp"
         android:layout_height="76dp"
         android:layout_below="@+id/graph_liquids"
+        android:layout_centerInParent="true"
         android:layout_gravity="center|center_horizontal"
-        android:layout_marginTop="85dp"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="83dp"
         android:clickable="true"
         android:foreground="?attr/selectableItemBackground"
         android:stateListAnimator="@drawable/lift_on_touch"
@@ -193,11 +152,11 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/back_to_patients"
+                android:id="@+id/update_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="Back to Patients"
+                android:text="Update info"
                 android:textColor="#ffffff"
                 android:textSize="14sp" />
 
