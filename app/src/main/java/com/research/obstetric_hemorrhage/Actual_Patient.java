@@ -17,20 +17,11 @@ import java.util.ArrayList;
 
 
 public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
-    /*private static ArrayList<String> mPatientNames = new ArrayList<>();
-    private static ArrayList<String> mAges =  new ArrayList<>();
-    private static ArrayList<String> mid = new ArrayList<>();
-    private static ArrayList<String> mstatus = new ArrayList<>();
-    private static ArrayList<String> mroom = new ArrayList<>();
-    private static LineGraphSeries<DataPoint> systolic;
-    private static LineGraphSeries<DataPoint> distolic;*/
     private ActualPatient_RecyclerView adapter;
     private RecyclerView recyclerView;
     private ArrayList<Patient_Medical> My_Patients_Array;
     private ArrayList<Systolic_Pressure> My_PatientsGraph_Array;
     private DatabaseTransactions databaseTransactions = new DatabaseTransactions(0);
-    //private static MainActivity main = new MainActivity();
-    //private static ArrayList<Patient_Medical> Pat_graph_info = new ArrayList<>();
     private SwipeRefreshLayout swipe;
     private View rootView;
 
@@ -41,6 +32,8 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
 
     public void setMy_Patients_Array(ArrayList<Patient_Medical> Patients_Array){
         My_Patients_Array = Patients_Array;
+        My_PatientsGraph_Array = databaseTransactions.getgrahdata(My_Patients_Array);
+        adapter = new ActualPatient_RecyclerView(My_Patients_Array, My_PatientsGraph_Array);
     }
     public void setMy_PatientsGraph_Array(ArrayList<Systolic_Pressure> Graphs_Array){
         My_PatientsGraph_Array = Graphs_Array;
@@ -53,12 +46,6 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_actual__patient, container, false);
-        for(int i=0; i<My_Patients_Array.size();i++){
-            My_PatientsGraph_Array.add(databaseTransactions.getgrahdata(My_Patients_Array.get(i).getId()));
-        }
-        Log.v("ji",""+My_PatientsGraph_Array.size());
-
-
 
         swipe = rootView.findViewById(R.id.swipeRefresh);
         swipe.setOnRefreshListener(this);

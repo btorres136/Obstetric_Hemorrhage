@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         patient_fragment = databaseTransactions.ListenToDatabaseOnAllPatients();
         actual_patient = databaseTransactions.ListenToDatabaseOnMyPatients();
 
+
         loadFragment(patient_fragment);
         this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
