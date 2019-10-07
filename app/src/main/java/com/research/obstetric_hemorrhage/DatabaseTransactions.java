@@ -4,16 +4,14 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,23 +20,33 @@ import java.util.Map;
 public class DatabaseTransactions {
     private ArrayList<Patient_Medical> My_Patients_Array;
     private ArrayList<Patient_Medical> All_Patients_Array;
+    private ArrayList<Systolic_Pressure> My_PatientsGraps_Array;
     private Patient_Medical patient_medical = new Patient_Medical();
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private Actual_Patient actual_patient;
     private Patient_Fragment patient_fragment;
-    private DataSnapshot datasnapshot;
+    private Systolic_Pressure systolicPressure;
 
-    DatabaseTransactions(){
+    private ArrayList<String> X_Systolic;
+    private ArrayList<String> Y_Systolic;
+    private ArrayList<String> X_Diastolic;
+    private ArrayList<String> Y_Diastolic;
+
+    public DatabaseTransactions(){
         actual_patient = new Actual_Patient();
         patient_fragment = new Patient_Fragment();
         All_Patients_Array = new ArrayList<>();
         My_Patients_Array = new ArrayList<>();
+        systolicPressure = new Systolic_Pressure();
+        My_PatientsGraps_Array = new ArrayList<>();
+
+        X_Diastolic = new ArrayList<>();
+        Y_Diastolic = new ArrayList<>();
+        X_Systolic = new ArrayList<>();
+        Y_Systolic = new ArrayList<>();
     }
-    DatabaseTransactions(int i){
-
-
-
+    public DatabaseTransactions(int i){
     }
 
 
@@ -54,6 +62,7 @@ public class DatabaseTransactions {
                 patient_medical = new Patient_Medical(name, id,room,
                         Integer.parseInt(age), Integer.parseInt(status));
                 All_Patients_Array.add(0,patient_medical);
+                Log.v("Hola","quien soy");
                 patient_fragment.setAll_Patients_Array(All_Patients_Array);
             }
 
@@ -115,7 +124,11 @@ public class DatabaseTransactions {
                 String room = dataSnapshot.child("Room").getValue().toString();
                 patient_medical = new Patient_Medical(name, id,room,
                         Integer.parseInt(age), Integer.parseInt(status));
+                //systolicPressure = new Systolic_Pressure(getgrahdata(id));
+                //Log.v("Holis",""+systolicPressure.getXSystolic().size());
+                //My_PatientsGraps_Array.add(0,systolicPressure);
                 My_Patients_Array.add(0,patient_medical);
+                //actual_patient.setMy_PatientsGraph_Array(My_PatientsGraps_Array);
                 actual_patient.setMy_Patients_Array(My_Patients_Array);
             }
 
@@ -128,7 +141,11 @@ public class DatabaseTransactions {
                 String room = dataSnapshot.child("Room").getValue().toString();
                 patient_medical = new Patient_Medical(name, id,room,
                         Integer.parseInt(age), Integer.parseInt(status));
+                //systolicPressure = new Systolic_Pressure();
+                //systolicPressure = getgrahdata(id);
+                //My_PatientsGraps_Array.add(0,systolicPressure);
                 My_Patients_Array.add(0,patient_medical);
+                //actual_patient.setMy_PatientsGraph_Array(My_PatientsGraps_Array);
                 actual_patient.setMy_Patients_Array(My_Patients_Array);
             }
 
@@ -141,7 +158,11 @@ public class DatabaseTransactions {
                 String room = dataSnapshot.child("Room").getValue().toString();
                 patient_medical = new Patient_Medical(name, id,room,
                         Integer.parseInt(age), Integer.parseInt(status));
+                //systolicPressure = new Systolic_Pressure();
+                //systolicPressure = getgrahdata(id);
+                //My_PatientsGraps_Array.add(0,systolicPressure);
                 My_Patients_Array.add(0,patient_medical);
+                //actual_patient.setMy_PatientsGraph_Array(My_PatientsGraps_Array);
                 actual_patient.setMy_Patients_Array(My_Patients_Array);
             }
 
@@ -154,7 +175,11 @@ public class DatabaseTransactions {
                 String room = dataSnapshot.child("Room").getValue().toString();
                 patient_medical = new Patient_Medical(name, id,room,
                         Integer.parseInt(age), Integer.parseInt(status));
+                //systolicPressure = new Systolic_Pressure();
+                //systolicPressure = getgrahdata(id);
+                //My_PatientsGraps_Array.add(0,systolicPressure);
                 My_Patients_Array.add(0,patient_medical);
+                //actual_patient.setMy_PatientsGraph_Array(My_PatientsGraps_Array);
                 actual_patient.setMy_Patients_Array(My_Patients_Array);
             }
 
@@ -189,112 +214,96 @@ public class DatabaseTransactions {
         usermap.put("Added by", mAuth.getUid());
         myRef.child(key).setValue(usermap);
         Map<String, String> pressure = new HashMap<>();
-        pressure.put("0","0");
-        DatabaseReference myRef2 = database.getReference("/Patients_Graphs/");
-        myRef2.child(key).child("Pressure").child("Diastolic").setValue(pressure);
-        myRef2.child(key).child("Pressure").child("Systolic").setValue(pressure);
+        pressure.put("Time", "0");
+        pressure.put("Added by:", "Default");
+        pressure.put("Data","0");
+        DatabaseReference myRef2 = database.getReference("/Systolic_Pressure/");
+        String key2 = myRef.push().getKey();
+        myRef2.child(key).child("Pressure").child("Diastolic").child(key2).setValue(pressure);
+        myRef2.child(key).child("Pressure").child("Systolic").child(key2).setValue(pressure);
     }
 
-    /*public Patient_Fragment get_pat(){
-        database.getReference().child("/Patients").addListenerForSingleValueEvent(new ValueEventListener() {
+    public Systolic_Pressure getgrahdata(final String id){
+        database.getReference().child("/Patients_Graphs/"+id+"/Pressure/Diastolic").addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        String name = snapshot.child("Patient Name").getValue().toString();
-                        String age = snapshot.child("Age").getValue().toString();
-                        String status = snapshot.child("Status").getValue().toString();
-                        String id = snapshot.child("mid").getValue().toString();
-                        String room = snapshot.child("Room").getValue().toString();
-                        patient_medical = new Patient_Medical(name, id,room,
-                                Integer.parseInt(age), Integer.parseInt(status));
-                        All_Patients_Array.add(patient_medical);
-                        patient_fragment.setAll_Patients_Array(All_Patients_Array);
-                    }
-                }
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                String y = dataSnapshot.child("Data").getValue().toString();
+                String x = dataSnapshot.child("Time").getValue().toString();
+                X_Systolic.add(x);
+                Y_Systolic.add(y);
+                systolicPressure = new Systolic_Pressure(X_Systolic, Y_Systolic);
+                My_PatientsGraps_Array.add(systolicPressure);
             }
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                String y = dataSnapshot.child("Data").getValue().toString();
+                String x = dataSnapshot.child("Time").getValue().toString();
+                X_Systolic.add(x);
+                Y_Systolic.add(y);
+                systolicPressure = new Systolic_Pressure(X_Systolic, Y_Systolic);
+                My_PatientsGraps_Array.add(systolicPressure);
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                String y = dataSnapshot.child("Data").getValue().toString();
+                String x = dataSnapshot.child("Time").getValue().toString();
+                X_Systolic.add(x);
+                Y_Systolic.add(y);
+                systolicPressure = new Systolic_Pressure(X_Systolic, Y_Systolic);
+                My_PatientsGraps_Array.add(systolicPressure);
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                String y = dataSnapshot.child("Data").getValue().toString();
+                String x = dataSnapshot.child("Time").getValue().toString();
+                X_Systolic.add(x);
+                Y_Systolic.add(y);
+                systolicPressure = new Systolic_Pressure(X_Systolic, Y_Systolic);
+                My_PatientsGraps_Array.add(systolicPressure);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+
+            }
+        });
+
+
+        /*database.getReference().child("/Systolic_Pressure/"+id+"/Pressure/Systolic/").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                /*String x = dataSnapshot.getKey();
+                String y = dataSnapshot.getValue().toString();
+                X_Systolic.add(x);
+                Y_Systolic.add(y);
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
-        return patient_fragment;
-    }*/
-
-    /*public ArrayList<Patient_Medical> getnewdata(){
-        database.getReference().child("User_Patients/"+mAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        String name = snapshot.child("Patient Name").getValue().toString();
-                        String id = snapshot.child("mid").getValue().toString();
-                        String status = snapshot.child("Status").getValue().toString();
-                        String age = snapshot.child("Age").getValue().toString();
-                        String room = snapshot.child("Room").getValue().toString();
-                        patient_medical = new Patient_Medical(name, id,room,
-                                Integer.parseInt(age), Integer.parseInt(status));
-                        My_Patients_Array.add(patient_medical);
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        return My_Patients_Array;
+        });*/
+        //systolicPressure = new Systolic_Pressure(X_Systolic, Y_Systolic, X_Diastolic, Y_Systolic);
+        return systolicPressure;
     }
-
-    public DataSnapshot getSnapshot(){
-        database.getReference().child("/Patients").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    datasnapshot = dataSnapshot;
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        return datasnapshot;
-    }*/
-
-    /*public void getgraphdata(String id){
-        final Patient_Medical patient_medical = new Patient_Medical();
-        database.getReference().child("/Patients_Graphs/"+id+"/Pressure/Diastolic").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                DataSnapshot data;
-                if(dataSnapshot.exists()){
-                    ArrayList<String> pressure = new ArrayList<>();
-                    pressure = (ArrayList<String>) dataSnapshot.getValue();
-                    patient_medical.setDiastolic(pressure);
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        database.getReference().child("/Patients_Graphs/"+id+"/Pressure/Systolic").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    ArrayList<String> pressure = new ArrayList<>();
-                    pressure = (ArrayList<String>) dataSnapshot.getValue();
-                    patient_medical.setSystolic(pressure);
-                    //setgraphsinfo(patient_medical);
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-    }*/
 }

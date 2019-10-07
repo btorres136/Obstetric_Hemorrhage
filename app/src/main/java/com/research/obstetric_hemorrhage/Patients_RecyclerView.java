@@ -1,5 +1,6 @@
 package com.research.obstetric_hemorrhage;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
@@ -31,6 +32,9 @@ public class Patients_RecyclerView extends RecyclerView.Adapter<Patients_Recycle
         notifyDataSetChanged();
     }
 
+
+
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -51,7 +55,6 @@ public class Patients_RecyclerView extends RecyclerView.Adapter<Patients_Recycle
             public void onClick(View view) {
                 databaseTransactions.add(All_Patients_Array.get(position).getName(),All_Patients_Array.get(position).getAge(), All_Patients_Array.get(position).getStatus(),
                         All_Patients_Array.get(position).getRoom(),All_Patients_Array.get(position).getId());
-
             }
         });
     }

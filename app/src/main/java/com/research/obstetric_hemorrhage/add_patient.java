@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +17,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 
 public class add_patient extends Fragment {
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private MainActivity main = new MainActivity();
     private View rootView;
     private String text = "";
+    private DatabaseTransactions databaseTransactions = new DatabaseTransactions(0);
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,8 +45,8 @@ public class add_patient extends Fragment {
                     Toast.makeText(view.getContext(), "Age should be between 14 and 65", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    //main.addtopat(name.getText().toString()+" "+lname.getText().toString(),
-                            //age.getText().toString(),text, room.getText().toString());
+                    databaseTransactions.addtopat(name.getText().toString()+" "+lname.getText().toString(),
+                            age.getText().toString(),text, room.getText().toString());
                 }
             }
         });
@@ -65,4 +71,6 @@ public class add_patient extends Fragment {
 
         return rootView;
     }
+
+
 }

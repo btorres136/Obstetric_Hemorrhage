@@ -23,40 +23,37 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    //private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     private Actual_Patient actual_patient = new Actual_Patient();
     private Patient_Fragment patient_fragment = new Patient_Fragment();
     private DatabaseTransactions databaseTransactions = new DatabaseTransactions();
+    private Systolic_Pressure systolic_pressure = new Systolic_Pressure();
 
-    //public static boolean wait;
     private FirebaseAnalytics mFirebaseAnalytics;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        database.setPersistenceEnabled(true);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        BottomNavigationView Nav = (BottomNavigationView)findViewById(R.id.bottomNavigationView);
+        BottomNavigationView Nav = findViewById(R.id.bottomNavigationView);
         Nav.setOnNavigationItemSelectedListener(this);
         patient_fragment = databaseTransactions.ListenToDatabaseOnAllPatients();
         actual_patient = databaseTransactions.ListenToDatabaseOnMyPatients();
+
         loadFragment(patient_fragment);
         this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
@@ -90,11 +87,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
         return false;
     }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
         Fragment fragment = null;
-
 
          switch (menuItem.getItemId()){
              case R.id.Patients:

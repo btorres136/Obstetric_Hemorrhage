@@ -1,7 +1,6 @@
 package com.research.obstetric_hemorrhage;
 
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.view.View;
@@ -11,20 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
 
 public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatient_RecyclerView.ViewHolder>{
 
     private ArrayList<Patient_Medical> My_Patients_Array;
+    //private ArrayList<Systolic_Pressure> my_SystolicPressureArray;
+    private Systolic_Pressure systolicPressure = new Systolic_Pressure();
+    private DatabaseTransactions databaseTransactions = new DatabaseTransactions(0);
 
-    public ActualPatient_RecyclerView(ArrayList<Patient_Medical> My_Patients){
-
+    public ActualPatient_RecyclerView(ArrayList<Patient_Medical> My_Patients, ArrayList<Systolic_Pressure> my_Patients_Graphs){
         My_Patients_Array = new ArrayList<>(My_Patients);
-        //notifyDataSetChanged();
+        //my_SystolicPressureArray = new ArrayList<>(my_Patients_Graphs);
+        notifyDataSetChanged();
     }
+
 
 
     @NonNull
@@ -45,32 +46,8 @@ public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatie
         holder.textView_id.setText("ID: " + My_Patients_Array.get(position).getId());
         holder.textView_status.setText("Status: " + My_Patients_Array.get(position).getStatus());
         holder.textView_room.setText("Room: " + My_Patients_Array.get(position).getRoom());
-
-        //Log.v("size",""+Pat_graph_info.size());
-
-
-        /*if(Pat_graph_info.size()>0){
-            //Log.v("size",""+Pat_graph_info.get(1).getDiastolic().get(2));
-            holder.linegraph_pressure.addSeries(Pat_graph_info.get(position).getDatapoint_dias());
-            holder.linegraph_pressure.addSeries(Pat_graph_info.get(position).getDatapoint_sis());
-        }
-        else{
-            Log.v("0","Slow Internet");
-        }
-        //holder.notifyAll();
-
-        /*holder.linegraph_sis.addSeries(lineSeries);
-        holder.linegraph_sis.addSeries(lineSeries2);
-        holder.linegraph_sis.setTitle("Systolic Pressure");
-        lineSeries.setColor(Color.GREEN);
-        lineSeries2.setColor(Color.RED);
-
-        lineSeries.setOnDataPointTapListener(new OnDataPointTapListener() {
-            @Override
-            public void onTap(Series series, DataPointInterface dataPoint) {
-                Toast.makeText(holder.itemView.getContext(), "Series1: On Data Point clicked: "+dataPoint, Toast.LENGTH_SHORT).show();
-            }
-        });*/
+        //holder.linegraph_pressure.addSeries(my_SystolicPressureArray.get(position).getDatapoint_sis());
+        //holder.linegraph_pressure.addSeries(my_SystolicPressureArray.get(position).getDatapoint_dias());
     }
 
     @Override

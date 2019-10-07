@@ -2,26 +2,23 @@ package com.research.obstetric_hemorrhage;
 
 import android.os.Bundle;
 
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-
-import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 
 
 public class Patient_Fragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
-
 
     private ArrayList<Patient_Medical> All_Patients_Array;
     private RecyclerView recyclerView;
@@ -30,7 +27,7 @@ public class Patient_Fragment extends Fragment implements SwipeRefreshLayout.OnR
 
     private ProgressBar bar;
 
-    Patient_Fragment(){
+    public Patient_Fragment(){
         All_Patients_Array = new ArrayList<>();
         adapter = new Patients_RecyclerView();
     }
@@ -45,6 +42,7 @@ public class Patient_Fragment extends Fragment implements SwipeRefreshLayout.OnR
     public ArrayList<Patient_Medical> getAll_Patients_Array(){
         return All_Patients_Array;
     }
+
 
 
 
