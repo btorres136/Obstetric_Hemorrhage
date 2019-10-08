@@ -2,6 +2,7 @@ package com.research.obstetric_hemorrhage;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,38 +13,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.ArrayList;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 
 
 public class Patient_Fragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
-    private ArrayList<Patient_Medical> All_Patients_Array;
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipe;
-    Patients_RecyclerView adapter;
+    private DatabaseTransactions databaseTransactions = new DatabaseTransactions();
 
     private ProgressBar bar;
-
-    public Patient_Fragment(){
-        All_Patients_Array = new ArrayList<>();
-        adapter = new Patients_RecyclerView();
-    }
-
-    public void setAll_Patients_Array(ArrayList<Patient_Medical> All_Patients){
-        All_Patients_Array = All_Patients;
-        adapter = new Patients_RecyclerView(All_Patients_Array);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-    }
-
-    public ArrayList<Patient_Medical> getAll_Patients_Array(){
-        return All_Patients_Array;
-    }
-
-
 
 
     @Override
@@ -55,6 +36,40 @@ public class Patient_Fragment extends Fragment implements SwipeRefreshLayout.OnR
         swipe = rootView.findViewById(R.id.swipeRefresh);
         swipe.setOnRefreshListener(this);
         bar=rootView.findViewById(R.id.waittime);
+
+        FirebaseRecyclerOptions<Patient_Medical> options =
+                new FirebaseRecyclerOptions.Builder<Patient_Medical>()
+                        .setQuery(databaseTransactions.ListenToDatabaseOnAllPatients(), Patient_Medical.class)
+                        .build();
+
+        FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Patient_Medical, Patients_RecyclerView>(options) {
+            @NonNull
+            @Override
+            public Patients_RecyclerView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.patientlist_layout,parent,false);
+                Patients_RecyclerView patients_recyclerView =  new Patients_RecyclerView(view);
+                return patients_recyclerView;
+            }
+
+            @Override
+            protected void onBindViewHolder(@NonNull Patients_RecyclerView holder, int position, @NonNull final Patient_Medical model) {
+                holder.getTextView_Patient().setText("Patient: "+model.getName());
+                holder.getTextView_Age().setText("Age: "+model.getAge());
+                holder.getTextView_id().setText("ID: "+model.getID());
+                holder.getTextView_room().setText("Room: "+model.getRoom());
+                holder.getTextView_status().setText("Stage: "+model.getStage());
+                holder.getAddtomypat().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        databaseTransactions.add(model.getName(),
+                                model.getAge(), model.getStage(), model.getRoom(), model.getID());
+                    }
+                });
+
+            }
+        };
+        adapter.startListening();
 
         //recyclerView.smoothScrollToPosition(0);
         recyclerView.setAdapter(adapter);
@@ -69,8 +84,8 @@ public class Patient_Fragment extends Fragment implements SwipeRefreshLayout.OnR
     @Override
     public void onRefresh() {
         swipe.setRefreshing(true);
-        Patients_RecyclerView adapter = new Patients_RecyclerView(All_Patients_Array);
-        recyclerView.setAdapter(adapter);
+        //Patients_RecyclerView adapter = new Patients_RecyclerView(All_Patients_Array);
+        //recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         swipe.setRefreshing(false);
     }

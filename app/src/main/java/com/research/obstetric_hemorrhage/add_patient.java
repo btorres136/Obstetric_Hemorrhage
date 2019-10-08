@@ -25,7 +25,7 @@ public class add_patient extends Fragment {
     private MainActivity main = new MainActivity();
     private View rootView;
     private String text = "";
-    private DatabaseTransactions databaseTransactions = new DatabaseTransactions(0);
+    private DatabaseTransactions databaseTransactions = new DatabaseTransactions();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

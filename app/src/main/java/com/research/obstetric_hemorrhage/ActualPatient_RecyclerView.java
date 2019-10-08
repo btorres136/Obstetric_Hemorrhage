@@ -1,72 +1,69 @@
 package com.research.obstetric_hemorrhage;
 
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jjoe64.graphview.GraphView;
 
-import java.util.ArrayList;
 
-public class ActualPatient_RecyclerView extends RecyclerView.Adapter<ActualPatient_RecyclerView.ViewHolder>{
+public class ActualPatient_RecyclerView extends RecyclerView.ViewHolder{
+    private TextView textView_Patient;
+    private TextView textView_id;
+    private TextView textView_status;
+    private TextView textView_Age;
+    private TextView textView_room;
 
-    private ArrayList<Patient_Medical> My_Patients_Array;
 
-    public ActualPatient_RecyclerView(ArrayList<Patient_Medical> My_Patients){
-        My_Patients_Array = new ArrayList<>(My_Patients);
+    public ActualPatient_RecyclerView(@NonNull View itemView) {
+        super(itemView);
+        textView_Patient = itemView.findViewById(R.id.patient_name_actual);
+        textView_id = itemView.findViewById(R.id.patient_id_actual);
+        textView_Age = itemView.findViewById(R.id.patient_age_actual);
+        textView_status =itemView.findViewById(R.id.patient_state_actual);
+        textView_room = itemView.findViewById(R.id.patient_room_actual);
     }
 
-
-
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.actualpatient_layout, parent, false);
-        ViewHolder holder = new ViewHolder(view);
-        return holder;
+    public TextView getTextView_Patient() {
+        return textView_Patient;
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-
-        holder.textView_Patient.setText("Patient: " + My_Patients_Array.get(position).getName());
-        holder.textView_Age.setText("Age: " + My_Patients_Array.get(position).getAge());
-        holder.textView_id.setText("ID: " + My_Patients_Array.get(position).getId());
-        holder.textView_status.setText("Status: " + My_Patients_Array.get(position).getStatus());
-        holder.textView_room.setText("Room: " + My_Patients_Array.get(position).getRoom());
+    public void setTextView_Patient(TextView textView_Patient) {
+        this.textView_Patient = textView_Patient;
     }
 
-    @Override
-    public int getItemCount() {
-        return My_Patients_Array.size();
+    public TextView getTextView_id() {
+        return textView_id;
     }
 
+    public void setTextView_id(TextView textView_id) {
+        this.textView_id = textView_id;
+    }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        GraphView linegraph_pressure;
-        TextView textView_Patient;
-        TextView textView_id;
-        TextView textView_status;
-        TextView textView_Age;
-        TextView textView_room;
+    public TextView getTextView_status() {
+        return textView_status;
+    }
 
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
+    public void setTextView_status(TextView textView_status) {
+        this.textView_status = textView_status;
+    }
 
-            textView_Patient = itemView.findViewById(R.id.patient_name_actual);
-            textView_id = itemView.findViewById(R.id.patient_id_actual);
-            textView_Age = itemView.findViewById(R.id.patient_age_actual);
-            textView_status =itemView.findViewById(R.id.patient_state_actual);
-            textView_room = itemView.findViewById(R.id.patient_room_actual);
-            linegraph_pressure = itemView.findViewById(R.id.pressure);
-        }
+    public TextView getTextView_Age() {
+        return textView_Age;
+    }
+
+    public void setTextView_Age(TextView textView_Age) {
+        this.textView_Age = textView_Age;
+    }
+
+    public TextView getTextView_room() {
+        return textView_room;
+    }
+
+    public void setTextView_room(TextView textView_room) {
+        this.textView_room = textView_room;
     }
 }

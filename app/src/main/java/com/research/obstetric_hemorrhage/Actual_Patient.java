@@ -2,62 +2,81 @@ package com.research.obstetric_hemorrhage;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 
-import java.util.ArrayList;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+
 
 
 public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
-    private ActualPatient_RecyclerView adapter;
     private RecyclerView recyclerView;
-    private ArrayList<Patient_Medical> My_Patients_Array;
+    private DatabaseTransactions databaseTransactions = new DatabaseTransactions();
     private SwipeRefreshLayout swipe;
     private View rootView;
 
-    public Actual_Patient(){
-        My_Patients_Array = new ArrayList<>();
-    }
-
-    public void setMy_Patients_Array(ArrayList<Patient_Medical> Patients_Array){
-        My_Patients_Array = Patients_Array;
-    }
-
-    public ArrayList<Patient_Medical> getMy_Patients_Array(){
-        return My_Patients_Array;
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_actual__patient, container, false);
 
+        rootView = inflater.inflate(R.layout.fragment_actual__patient, container, false);
+        recyclerView = rootView.findViewById(R.id.recycler_mypat);
+
+        FirebaseRecyclerOptions<Patient_Medical> options =
+                new FirebaseRecyclerOptions.Builder<Patient_Medical>()
+                        .setQuery(databaseTransactions.ListenToDatabaseOnMyPatients(), Patient_Medical.class)
+                        .build();
+
+        FirebaseRecyclerAdapter adapterr = new FirebaseRecyclerAdapter<Patient_Medical, ActualPatient_RecyclerView>(options) {
+            @NonNull
+            @Override
+            public ActualPatient_RecyclerView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.actualpatient_layout, parent, false);
+                ActualPatient_RecyclerView actualPatient_recyclerView = new ActualPatient_RecyclerView(view);
+                return actualPatient_recyclerView;
+            }
+            @Override
+            protected void onBindViewHolder(@NonNull ActualPatient_RecyclerView holder, int position, @NonNull Patient_Medical model) {
+                holder.getTextView_Patient().setText("Patient: "+model.getName());
+                holder.getTextView_Age().setText("Age: "+model.getAge());
+                holder.getTextView_id().setText("ID: "+model.getID());
+                holder.getTextView_room().setText("Room: "+model.getRoom());
+                holder.getTextView_status().setText("Stage: "+model.getStage());
+            }
+        };
+        adapterr.startListening();
+
+        recyclerView.setAdapter(adapterr);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         swipe = rootView.findViewById(R.id.swipeRefresh);
         swipe.setOnRefreshListener(this);
-        adapter = new ActualPatient_RecyclerView(My_Patients_Array);
-        adapter.notifyDataSetChanged();
-        recyclerView = rootView.findViewById(R.id.recycler_mypat);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
         return rootView;
     }
+
+
 
 
     @Override
     public void onRefresh() {
         swipe.setRefreshing(true);
-        adapter = new ActualPatient_RecyclerView(My_Patients_Array);
+        //adapter = new ActualPatient_RecyclerView(My_Patients_Array);
         recyclerView = rootView.findViewById(R.id.recycler_mypat);
-        recyclerView.setAdapter(adapter);
+        //recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         swipe.setRefreshing(false);
     }
+
 }

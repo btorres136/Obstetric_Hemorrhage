@@ -1,94 +1,74 @@
 package com.research.obstetric_hemorrhage;
 
-import android.content.Intent;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
+
 import android.view.View;
 
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 
-public class Patients_RecyclerView extends RecyclerView.Adapter<Patients_RecyclerView.ViewHolder>{
+public class Patients_RecyclerView extends RecyclerView.ViewHolder{
+    private TextView textView_Patient;
+    private TextView textView_id;
+    private TextView textView_status;
+    private TextView textView_Age;
+    private TextView textView_room;
+    private CardView Addtomypat;
 
-    private ArrayList<Patient_Medical> All_Patients_Array;
-    private Patient_Medical Patient_Selected;
-    private DatabaseTransactions databaseTransactions = new DatabaseTransactions(0);
-
-    Patients_RecyclerView(){
-        All_Patients_Array= new ArrayList<>();
-        Patient_Selected = new Patient_Medical();
+    public Patients_RecyclerView(@NonNull View itemView) {
+        super(itemView);
+        textView_Patient = itemView.findViewById(R.id.patient_name);
+        textView_id = itemView.findViewById(R.id.patient_id);
+        textView_Age = itemView.findViewById(R.id.patient_age);
+        textView_status =itemView.findViewById(R.id.patient_state);
+        textView_room = itemView.findViewById(R.id.room);
+        Addtomypat = itemView.findViewById(R.id.add_mypat);
     }
 
-
-
-    Patients_RecyclerView(ArrayList<Patient_Medical> All_Patients){
-        All_Patients_Array= new ArrayList<>(All_Patients);
-        notifyDataSetChanged();
+    public TextView getTextView_Patient() {
+        return textView_Patient;
     }
 
-
-
-
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.patientlist_layout, parent, false);
-        ViewHolder holder = new ViewHolder(view);
-        return holder;
+    public void setTextView_Patient(TextView textView_Patient) {
+        this.textView_Patient = textView_Patient;
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        holder.textView_Patient.setText("Patient: " + All_Patients_Array.get(position).getName());
-        holder.textView_Age.setText("Age: " + All_Patients_Array.get(position).getAge());
-        holder.textView_id.setText("ID: " + All_Patients_Array.get(position).getId());
-        holder.textView_status.setText("Status: " + All_Patients_Array.get(position).getStatus());
-        holder.textView_room.setText("Room: " + All_Patients_Array.get(position).getRoom());
-        holder.cardView_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                databaseTransactions.add(All_Patients_Array.get(position).getName(),All_Patients_Array.get(position).getAge(), All_Patients_Array.get(position).getStatus(),
-                        All_Patients_Array.get(position).getRoom(),All_Patients_Array.get(position).getId());
-            }
-        });
+    public TextView getTextView_id() {
+        return textView_id;
     }
 
-
-
-
-    @Override
-    public int getItemCount() {
-        return All_Patients_Array.size();
+    public void setTextView_id(TextView textView_id) {
+        this.textView_id = textView_id;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView textView_Patient;
-        TextView textView_Age;
-        TextView textView_id;
-        TextView textView_status;
-        TextView textView_room;
-        RelativeLayout parentLayout;
-        CardView cardView_add;
-        CardView see_info;
-        public ViewHolder(View itemView)
-        {
-            super(itemView);
-            cardView_add = itemView.findViewById(R.id.add_mypat);
-            textView_Patient = itemView.findViewById(R.id.patient_name);
-            textView_Age = itemView.findViewById(R.id.patient_age);
-            textView_id = itemView.findViewById(R.id.patient_id);
-            textView_room = itemView.findViewById(R.id.room);
-            textView_status = itemView.findViewById(R.id.patient_state);
-            parentLayout = itemView.findViewById(R.id.parent_layout);
-            cardView_add = itemView.findViewById(R.id.add_mypat);
-            see_info = itemView.findViewById(R.id.see_info);
-        }
+    public TextView getTextView_status() {
+        return textView_status;
+    }
 
+    public void setTextView_status(TextView textView_status) {
+        this.textView_status = textView_status;
+    }
+
+    public TextView getTextView_Age() {
+        return textView_Age;
+    }
+
+    public void setTextView_Age(TextView textView_Age) {
+        this.textView_Age = textView_Age;
+    }
+
+    public TextView getTextView_room() {
+        return textView_room;
+    }
+
+    public void setTextView_room(TextView textView_room) {
+        this.textView_room = textView_room;
+    }
+
+    public CardView getAddtomypat() {
+        return Addtomypat;
     }
 }

@@ -2,63 +2,68 @@ package com.research.obstetric_hemorrhage;
 
 public class Patient_Medical {
 
-    private String name;
-    private int age;
-    private String id;
+    private String Name;
+    private int Age;
+    private String ID;
     private String Room;
-    private int Status;
+    private int Stage;
+    private String Added_by;
 
     Patient_Medical(){
-        name="";
-        age=0;
-        id="";
-        Room = "";
-        Status=0;
     }
-    Patient_Medical(String rname, String rid, String rroom, int rage, int rstatus){
-        name=rname;
-        age=rage;
-        id=rid;
-        Status=rstatus;
+
+    Patient_Medical(String rname, String rid, String rroom, int rage, int rstage, String raddedby){
+        Name=rname;
+        Age=rage;
+        ID=rid;
+        Stage=rstage;
         Room=rroom;
+        Added_by = raddedby;
     }
 
     public String getName(){
-        return name;
+        return Name;
     }
 
-    public String getId(){
-        return id;
+    public String getID(){
+        return ID;
     }
 
     public String getRoom(){
         return Room;
     }
     public int getAge(){
-        return age;
+        return Age;
     }
-    public int getStatus(){
-        return Status;
+    public int getStage(){
+        return Stage;
+    }
+    public String getAddedby(){
+        return Added_by;
+    }
+
+    public void setAddedby(String raddedby){
+        Added_by = raddedby;
     }
 
     public void setName(String rname){
-        name=rname;
+        Name=rname;
     }
 
     public void setAge(int rage){
-        age=rage;
+        Age=rage;
     }
 
-    public void setId(String rid){
-        id=rid;
+    public void setID(String rid){
+        ID=rid;
     }
 
     public void setRoom(String rroom){
         Room=rroom;
     }
 
-    public void setStatus(int rstatus){
-        Status=rstatus;
+    public void setStage(int rstatus){
+        Stage=rstatus;
     }
 
 

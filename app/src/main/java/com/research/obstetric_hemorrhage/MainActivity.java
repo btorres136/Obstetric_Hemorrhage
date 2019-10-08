@@ -29,11 +29,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     private Actual_Patient actual_patient = new Actual_Patient();
     private Patient_Fragment patient_fragment = new Patient_Fragment();
-    private DatabaseTransactions databaseTransactions = new DatabaseTransactions();
-
     private FirebaseAnalytics mFirebaseAnalytics;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +40,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         BottomNavigationView Nav = findViewById(R.id.bottomNavigationView);
         Nav.setOnNavigationItemSelectedListener(this);
-        patient_fragment = databaseTransactions.ListenToDatabaseOnAllPatients();
-        actual_patient = databaseTransactions.ListenToDatabaseOnMyPatients();
 
         loadFragment(patient_fragment);
         this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
