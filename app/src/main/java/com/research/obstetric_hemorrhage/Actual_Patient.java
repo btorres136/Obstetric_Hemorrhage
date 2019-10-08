@@ -1,5 +1,7 @@
 package com.research.obstetric_hemorrhage;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -53,6 +55,34 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
                 holder.getTextView_id().setText("ID: "+model.getID());
                 holder.getTextView_room().setText("Room: "+model.getRoom());
                 holder.getTextView_status().setText("Stage: "+model.getStage());
+                holder.getCardView_erase().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                            // setup the alert builder
+                            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                            builder.setTitle("Alert!");
+                            builder.setMessage("Are you sure do you want to erase this patient?");
+
+                            // add the buttons
+                            builder.setPositiveButton("Erase", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            });
+                            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                }
+                            });
+
+                            // create and show the alert dialog
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                    }
+                });
             }
         };
         adapterr.startListening();

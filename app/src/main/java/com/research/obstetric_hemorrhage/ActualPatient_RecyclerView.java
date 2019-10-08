@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jjoe64.graphview.GraphView;
@@ -16,6 +17,7 @@ public class ActualPatient_RecyclerView extends RecyclerView.ViewHolder{
     private TextView textView_status;
     private TextView textView_Age;
     private TextView textView_room;
+    private CardView cardView_erase;
 
 
     public ActualPatient_RecyclerView(@NonNull View itemView) {
@@ -25,6 +27,7 @@ public class ActualPatient_RecyclerView extends RecyclerView.ViewHolder{
         textView_Age = itemView.findViewById(R.id.patient_age_actual);
         textView_status =itemView.findViewById(R.id.patient_state_actual);
         textView_room = itemView.findViewById(R.id.patient_room_actual);
+        cardView_erase = itemView.findViewById(R.id.erase_my_patientCV);
     }
 
     public TextView getTextView_Patient() {
@@ -65,5 +68,9 @@ public class ActualPatient_RecyclerView extends RecyclerView.ViewHolder{
 
     public void setTextView_room(TextView textView_room) {
         this.textView_room = textView_room;
+    }
+
+    public CardView getCardView_erase() {
+        return cardView_erase;
     }
 }

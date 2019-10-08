@@ -34,8 +34,6 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         ProgressBar pgsBar = (ProgressBar)findViewById(R.id.progressBar);
         pgsBar.setVisibility(View.GONE);
-        ImageView pgrsbar_icon= (ImageView)findViewById(R.id.pgrsbar_icon);
-        pgrsbar_icon.setVisibility(View.GONE);
 
         CardView sign_in = (CardView)findViewById(R.id.Register);
         sign_in.setOnClickListener(new View.OnClickListener() {
@@ -78,8 +76,6 @@ public class LoginActivity extends AppCompatActivity {
     public void showprogressbar(){
         ProgressBar pgsBar = (ProgressBar)findViewById(R.id.progressBar);
         pgsBar.setVisibility(VISIBLE);
-        ImageView pgrsbar_icon= (ImageView)findViewById(R.id.pgrsbar_icon);
-        pgrsbar_icon.setVisibility(VISIBLE);
         ImageView principal_icon = (ImageView) findViewById(R.id.principal_icon);
         principal_icon.setVisibility(View.GONE);
         EditText email = (EditText)findViewById(R.id.email);
@@ -123,8 +119,6 @@ public class LoginActivity extends AppCompatActivity {
         }
         else if(user == null && task !=null)
         {
-            ImageView pgrsbar_icon= (ImageView)findViewById(R.id.pgrsbar_icon);
-            pgrsbar_icon.setVisibility(View.GONE);
             ProgressBar pgsBar = (ProgressBar)findViewById(R.id.progressBar);
             pgsBar.setVisibility(View.GONE);
             FirebaseAuthException e = (FirebaseAuthException )task.getException();
