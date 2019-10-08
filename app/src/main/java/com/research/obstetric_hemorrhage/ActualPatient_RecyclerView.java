@@ -11,8 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.jjoe64.graphview.GraphView;
-
 
 public class ActualPatient_RecyclerView extends RecyclerView.ViewHolder{
     private TextView textView_Patient;

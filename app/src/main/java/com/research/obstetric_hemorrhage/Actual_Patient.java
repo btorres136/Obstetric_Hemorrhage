@@ -1,7 +1,10 @@
 package com.research.obstetric_hemorrhage;
 
 import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -11,12 +14,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -44,7 +48,7 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
                         .setQuery(databaseTransactions.ListenToDatabaseOnMyPatients(), Patient_Medical.class)
                         .build();
 
-        FirebaseRecyclerAdapter adapterr = new FirebaseRecyclerAdapter<Patient_Medical, ActualPatient_RecyclerView>(options) {
+        FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Patient_Medical, ActualPatient_RecyclerView>(options) {
             @NonNull
             @Override
             public ActualPatient_RecyclerView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -54,7 +58,7 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
                 return actualPatient_recyclerView;
             }
             @Override
-            protected void onBindViewHolder(@NonNull ActualPatient_RecyclerView holder, int position, @NonNull Patient_Medical model) {
+            protected void onBindViewHolder(@NonNull ActualPatient_RecyclerView holder, int position, @NonNull final Patient_Medical model) {
                 holder.getTextView_Patient().setText("Patient: "+model.getName());
                 holder.getTextView_Age().setText("Age: "+model.getAge());
                 holder.getTextView_id().setText("ID: "+model.getID());
@@ -67,21 +71,20 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
                             // setup the alert builder
                             AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                             builder.setTitle("Alert!");
-                            builder.setMessage("Are you sure do you want to erase this patient?");
+                            builder.setMessage("Are you sure do you want to erase this patient?" +
+                                    "\n"+
+                                    "\n"+
+                                    "You will not receive notifications of this patient anymore and also " +
+                                    "you will not have permission to modify his Information");
 
                             // add the buttons
                             builder.setPositiveButton("Erase", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-
+                                    databaseTransactions.RemoveFromMyPatients(model.getID());
                                 }
                             });
-                            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-
-                                }
-                            });
+                            builder.setNegativeButton("Cancel", null);
 
                             // create and show the alert dialog
                             AlertDialog dialog = builder.create();
@@ -106,10 +109,16 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
 
             }
         };
-        adapterr.startListening();
+        adapter.startListening();
 
-        recyclerView.setAdapter(adapterr);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        recyclerView.setAdapter(adapter);
+        LinearLayoutManager linearLayout = new LinearLayoutManager(getActivity());
+        //linearLayout.setReverseLayout(true);
+        //linearLayout.setStackFromEnd(true);
+        recyclerView.setLayoutManager(linearLayout);
+
+
         swipe = rootView.findViewById(R.id.swipeRefresh);
         swipe.setOnRefreshListener(this);
 

@@ -115,6 +115,11 @@ public class DatabaseTransactions {
         myRef2.child(key).child("Pressure").child("Systolic").child(key2).setValue(pressure);
     }
 
+    public void RemoveFromMyPatients(String ID){
+        DatabaseReference myRef = database.getReference("/User_Patients/"+mAuth.getUid()+"/"+ID);
+        myRef.removeValue();
+    }
+
     public void submitgraphinfo(String sys, String dias, String id){
         Map<String, String> pressure = new HashMap<>();
         pressure.put("Time", "15");

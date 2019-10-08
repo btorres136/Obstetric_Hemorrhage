@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -66,14 +67,15 @@ public class Patient_Fragment extends Fragment implements SwipeRefreshLayout.OnR
                                 model.getAge(), model.getStage(), model.getRoom(), model.getID());
                     }
                 });
-
             }
         };
         adapter.startListening();
 
-        //recyclerView.smoothScrollToPosition(0);
+        LinearLayoutManager linearLayout = new LinearLayoutManager(getActivity());
+        linearLayout.setReverseLayout(true);
+        linearLayout.setStackFromEnd(true);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(linearLayout);
 
         bar.setVisibility(View.GONE);
 
@@ -83,10 +85,7 @@ public class Patient_Fragment extends Fragment implements SwipeRefreshLayout.OnR
 
     @Override
     public void onRefresh() {
-        swipe.setRefreshing(true);
-        //Patients_RecyclerView adapter = new Patients_RecyclerView(All_Patients_Array);
-        //recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        //
         swipe.setRefreshing(false);
     }
 }
