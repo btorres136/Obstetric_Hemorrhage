@@ -2,6 +2,7 @@ package com.research.obstetric_hemorrhage;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,10 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -83,6 +88,22 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
                             dialog.show();
                     }
                 });
+
+                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.time_spinner, android.R.layout.simple_spinner_item);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                holder.getSpinner_timer().setAdapter(adapter);
+                holder.getSpinner_timer().setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        ((TextView) adapterView.getChildAt(0)).setTextColor(Color.BLACK);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
+
             }
         };
         adapterr.startListening();
