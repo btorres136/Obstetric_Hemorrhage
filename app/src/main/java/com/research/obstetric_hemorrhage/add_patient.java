@@ -5,8 +5,6 @@ import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,12 +15,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.database.FirebaseDatabase;
-
 
 public class add_patient extends Fragment {
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private MainActivity main = new MainActivity();
     private View rootView;
     private String text = "";
     private DatabaseTransactions databaseTransactions = new DatabaseTransactions();

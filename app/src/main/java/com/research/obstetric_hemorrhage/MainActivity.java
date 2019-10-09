@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -23,6 +25,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
+
+import java.util.Calendar;
 
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -48,6 +52,19 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         getSupportActionBar().setElevation(0);
         FirebaseMessaging.getInstance().subscribeToTopic("PatientAdded");
         FirebaseMessaging.getInstance().subscribeToTopic("PatientDeleted");
+
+        Intent myIntent = new Intent(this, FirebaseCloudFunctions.class);
+        PendingIntent pendingIntent = PendingIntent.getService(this, 0, myIntent, 0);
+
+        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+
+        alarmManager.set(AlarmManager.RTC_WAKEUP, 600, pendingIntent);
+
+
+
     }
 
     public void updateUI(FirebaseUser user){

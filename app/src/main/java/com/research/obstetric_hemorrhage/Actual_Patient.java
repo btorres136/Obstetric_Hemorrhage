@@ -1,11 +1,13 @@
 package com.research.obstetric_hemorrhage;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,13 +22,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
+import static android.content.Context.ALARM_SERVICE;
 
 
 public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
@@ -111,13 +113,11 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
         };
         adapter.startListening();
 
-
         recyclerView.setAdapter(adapter);
         LinearLayoutManager linearLayout = new LinearLayoutManager(getActivity());
-        //linearLayout.setReverseLayout(true);
-        //linearLayout.setStackFromEnd(true);
+        linearLayout.setReverseLayout(true);
+        linearLayout.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayout);
-
 
         swipe = rootView.findViewById(R.id.swipeRefresh);
         swipe.setOnRefreshListener(this);
@@ -135,7 +135,7 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
         //adapter = new ActualPatient_RecyclerView(My_Patients_Array);
         recyclerView = rootView.findViewById(R.id.recycler_mypat);
         //recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        //recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         swipe.setRefreshing(false);
     }
 

@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         ProgressBar pgsBar = (ProgressBar)findViewById(R.id.progressBar);
         pgsBar.setVisibility(View.GONE);
 
+
         CardView sign_in = (CardView)findViewById(R.id.Register);
         sign_in.setOnClickListener(new View.OnClickListener() {
             EditText email = (EditText)findViewById(R.id.email);

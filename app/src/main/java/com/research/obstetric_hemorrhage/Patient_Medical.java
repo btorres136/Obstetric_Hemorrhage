@@ -62,8 +62,8 @@ public class Patient_Medical {
         Room=rroom;
     }
 
-    public void setStage(int rstatus){
-        Stage=rstatus;
+    public void setStage(int rstage){
+        Stage=rstage;
     }
 
 
