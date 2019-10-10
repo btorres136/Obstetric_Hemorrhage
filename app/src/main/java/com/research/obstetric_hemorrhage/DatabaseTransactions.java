@@ -1,5 +1,6 @@
 package com.research.obstetric_hemorrhage;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -17,6 +18,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -114,7 +117,7 @@ public class DatabaseTransactions {
         myRef.child(key).setValue(usermap);
         Map<String, String> pressure = new HashMap<>();
         pressure.put("Time", "0");
-        pressure.put("Added by:", "Default");
+        pressure.put("Added by", "Default");
         pressure.put("Data","0");
         DatabaseReference myRef2 = database.getReference("/Patients_Graphs/");
         String key2 = myRef.push().getKey();
@@ -122,11 +125,33 @@ public class DatabaseTransactions {
         myRef2.child(key).child("Pressure").child("Systolic").child(key2).setValue(pressure);
     }
 
+    public void AddGraphDataDias(String Data, String Time, String id, String key){
+        DatabaseReference myRef = database.getReference("/Patients/");
+        Map<String, Object> data = new HashMap<>();
+        data.put("Time", Time);
+        data.put("Added by", mAuth.getUid());
+        data.put("Data",Data);
+        DatabaseReference myRef2 = database.getReference("/Patients_Graphs/");
+        myRef2.child(id).child("Pressure").child("Diastolic").child(key).setValue(data);
+
+    }
+
+    public void AddGraphDataSys(String Data, String Time, String id, String key){
+        DatabaseReference myRef = database.getReference("/Patients/");
+        Map<String, Object> data = new HashMap<>();
+        data.put("Time", Time);
+        data.put("Added by", mAuth.getUid());
+        data.put("Data",Data);
+        DatabaseReference myRef2 = database.getReference("/Patients_Graphs/");
+        myRef2.child(id).child("Pressure").child("Systolic").child(key).setValue(data);
+    }
+
+
     public void RemoveFromMyPatients(String ID){
         DatabaseReference myRef = database.getReference("/User_Patients/"+mAuth.getUid()+"/"+ID);
         myRef.removeValue();
     }
-    //////////////////////////////////////////////////////////
+
 
     //public void submitgraphinfo(String sys, String dias, String id){
        /*Map<String, String> pressure = new HashMap<>();

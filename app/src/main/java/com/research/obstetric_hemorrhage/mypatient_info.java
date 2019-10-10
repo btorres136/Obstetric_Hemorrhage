@@ -4,9 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,65 +20,120 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 public class mypatient_info extends AppCompatActivity {
 
-    EditText xValue_sys, yValue_sys;
-    CardView update_info;
+    private GraphView graph_pres;
+    private EditText input_sys;
+    private EditText input_dias;
 
-    FirebaseDatabase database;
-    DatabaseReference reference;
+    private TextView patien_name;
+    private TextView patient_id;
+    private TextView patient_room;
+    private TextView patient_age;
+    private TextView patient_state;
+    private CardView update_info;
+    private FirebaseDatabase database= FirebaseDatabase.getInstance();
 
-    GraphView graph_presion;
-    LineGraphSeries series;
+    private DatabaseTransactions databaseTransactions = new DatabaseTransactions();
+
+    private LineGraphSeries series;
+    private LineGraphSeries series2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mypatient_info_layout);
-//////////
-        xValue_sys = (EditText) graph_presion.findViewById(R.id.input_syspresX);
-        yValue_sys = (EditText) graph_presion.findViewById(R.id.input_syspres);
-        update_info = (CardView) update_info.findViewById(R.id.update_infoCV);
-        graph_presion = (GraphView) graph_presion.findViewById(R.id.graph_presion);
+
+
+        graph_pres = findViewById(R.id.graph_presion);
+
+
+
+        patien_name = findViewById(R.id.patient_name_actual);
+        patient_id = findViewById(R.id.patient_id_actual);
+        patient_room = findViewById(R.id.patient_room_actual);
+        patient_age = findViewById(R.id.patient_age_actual);
+        patient_state = findViewById(R.id.patient_state_actual);
+        update_info = findViewById(R.id.update_infoCV);
+
+        input_dias = findViewById(R.id.input_syspres);
+        input_sys = findViewById(R.id.input_diaspres);
+
+        patient_id.setText("ID: "+getIntent().getExtras().getString("PATIENT_ID"));
+        patien_name.setText("Patient: "+getIntent().getExtras().getString("PATIENT_NAME"));
+        patient_state.setText("Stage: "+getIntent().getExtras().getString("PATIENT_STATE"));
+        patient_room.setText("Room: "+getIntent().getExtras().getString("PATIENT_ROOM"));
+        patient_age.setText("Age: "+getIntent().getExtras().getString("PATIENT_AGE"));
+
         series = new LineGraphSeries();
-        graph_presion.addSeries(series);
-        reference = database.getReference("charTable");
+        series2 = new LineGraphSeries();
+        series.setColor(Color.RED);
+        series2.setColor(Color.BLUE);
+        graph_pres.addSeries(series);
+        graph_pres.addSeries(series2);
 
-        setListeners();
-    }
-
-    private void setListeners() {
         update_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String id = reference.push().getKey();
+                Calendar rightNow = Calendar.getInstance();
+                String key = database.getReference().push().getKey();
+                int hour = rightNow.get(Calendar.HOUR); // return the hour in 12 hrs format (ranging from 0-11)
+                int minute = rightNow.get(Calendar.MINUTE);
+                int seconds = rightNow.get(Calendar.SECOND);
+                String time = Integer.toString(minute);
 
-                int x = Integer.parseInt(xValue_sys.getText().toString());
-                int y = Integer.parseInt(yValue_sys.getText().toString());
-
-                PointValue_sys pointvalue_sys = new PointValue_sys(x, y);
-                reference.child(id).setValue(pointvalue_sys);
+                databaseTransactions.AddGraphDataSys(input_sys.getText().toString(),time,getIntent().getExtras().getString("PATIENT_ID"),key);
+                databaseTransactions.AddGraphDataDias(input_dias.getText().toString(),time,getIntent().getExtras().getString("PATIENT_ID"),key);
 
             }
         });
+
     }
 
     public void onStart() {
         super.onStart();
-
-        reference.addValueEventListener(new ValueEventListener() {
+        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("/Patients_Graphs/"+getIntent().getExtras().getString("PATIENT_ID")+"/Pressure/Systolic/");
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                DataPoint[] dp = new DataPoint[(int) dataSnapshot.getChildrenCount()];
+                DataPoint[] dataPoint = new DataPoint[(int)dataSnapshot.getChildrenCount()];
                 int index = 0;
 
                 for (DataSnapshot myDataSnapshot : dataSnapshot.getChildren()) {
-                    PointValue_sys pointValueSys = dataSnapshot.getValue(PointValue_sys.class);
-                    dp[index] = new DataPoint(pointValueSys.getxValue_sys(), pointValueSys.getyValue_sys());
+                    PointValue_sys pointValueSys = myDataSnapshot.getValue(PointValue_sys.class);
+
+                    dataPoint[index] = new DataPoint(Integer.parseInt(pointValueSys.getTime()),Integer.parseInt(pointValueSys.getData()));
+                    index++;
+                }
+                series.resetData(dataPoint);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        DatabaseReference myRef2 = FirebaseDatabase.getInstance().getReference("/Patients_Graphs/"+getIntent().getExtras().getString("PATIENT_ID")+"/Pressure/Diastolic/");
+        myRef2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                DataPoint[] dataPoint = new DataPoint[(int)dataSnapshot.getChildrenCount()];
+                int index = 0;
+
+                for (DataSnapshot myDataSnapshot : dataSnapshot.getChildren()) {
+                    PointValue_sys pointValueSys = myDataSnapshot.getValue(PointValue_sys.class);
+
+                    dataPoint[index] = new DataPoint(Integer.parseInt(pointValueSys.getTime()),Integer.parseInt(pointValueSys.getData()));
                     index++;
                 }
 
-                series.resetData(dp);
+                series2.resetData(dataPoint);
             }
 
             @Override
@@ -84,5 +142,4 @@ public class mypatient_info extends AppCompatActivity {
             }
         });
     }
-    ////////////////////
 }

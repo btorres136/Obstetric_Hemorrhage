@@ -133,6 +133,19 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
                     }
                 });
 
+                holder.getCardView_see_info().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(view.getContext(), mypatient_info.class);
+                        intent.putExtra("PATIENT_ID",model.getID());
+                        intent.putExtra("PATIENT_NAME", model.getName());
+                        intent.putExtra("PATIENT_AGE",Integer.toString(model.getAge()));
+                        intent.putExtra("PATIENT_ROOM",model.getRoom());
+                        intent.putExtra("PATIENT_STATE",Integer.toString(model.getStage()));
+                        startActivity(intent);
+                    }
+                });
+
             }
         };
         adapter.startListening();

@@ -83,6 +83,10 @@ public class Patient_Fragment extends Fragment implements SwipeRefreshLayout.OnR
                     public void onClick(View view) {
                         Intent intent = new Intent(view.getContext(), patient_info.class);
                         intent.putExtra("PATIENT_ID",model.getID());
+                        intent.putExtra("PATIENT_NAME", model.getName());
+                        intent.putExtra("PATIENT_AGE",Integer.toString(model.getAge()));
+                        intent.putExtra("PATIENT_ROOM",model.getRoom());
+                        intent.putExtra("PATIENT_STATE",Integer.toString(model.getStage()));
                         startActivity(intent);
                     }
                 });

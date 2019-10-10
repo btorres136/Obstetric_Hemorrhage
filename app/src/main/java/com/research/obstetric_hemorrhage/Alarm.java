@@ -34,11 +34,11 @@ public class Alarm extends BroadcastReceiver {
         }
         else{
             //super.onMessageReceived(remoteMessage);
-           /* NotificationCompat.Builder not =  new NotificationCompat.Builder(getApplicationContext(), "Notifications")
-                    .setContentTitle(remoteMessage.getData().get("title"))
-                    .setContentText(remoteMessage.getData().get("body"))
+           NotificationCompat.Builder not =  new NotificationCompat.Builder(context, "Notifications")
+                    .setContentTitle("Patient: "+intent.getExtras().getString("PATIENT_NAME") + " needs your help!")
+                    .setContentText("Enter the app to add patient Info!")
                     .setSmallIcon(R.mipmap.d2icon_round);
-            getManager().notify(0, not.build());*/
+            getManager(context).notify(0, not.build());
         }
     }
 

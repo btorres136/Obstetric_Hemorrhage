@@ -85,15 +85,6 @@
             android:layout_alignParentLeft="true"
             android:textStyle="bold"/>
 
-        <EditText
-            android:id="@+id/input_syspresX"
-            android:layout_width="100dp"
-            android:layout_height="45dp"
-            android:layout_below="@id/pres_sys"
-            android:layout_centerHorizontal="true"
-            android:textColor="#000000"
-            android:textSize="17dp" />
-
         <TextView
             android:id="@+id/pres_dias"
             android:layout_width="wrap_content"
