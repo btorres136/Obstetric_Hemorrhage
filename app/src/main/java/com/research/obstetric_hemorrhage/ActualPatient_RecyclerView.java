@@ -2,6 +2,7 @@ package com.research.obstetric_hemorrhage;
 
 
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ public class ActualPatient_RecyclerView extends RecyclerView.ViewHolder{
     private TextView textView_room;
     private CardView cardView_erase;
     private Spinner  spinner_timer;
+    private CardView cardView_set_timer;
 
 
     public ActualPatient_RecyclerView(@NonNull View itemView) {
@@ -29,6 +31,10 @@ public class ActualPatient_RecyclerView extends RecyclerView.ViewHolder{
         textView_room = itemView.findViewById(R.id.patient_room_actual);
         cardView_erase = itemView.findViewById(R.id.erase_my_patientCV);
         spinner_timer = itemView.findViewById(R.id.time_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(itemView.getContext(), R.array.time_spinner, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_timer.setAdapter(adapter);
+        cardView_set_timer = itemView.findViewById(R.id.set_noti_timerCV);
 
     }
 
@@ -78,5 +84,9 @@ public class ActualPatient_RecyclerView extends RecyclerView.ViewHolder{
 
     public Spinner getSpinner_timer() {
         return spinner_timer;
+    }
+
+    public CardView getCardView_set_timer() {
+        return cardView_set_timer;
     }
 }

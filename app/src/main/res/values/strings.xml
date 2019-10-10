@@ -21,11 +21,11 @@
     </string-array>
 
     <string-array name="time_spinner">
-        <item>10 min</item>
-        <item>15 min</item>
-        <item>20 min</item>
-        <item>25 min</item>
-        <item>30 min</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->

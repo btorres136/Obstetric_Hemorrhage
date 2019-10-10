@@ -17,18 +17,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.SystemClock;
+import android.provider.AlarmClock;
+import android.provider.Telephony;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
+import java.util.Random;
+
 import static android.content.Context.ALARM_SERVICE;
+import static android.os.Build.VERSION.SDK_INT;
 
 
 public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
@@ -40,7 +48,7 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             final Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.fragment_actual__patient, container, false);
         recyclerView = rootView.findViewById(R.id.recycler_mypat);
@@ -66,6 +74,22 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
                 holder.getTextView_id().setText("ID: "+model.getID());
                 holder.getTextView_room().setText("Room: "+model.getRoom());
                 holder.getTextView_status().setText("Stage: "+model.getStage());
+                final Spinner spinner = holder.getSpinner_timer();
+                holder.getCardView_set_timer().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        int number = Integer.parseInt(spinner.getSelectedItem().toString());
+                        Intent intent = new Intent(view.getContext(), Alarm.class);
+                        intent.putExtra("PATIENT_NAME",model.getName());
+                        final int _id = (int) System.currentTimeMillis();
+                        intent.putExtra("ID",_id);
+                        PendingIntent pendingIntent = PendingIntent.getBroadcast(view.getContext(),_id,intent,PendingIntent.FLAG_ONE_SHOT);
+                        AlarmManager alarmManager = (AlarmManager) view.getContext().getSystemService(ALARM_SERVICE);
+                        if (SDK_INT >= Build.VERSION_CODES.M) {
+                            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+number*1000,pendingIntent);
+                        }
+                    }
+                });
                 holder.getCardView_erase().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
