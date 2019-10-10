@@ -1,5 +1,8 @@
 package com.research.obstetric_hemorrhage;
 
+import android.view.View;
+import android.widget.EditText;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -10,10 +13,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static android.os.Build.ID;
 
 public class DatabaseTransactions {
 
@@ -119,14 +126,15 @@ public class DatabaseTransactions {
         DatabaseReference myRef = database.getReference("/User_Patients/"+mAuth.getUid()+"/"+ID);
         myRef.removeValue();
     }
+    //////////////////////////////////////////////////////////
 
-    public void submitgraphinfo(String sys, String dias, String id){
-        Map<String, String> pressure = new HashMap<>();
+    //public void submitgraphinfo(String sys, String dias, String id){
+       /*Map<String, String> pressure = new HashMap<>();
         pressure.put("Time", "15");
         pressure.put("Added by:", "Default");
         pressure.put("Data",dias);
         DatabaseReference myRef = database.getReference("/Patients_Graphs/");
         String key = myRef.push().getKey();
-        myRef.child(id).child("Pressure").child("Diastolic").child(key).setValue(pressure);
-    }
+        myRef.child(id).child("Pressure").child("Diastolic").child(key).setValue(pressure);*/
+    //}
 }

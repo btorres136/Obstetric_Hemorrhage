@@ -17,6 +17,8 @@ public class Patients_RecyclerView extends RecyclerView.ViewHolder{
     private TextView textView_Age;
     private TextView textView_room;
     private CardView Addtomypat;
+    private CardView See_info;
+    private CardView Update_Info;
 
     public Patients_RecyclerView(@NonNull View itemView) {
         super(itemView);
@@ -26,6 +28,8 @@ public class Patients_RecyclerView extends RecyclerView.ViewHolder{
         textView_status =itemView.findViewById(R.id.patient_state);
         textView_room = itemView.findViewById(R.id.room);
         Addtomypat = itemView.findViewById(R.id.add_mypat);
+        See_info = itemView.findViewById(R.id.see_info);
+        Update_Info = itemView.findViewById(R.id.update_infoCV);
     }
 
     public TextView getTextView_Patient() {
@@ -71,4 +75,8 @@ public class Patients_RecyclerView extends RecyclerView.ViewHolder{
     public CardView getAddtomypat() {
         return Addtomypat;
     }
+
+    public CardView getSee_info() { return See_info;  }
+
+    public CardView getUpdate_Info() { return Update_Info; }
 }
