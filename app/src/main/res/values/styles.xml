@@ -14,4 +14,20 @@
         <item name="colorPrimaryDark">#c4c4c4</item>
 
     </style>
+
+    <style name="green" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">#04c500</item>
+    </style>
+
+    <style name="yellow" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">#ffff00</item>
+    </style>
+
+    <style name="red" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">#fe0900</item>
+    </style>
+
+    <style name="orange" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">#fb9f00</item>
+    </style>
 </resources>

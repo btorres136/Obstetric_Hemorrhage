@@ -163,9 +163,6 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
         return rootView;
     }
 
-
-
-
     @Override
     public void onRefresh() {
         swipe.setRefreshing(true);

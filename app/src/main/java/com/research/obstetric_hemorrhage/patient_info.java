@@ -71,11 +71,6 @@ public class patient_info extends AppCompatActivity {
         patient_room.setText("Room: "+getIntent().getExtras().getString("PATIENT_ROOM"));
         patient_age.setText("Age: "+getIntent().getExtras().getString("PATIENT_AGE"));
 
-
-
-
-
-
         series = new LineGraphSeries();
         series2 = new LineGraphSeries();
         series.setColor(Color.RED);

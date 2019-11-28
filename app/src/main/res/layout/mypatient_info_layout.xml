@@ -104,6 +104,7 @@
             android:layout_below="@id/pres_sys"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
+            android:inputType="number"
             android:textColor="#000000"
             android:textSize="17dp" />
 
@@ -113,6 +114,7 @@
             android:layout_height="45dp"
             android:layout_below="@id/pres_dias"
             android:layout_alignParentRight="true"
+            android:inputType="number"
             android:layout_marginRight="10dp"
             android:textColor="#000000"
             android:textSize="17dp" />
@@ -154,6 +156,7 @@
             android:layout_height="45dp"
             android:layout_below="@+id/ing_liquid"
             android:layout_alignParentLeft="true"
+            android:inputType="number"
             android:layout_marginLeft="10dp"
             android:textColor="#000000"
             android:textSize="17dp" />
@@ -165,6 +168,7 @@
             android:layout_below="@+id/dis_liquid"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
+            android:inputType="number"
             android:textColor="#000000"
             android:textSize="17dp" />
 
@@ -193,6 +197,7 @@
             android:layout_height="45dp"
             android:layout_below="@+id/input_pulsoTV"
             android:layout_alignParentLeft="true"
+            android:inputType="number"
             android:layout_marginLeft="10dp"
             android:textColor="#000000"
             android:textSize="17dp" />
