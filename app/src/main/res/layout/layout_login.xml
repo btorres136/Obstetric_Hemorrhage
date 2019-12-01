@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="#ffffff"
     android:orientation="vertical"
     tools:context=".LoginActivity"
     android:fillViewport="true">
@@ -27,7 +27,7 @@
             android:ems="10"
             android:hint="Email"
             android:inputType="textEmailAddress"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textSize="16dp"
             app:layout_constraintBottom_toTopOf="@+id/password"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +45,7 @@
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             app:layout_constraintBottom_toTopOf="@+id/Register"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,7 @@
             android:layout_marginEnd="55dp"
             android:layout_marginRight="55dp"
             android:layout_marginBottom="36dp"
-            app:cardBackgroundColor="#07decc"
+            app:cardBackgroundColor="#a54195"
             app:cardCornerRadius="25dp"
             app:cardElevation="10dp"
             android:foreground="?attr/selectableItemBackground"
@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="80dp"
             android:text="Sign Up"
-            android:textColor="#ffffff"
+            android:textColor="#a54195"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -127,7 +127,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.51"
-            app:srcCompat="@drawable/douhla" />
+            app:srcCompat="@drawable/drobs" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
