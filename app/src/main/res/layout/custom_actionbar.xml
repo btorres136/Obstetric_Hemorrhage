@@ -10,8 +10,8 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Douhla"
-        android:textColor="#3aa16e"
+        android:text="Drobs"
+        android:textColor="#a54195"
         android:textSize="24sp"
         app:fontFamily="sans-serif-black" />
 

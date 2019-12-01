@@ -243,7 +243,7 @@
             android:clickable="true"
             android:foreground="?attr/selectableItemBackground"
             android:stateListAnimator="@drawable/lift_on_touch"
-            app:cardBackgroundColor="#3aa16e"
+            app:cardBackgroundColor="#a54195"
             app:cardCornerRadius="10dp"
             app:cardElevation="10dp"
             app:cardPreventCornerOverlap="false"

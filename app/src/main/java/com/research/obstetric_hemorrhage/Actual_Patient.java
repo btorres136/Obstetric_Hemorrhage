@@ -136,7 +136,7 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
                 holder.getCardView_see_info().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(view.getContext(), mypatient_info.class);
+                        Intent intent = new Intent(view.getContext(), patient_table.class);
                         intent.putExtra("PATIENT_ID",model.getID());
                         intent.putExtra("PATIENT_NAME", model.getName());
                         intent.putExtra("PATIENT_AGE",Integer.toString(model.getAge()));
