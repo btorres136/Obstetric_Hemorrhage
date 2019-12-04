@@ -19,6 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 import static android.view.View.VISIBLE;
 
@@ -30,9 +31,10 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         setContentView(R.layout.layout_login);
         mAuth = FirebaseAuth.getInstance();
-        ProgressBar pgsBar = (ProgressBar)findViewById(R.id.progressBar);
+        ProgressBar pgsBar = findViewById(R.id.progressBar);
         pgsBar.setVisibility(View.GONE);
 
 

@@ -152,45 +152,4 @@ public class DatabaseTransactions {
         myRef.removeValue();
     }
 
-    public void Addhour_l(String toString, String time, String patient_id, String key) {
-        
-    }
-
-    public void AddSyst_press_l(String toString, String time, String patient_id, String key) {
-    }
-
-    public void Addebl_l(String toString, String time, String patient_id, String key) {
-    }
-
-    public void Addhr_l(String toString, String time, String patient_id, String key) {
-    }
-
-    public void Addmh_l(String toString, String time, String patient_id, String key) {
-    }
-
-    public void Addperfussion_l(String toString, String time, String patient_id, String key) {
-    }
-
-    public void Addhr_prc_l(String toString, String time, String patient_id, String key) {
-    }
-
-    public void Addsys_press_prcl(String toString, String time, String patient_id, String key) {
-    }
-
-    public void Addsat_l(String toString, String time, String patient_id, String key) {
-    }
-
-    public void Addshock_l(String toString, String time, String patient_id, String key) {
-    }
-
-
-    //public void submitgraphinfo(String sys, String dias, String id){
-       /*Map<String, String> pressure = new HashMap<>();
-        pressure.put("Time", "15");
-        pressure.put("Added by:", "Default");
-        pressure.put("Data",dias);
-        DatabaseReference myRef = database.getReference("/Patients_Graphs/");
-        String key = myRef.push().getKey();
-        myRef.child(id).child("Pressure").child("Diastolic").child(key).setValue(pressure);*/
-    //}
 }

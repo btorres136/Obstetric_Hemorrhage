@@ -70,206 +70,240 @@
             android:id="@+id/patient_table"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:stretchColumns="1"
-            android:orientation="horizontal"
             android:layout_below="@+id/patient_age_actual"
-            android:background="#ffffff">
+            android:layout_marginTop="-26dp"
+            android:background="#ffffff"
+            android:orientation="horizontal"
+            android:stretchColumns="1">
 
             <TableRow>
+
                 <TextView
+                    android:inputType="number"
+                    android:padding="10dp"
                     android:text=""
                     android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:inputType="number"
-                    android:padding="10dp" />
+                    android:textStyle="bold" />
+
                 <TextView
-                    android:text="Hour:"
                     android:id="@+id/hour"
-                    android:textColor="#000000"
-                    android:textStyle="bold"
                     android:inputType="number"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:text="Hour:"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/sys.pressure"
+                    android:inputType="number"
+                    android:padding="10dp"
                     android:text="Syst.Pressure"
                     android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:inputType="number"
-                    android:padding="10dp" />
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/ebl"
+                    android:inputType="number"
+                    android:padding="10dp"
                     android:text="EBL"
                     android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:inputType="number"
-                    android:padding="10dp" />
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/hr"
+                    android:inputType="number"
+                    android:padding="10dp"
                     android:text="Heart Rate (/min)"
                     android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:inputType="number"
-                    android:padding="10dp" />
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/mh"
+                    android:inputType="number"
+                    android:padding="10dp"
                     android:text="Mental Health"
                     android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:inputType="number"
-                    android:padding="10dp" />
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/perf"
+                    android:inputType="number"
+                    android:padding="10dp"
                     android:text="Perfussion"
                     android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:inputType="number"
-                    android:padding="10dp" />
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/hr_prc"
+                    android:inputType="number"
+                    android:padding="10dp"
                     android:text="Heart Rate(>15%)"
                     android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:inputType="number"
-                    android:padding="10dp" />
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/sys_press_prc"
+                    android:inputType="number"
+                    android:padding="10dp"
                     android:text="Systolic Press"
                     android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:inputType="number"
-                    android:padding="10dp" />
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/sat"
+                    android:inputType="number"
+                    android:padding="10dp"
                     android:text="Sat 02"
                     android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:inputType="number"
-                    android:padding="10dp" />
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/shock"
+                    android:inputType="number"
+                    android:padding="10dp"
                     android:text="Shock Indicator (>0.89):"
                     android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:inputType="number"
-                    android:padding="10dp" />
+                    android:textStyle="bold" />
             </TableRow>
 
             <TableRow>
+
                 <TextView
+                    android:inputType="number"
+                    android:padding="10dp"
                     android:text="New"
                     android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:inputType="number"
-                    android:padding="10dp" />
+                    android:textStyle="bold" />
+
                 <EditText
-                    android:text=""
                     android:id="@+id/hour_n"
                     android:inputType="number"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:text="" />
+
                 <EditText
                     android:id="@+id/sys.pressure_n"
-                    android:text=""
                     android:inputType="number"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:text="" />
+
                 <EditText
                     android:id="@+id/ebl_n"
-                    android:text=""
                     android:inputType="number"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:text="" />
+
                 <EditText
                     android:id="@+id/hr_n"
-                    android:text=""
                     android:inputType="number"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:text="" />
+
                 <EditText
                     android:id="@+id/mh_n"
-                    android:text=""
                     android:inputType="number"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:text="" />
+
                 <EditText
                     android:id="@+id/perf_n"
-                    android:text=""
                     android:inputType="number"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:text="" />
+
                 <EditText
                     android:id="@+id/hr_prc_n"
-                    android:text=""
                     android:inputType="number"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:text="" />
+
                 <EditText
                     android:id="@+id/sys_press_prc_n"
-                    android:text=""
                     android:inputType="number"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:text="" />
+
                 <EditText
                     android:id="@+id/sat_n"
-                    android:text=""
                     android:inputType="number"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:text="" />
+
                 <EditText
                     android:id="@+id/shock_n"
-                    android:text=""
                     android:inputType="number"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:text="" />
             </TableRow>
 
             <TableRow>
+
                 <TextView
+                    android:inputType="number"
+                    android:padding="10dp"
                     android:text="Last"
                     android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:inputType="number"
-                    android:padding="10dp" />
+                    android:textStyle="bold" />
+
                 <TextView
-                    android:text=""
                     android:id="@+id/hour_l"
                     android:inputType="number"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:text="" />
+
                 <TextView
                     android:id="@+id/sys.pressure_l"
-                    android:text=""
                     android:inputType="number"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:text="" />
+
                 <TextView
                     android:id="@+id/ebl_l"
-                    android:text=""
                     android:inputType="number"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:text="" />
+
                 <TextView
                     android:id="@+id/hr_l"
-                    android:text=""
                     android:inputType="number"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:text="" />
+
                 <TextView
                     android:id="@+id/mh_l"
-                    android:text=""
                     android:inputType="number"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:text="" />
+
                 <TextView
                     android:id="@+id/perf_l"
-                    android:text=""
                     android:inputType="number"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:text="" />
+
                 <TextView
                     android:id="@+id/hr_prc_l"
-                    android:text=""
                     android:inputType="number"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:text="" />
+
                 <TextView
                     android:id="@+id/sys_press_prc_l"
-                    android:text=""
                     android:inputType="number"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:text="" />
+
                 <TextView
                     android:id="@+id/sat_l"
-                    android:text=""
                     android:inputType="number"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:text="" />
+
                 <TextView
                     android:id="@+id/shock_l"
-                    android:text=""
                     android:inputType="number"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:text="" />
             </TableRow>
         </TableLayout>
 
