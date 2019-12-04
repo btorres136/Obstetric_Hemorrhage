@@ -78,17 +78,6 @@ public class patient_table extends AppCompatActivity {
                 int seconds = rightNow.get(Calendar.SECOND);
                 String time = Integer.toString(minute);
 
-/*
-                databaseTransactions.Addhour_l(lhour.getText().toString(), time, getIntent().getExtras().getString("PATIENT_ID"), key);
-                databaseTransactions.AddSyst_press_l(Syst_Pres.getText().toString(), time, getIntent().getExtras().getString("PATIENT_ID"), key);
-                databaseTransactions.Addebl_l(EBL.getText().toString(), time, getIntent().getExtras().getString("PATIENT_ID"), key);
-                databaseTransactions.Addhr_l(HR.getText().toString(), time, getIntent().getExtras().getString("PATIENT_ID"), key);
-                databaseTransactions.Addmh_l(MH.getText().toString(), time, getIntent().getExtras().getString("PATIENT_ID"), key);
-                databaseTransactions.Addperfussion_l(perfussion.getText().toString(), time, getIntent().getExtras().getString("PATIENT_ID"), key);
-                databaseTransactions.Addhr_prc_l(HR_prc.getText().toString(), time, getIntent().getExtras().getString("PATIENT_ID"), key);
-                databaseTransactions.Addsys_press_prcl(Sys_press_prc.getText().toString(), time, getIntent().getExtras().getString("PATIENT_ID"), key);
-                databaseTransactions.Addsat_l(sat.getText().toString(), time, getIntent().getExtras().getString("PATIENT_ID"), key);
-                databaseTransactions.Addshock_l(shock_index.getText().toString(), time, getIntent().getExtras().getString("PATIENT_ID"), key);*/
             }
         });
     }

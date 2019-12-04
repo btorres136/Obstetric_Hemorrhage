@@ -86,7 +86,7 @@ public class mypatient_info extends AppCompatActivity {
             public void onClick(View view) {
                 Calendar rightNow = Calendar.getInstance();
                 String key = database.getReference().push().getKey();
-                int hour = rightNow.get(Calendar.HOUR); // return the hour in 12 hrs format (ranging from 0-11)
+                int hour = rightNow.get(Calendar.HOUR); //return the hour in 12 hrs format (ranging from 0-11)
                 int minute = rightNow.get(Calendar.MINUTE);
                 int seconds = rightNow.get(Calendar.SECOND);
                 String time = Integer.toString(minute);
