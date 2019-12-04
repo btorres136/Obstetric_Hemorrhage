@@ -18,6 +18,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -116,13 +118,25 @@ public class DatabaseTransactions {
         usermap.put("Added by", mAuth.getUid());
         myRef.child(key).setValue(usermap);
         Map<String, String> pressure = new HashMap<>();
-        pressure.put("Time", "0");
+        DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+        String timeformated = timeFormat.format(date);
+        String dateformated = dateFormat.format(date);
+        pressure.put("Time added", timeformated);
+        pressure.put("Date added", dateformated);
         pressure.put("Added by", "Default");
-        pressure.put("Data","0");
+        pressure.put("Value","0");
         DatabaseReference myRef2 = database.getReference("/Patients_Graphs/");
         String key2 = myRef.push().getKey();
         myRef2.child(key).child("Pressure").child("Diastolic").child(key2).setValue(pressure);
         myRef2.child(key).child("Pressure").child("Systolic").child(key2).setValue(pressure);
+        myRef2.child(key).child("Pressure").child("Diastolic").child(key2).setValue(pressure);
+        myRef2.child(key).child("Blood_loss").child(key2).setValue(pressure);
+        myRef2.child(key).child("Heart_Rate").child(key2).setValue(pressure);
+        myRef2.child(key).child("Mental").child(key2).setValue(pressure);
+        myRef2.child(key).child("Perfusion").child(key2).setValue(pressure);
+        myRef2.child(key).child("Shock_Index").child(key2).setValue(pressure);
     }
 
     public void AddGraphDataDias(String Data, String Time, String id, String key){
@@ -151,5 +165,4 @@ public class DatabaseTransactions {
         DatabaseReference myRef = database.getReference("/User_Patients/"+mAuth.getUid()+"/"+ID);
         myRef.removeValue();
     }
-
 }

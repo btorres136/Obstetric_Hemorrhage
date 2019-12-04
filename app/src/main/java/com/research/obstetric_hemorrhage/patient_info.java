@@ -14,8 +14,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class patient_info extends AppCompatActivity {
     private TextView syspresOp;
@@ -33,12 +31,6 @@ public class patient_info extends AppCompatActivity {
     private TextView patient_room;
     private TextView patient_age;
     private TextView patient_state;
-
-    //private graph_data graph_data_obj = new graph_data();
-    LineGraphSeries series;
-    LineGraphSeries series2;
-    String last_sys;
-    String last_dias;
 
 
 
@@ -71,12 +63,6 @@ public class patient_info extends AppCompatActivity {
         patient_room.setText("Room: "+getIntent().getExtras().getString("PATIENT_ROOM"));
         patient_age.setText("Age: "+getIntent().getExtras().getString("PATIENT_AGE"));
 
-        series = new LineGraphSeries();
-        series2 = new LineGraphSeries();
-        series.setColor(Color.RED);
-        series2.setColor(Color.BLUE);
-        graph_pres.addSeries(series);
-        graph_pres.addSeries(series2);
 
     }
 
@@ -88,19 +74,9 @@ public class patient_info extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 syspresOp = findViewById(R.id.input_syspres);
-                DataPoint[] dataPoint = new DataPoint[(int)dataSnapshot.getChildrenCount()];
-                int index = 0;
-
                 for (DataSnapshot myDataSnapshot : dataSnapshot.getChildren()) {
-                    PointValue_sys pointValueSys = myDataSnapshot.getValue(PointValue_sys.class);
 
-                    dataPoint[index] = new DataPoint(Integer.parseInt(pointValueSys.getTime()),Integer.parseInt(pointValueSys.getData()));
-                    last_sys = pointValueSys.getData();
-                    index++;
                 }
-                series.resetData(dataPoint);
-                syspresOp.setText(Integer.toString((int)series.getHighestValueY()));
-
             }
 
             @Override
@@ -113,19 +89,8 @@ public class patient_info extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 dias_presOp = findViewById(R.id.input_diaspres);
-                DataPoint[] dataPoint = new DataPoint[(int)dataSnapshot.getChildrenCount()];
-                int index = 0;
-
                 for (DataSnapshot myDataSnapshot : dataSnapshot.getChildren()) {
-                    PointValue_sys pointValueSys = myDataSnapshot.getValue(PointValue_sys.class);
-
-                    dataPoint[index] = new DataPoint(Integer.parseInt(pointValueSys.getTime()),Integer.parseInt(pointValueSys.getData()));
-                    last_dias= pointValueSys.getData();
-                    index++;
                 }
-
-                series2.resetData(dataPoint);
-                dias_presOp.setText(Integer.toString((int)series2.getHighestValueY()));
             }
 
             @Override

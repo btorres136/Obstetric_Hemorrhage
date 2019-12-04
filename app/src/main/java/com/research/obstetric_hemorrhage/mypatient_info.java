@@ -7,6 +7,7 @@ import androidx.cardview.widget.CardView;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,8 +46,6 @@ public class mypatient_info extends AppCompatActivity {
 
     private DatabaseTransactions databaseTransactions = new DatabaseTransactions();
 
-    private LineGraphSeries series;
-    private LineGraphSeries series2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,12 +73,6 @@ public class mypatient_info extends AppCompatActivity {
         patient_room.setText("Room: "+getIntent().getExtras().getString("PATIENT_ROOM"));
         patient_age.setText("Age: "+getIntent().getExtras().getString("PATIENT_AGE"));
 
-        series = new LineGraphSeries();
-        series2 = new LineGraphSeries();
-        series.setColor(Color.RED);
-        series2.setColor(Color.BLUE);
-        graph_pres.addSeries(series);
-        graph_pres.addSeries(series2);
 
         update_info.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,36 +83,54 @@ public class mypatient_info extends AppCompatActivity {
                 int minute = rightNow.get(Calendar.MINUTE);
                 int seconds = rightNow.get(Calendar.SECOND);
                 String time = Integer.toString(minute);
+                final MediaPlayer mp = MediaPlayer.create(view.getContext(), R.raw.alert);
+
                 if (Integer.parseInt(input_sys.getText().toString()) >= 90)
                 {
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext(), R.style.green);
                     builder.setTitle("verde!");
                     builder.setNegativeButton("Cancel", null);
-
-                    Log.v("Hola", input_sys.getText().toString());
-                    // create and show the alert dialog
                     AlertDialog dialog = builder.create();
                     dialog.show();
+
+                    mp.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                        @Override
+                        public void onPrepared(MediaPlayer mediaPlayer) {
+                            mediaPlayer.start();
+                        }
+                    });
                 }
                 else if (Integer.parseInt(input_sys.getText().toString()) <=89 && Integer.parseInt(input_sys.getText().toString()) >=80)
                 {
+                    mp.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                        @Override
+                        public void onPrepared(MediaPlayer mediaPlayer) {
+                            mediaPlayer.start();
+                        }
+                    });
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(view.getContext(), R.style.yellow);
                     builder1.setTitle("amarilla!");
-                    builder1.setNegativeButton("Cancel", null);
-
-                    Log.v("Hola1", input_sys.getText().toString());
-                    // create and show the alert dialog
+                    builder1.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                                @Override
+                                public void onCompletion(MediaPlayer mediaPlayer) {
+                                    mediaPlayer.stop();
+                                }
+                            });
+                        }
+                    });
                     AlertDialog dialog1 = builder1.create();
                     dialog1.show();
+
+
                 }
                 else if (Integer.parseInt(input_sys.getText().toString()) <=79 && Integer.parseInt(input_sys.getText().toString()) >=71)
                 {
                     AlertDialog.Builder builder2 = new AlertDialog.Builder(view.getContext(), R.style.orange);
                     builder2.setTitle("orange!");
                     builder2.setNegativeButton("Cancel", null);
-
-                    Log.v("Hola2", input_sys.getText().toString());
-                    // create and show the alert dialog
                     AlertDialog dialog2 = builder2.create();
                     dialog2.show();
                 }
@@ -128,11 +139,15 @@ public class mypatient_info extends AppCompatActivity {
                     AlertDialog.Builder builder3 = new AlertDialog.Builder(view.getContext(), R.style.red);
                     builder3.setTitle("rojo!");
                     builder3.setNegativeButton("Cancel", null);
-
-                    Log.v("Hola3", input_sys.getText().toString());
-                    // create and show the alert dialog
                     AlertDialog dialog3 = builder3.create();
                     dialog3.show();
+
+                    mp.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                        @Override
+                        public void onPrepared(MediaPlayer mediaPlayer) {
+                            mediaPlayer.start();
+                        }
+                    });
                 }
 
                 databaseTransactions.AddGraphDataSys(input_sys.getText().toString(),time,getIntent().getExtras().getString("PATIENT_ID"),key);
@@ -149,16 +164,10 @@ public class mypatient_info extends AppCompatActivity {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                DataPoint[] dataPoint = new DataPoint[(int)dataSnapshot.getChildrenCount()];
-                int index = 0;
 
                 for (DataSnapshot myDataSnapshot : dataSnapshot.getChildren()) {
-                    PointValue_sys pointValueSys = myDataSnapshot.getValue(PointValue_sys.class);
 
-                    dataPoint[index] = new DataPoint(Integer.parseInt(pointValueSys.getTime()),Integer.parseInt(pointValueSys.getData()));
-                    index++;
                 }
-                series.resetData(dataPoint);
             }
 
             @Override
@@ -170,17 +179,11 @@ public class mypatient_info extends AppCompatActivity {
         myRef2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                DataPoint[] dataPoint = new DataPoint[(int)dataSnapshot.getChildrenCount()];
-                int index = 0;
 
                 for (DataSnapshot myDataSnapshot : dataSnapshot.getChildren()) {
-                    PointValue_sys pointValueSys = myDataSnapshot.getValue(PointValue_sys.class);
 
-                    dataPoint[index] = new DataPoint(Integer.parseInt(pointValueSys.getTime()),Integer.parseInt(pointValueSys.getData()));
-                    index++;
                 }
 
-                series2.resetData(dataPoint);
             }
 
             @Override
