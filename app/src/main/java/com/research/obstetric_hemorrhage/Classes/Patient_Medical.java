@@ -42,7 +42,7 @@ public class Patient_Medical {
         return Added_by;
     }
 
-    public void setAddedby(String raddedby){
+    public void setAdded_by(String raddedby){
         Added_by = raddedby;
     }
 

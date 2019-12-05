@@ -4,7 +4,7 @@ public class Patient_Info {
     private String Added_by;
     private String Blood_loss;
     private String Date_added;
-    private String Diastolic_Pressure;
+    private String Diastolic_Presure;
     private String Heart_Rate;
     private String Mental;
     private String Perfusion;
@@ -18,7 +18,7 @@ public class Patient_Info {
         Added_by = added_by;
         Blood_loss = blood_loss;
         Date_added = date_added;
-        Diastolic_Pressure = diastolic_Pressure;
+        Diastolic_Presure = diastolic_Pressure;
         Heart_Rate = heart_Rate;
         Mental = mental;
         Perfusion = perfusion;
@@ -62,12 +62,12 @@ public class Patient_Info {
         Date_added = date_added;
     }
 
-    public String getDiastolic_Pressure() {
-        return Diastolic_Pressure;
+    public String getDiastolic_Presure() {
+        return Diastolic_Presure;
     }
 
-    public void setDiastolic_Pressure(String diastolic_Pressure) {
-        Diastolic_Pressure = diastolic_Pressure;
+    public void setDiastolic_Presure(String diastolic_Pressure) {
+        Diastolic_Presure = diastolic_Pressure;
     }
 
     public String getHeart_Rate() {

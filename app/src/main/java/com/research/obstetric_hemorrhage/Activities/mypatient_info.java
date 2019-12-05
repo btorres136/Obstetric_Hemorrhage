@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +13,7 @@ import android.view.ViewGroup;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.research.obstetric_hemorrhage.Classes.Patient_Info;
-import com.research.obstetric_hemorrhage.Classes.Patient_Medical;
 import com.research.obstetric_hemorrhage.Firebase.DatabaseTransactions;
-import com.research.obstetric_hemorrhage.Fragments.Patients_RecyclerView;
 import com.research.obstetric_hemorrhage.Fragments.mypatient_info_recyclerview;
 import com.research.obstetric_hemorrhage.R;
 
@@ -30,7 +27,7 @@ public class mypatient_info extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mypatient_info_layout);
         recyclerView = findViewById(R.id.recycler_patientinfo);
-        String PatientID = getIntent().getExtras().getString("PATIENT_NAME");
+        String PatientID = getIntent().getExtras().getString("PATIENT_ID");
 
         FirebaseRecyclerOptions<Patient_Info> options =
                 new FirebaseRecyclerOptions.Builder<Patient_Info>()
@@ -49,14 +46,15 @@ public class mypatient_info extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull mypatient_info_recyclerview holder, int position, @NonNull Patient_Info model) {
-                Log.v("hola","asdsadd");
                 holder.getDate().setText(model.getDate_added());
                 holder.getHour().setText(model.getTime_added());
                 holder.getPerfusion().setText(model.getPerfusion());
                 holder.getSis_press().setText(model.getSystolic_Presure());
                 holder.getShock().setText(model.getShock_Index());
                 holder.getEbl().setText(model.getBlood_loss());
-                holder.getDis_press().setText(model.getDiastolic_Pressure());
+                holder.getDis_press().setText(model.getDiastolic_Presure());
+                holder.getMental().setText(model.getMental());
+                holder.getHeart_Rate().setText(model.getHeart_Rate());
             }
         };
         adapter.startListening();

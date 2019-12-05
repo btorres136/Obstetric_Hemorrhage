@@ -15,10 +15,11 @@ public class mypatient_info_recyclerview extends RecyclerView.ViewHolder {
     private TextView sis_press;
     private TextView ebl;
     private TextView shock;
-    private TextView pulse;
     private TextView perfusion;
     private TextView sensorio;
     private TextView dis_press;
+    private TextView Mental;
+    private TextView Heart_Rate;
 
 
     public mypatient_info_recyclerview(@NonNull View itemView) {
@@ -28,11 +29,26 @@ public class mypatient_info_recyclerview extends RecyclerView.ViewHolder {
         sis_press = itemView.findViewById(R.id.sis_press);
         ebl = itemView.findViewById(R.id.ebl);
         shock = itemView.findViewById(R.id.shock);
-        pulse = itemView.findViewById(R.id.pulse);
         perfusion = itemView.findViewById(R.id.perfusion);
         sensorio = itemView.findViewById(R.id.sensorio);
         dis_press = itemView.findViewById(R.id.dis_press);
+        Mental = itemView.findViewById(R.id.mental);
+        Heart_Rate = itemView.findViewById(R.id.hr);
+    }
+    public TextView getHeart_Rate() {
+        return Heart_Rate;
+    }
 
+    public void setHeart_Rate(TextView heart_Rate) {
+        Heart_Rate = heart_Rate;
+    }
+
+    public TextView getMental() {
+        return Mental;
+    }
+
+    public void setMental(TextView mental) {
+        Mental = mental;
     }
     public TextView getDate() {
         return date;
@@ -72,14 +88,6 @@ public class mypatient_info_recyclerview extends RecyclerView.ViewHolder {
 
     public void setShock(TextView shock) {
         this.shock = shock;
-    }
-
-    public TextView getPulse() {
-        return pulse;
-    }
-
-    public void setPulse(TextView pulse) {
-        this.pulse = pulse;
     }
 
     public TextView getPerfusion() {

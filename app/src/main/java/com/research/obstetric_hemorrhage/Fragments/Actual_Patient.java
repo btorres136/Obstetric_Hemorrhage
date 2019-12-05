@@ -77,7 +77,7 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
                     public void onClick(View view) {
                         int number = Integer.parseInt(spinner.getSelectedItem().toString());
                         Intent intent = new Intent(view.getContext(), Alarm.class);
-                        intent.putExtra("PATIENT_NAME",model.getName());
+                        intent.putExtra("PATIENT_ID",model.getID());
                         final int _id = (int) System.currentTimeMillis();
                         intent.putExtra("ID",_id);
                         PendingIntent pendingIntent = PendingIntent.getBroadcast(view.getContext(),_id,intent,PendingIntent.FLAG_ONE_SHOT);
