@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/Sis_press"
+            android:id="@+id/sis_press"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000000"
@@ -30,11 +30,11 @@
             android:hint="Systolic Pressure:"/>
 
         <EditText
-            android:id="@+id/Dis_press"
+            android:id="@+id/dis_press"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:layout_below="@+id/Sis_press"
+            android:layout_below="@+id/sis_press"
             android:background="#11000000"
             android:ems="8"
             android:layout_alignParentLeft="true"
@@ -43,7 +43,7 @@
             android:hint="Diastolic Pressure:"/>
 
         <EditText
-            android:id="@+id/EBL"
+            android:id="@+id/ebl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -54,10 +54,10 @@
             android:hint="Blood Loss:"/>
 
         <EditText
-            android:id="@+id/Perfusion"
+            android:id="@+id/perfusion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Dis_press"
+            android:layout_below="@+id/dis_press"
             android:inputType="text"
             android:ems="8"
             android:layout_marginTop="15dp"
@@ -67,10 +67,10 @@
             android:hint="Perfusion:" />
 
         <EditText
-            android:id="@+id/HR"
+            android:id="@+id/hr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/EBL"
+            android:layout_below="@+id/ebl"
             android:background="#11000000"
             android:textColor="#000000"
             android:ems="8"
@@ -80,10 +80,10 @@
             android:hint="Heart Rate:" />
 
         <EditText
-            android:id="@+id/Mental"
+            android:id="@+id/mental"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Dis_press"
+            android:layout_below="@+id/dis_press"
             android:layout_alignParentLeft="true"
             android:layout_marginTop="15dp"
             android:ems="8"
@@ -108,7 +108,7 @@
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_below="@+id/Mental"
+            android:layout_below="@+id/mental"
             app:layout_constraintTop_toTopOf="parent">
 
             <RelativeLayout
