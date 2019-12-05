@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/dnew_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".input_data"></activity>
+        <activity android:name=".Activities.input_data"></activity>
         <activity android:name=".Activities.mypatient_info" />
         <activity android:name=".Activities.patient_info" />
 

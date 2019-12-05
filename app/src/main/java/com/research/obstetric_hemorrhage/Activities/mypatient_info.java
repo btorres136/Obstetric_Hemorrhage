@@ -1,6 +1,7 @@
 package com.research.obstetric_hemorrhage.Activities;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,6 +28,10 @@ public class mypatient_info extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mypatient_info_layout);
         recyclerView = findViewById(R.id.recycler_patientinfo);
+        //this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        //getSupportActionBar().setDisplayShowCustomEnabled(true);
+        //getSupportActionBar().setCustomView(R.layout.custom_actionbar);
+        //getSupportActionBar().setElevation(0);
         String PatientID = getIntent().getExtras().getString("PATIENT_ID");
 
         FirebaseRecyclerOptions<Patient_Info> options =

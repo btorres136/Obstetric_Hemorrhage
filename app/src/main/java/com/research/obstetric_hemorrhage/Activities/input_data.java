@@ -1,8 +1,10 @@
-package com.research.obstetric_hemorrhage;
+package com.research.obstetric_hemorrhage.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.research.obstetric_hemorrhage.R;
 
 public class input_data extends AppCompatActivity {
 

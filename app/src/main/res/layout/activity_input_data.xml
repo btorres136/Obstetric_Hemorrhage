@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".input_data">
+    tools:context=".Activities.input_data">
 
     <TextView
         android:layout_width="150dp"
