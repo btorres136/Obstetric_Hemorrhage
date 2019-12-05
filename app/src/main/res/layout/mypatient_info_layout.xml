@@ -146,7 +146,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/update_infoCV"
             android:layout_width="135dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_gravity="center|center_horizontal"
             android:clickable="true"
             android:foreground="?attr/selectableItemBackground"
