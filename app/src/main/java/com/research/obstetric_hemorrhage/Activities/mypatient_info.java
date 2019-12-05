@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -38,12 +41,22 @@ public class mypatient_info extends AppCompatActivity {
             @NonNull
             @Override
             public mypatient_info_recyclerview onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                return null;
+                View view = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.mypatientinfo,parent,false);
+                mypatient_info_recyclerview patients_recyclerView =  new mypatient_info_recyclerview(view);
+                return patients_recyclerView;
             }
 
             @Override
             protected void onBindViewHolder(@NonNull mypatient_info_recyclerview holder, int position, @NonNull Patient_Info model) {
-
+                Log.v("hola","asdsadd");
+                holder.getDate().setText(model.getDate_added());
+                holder.getHour().setText(model.getTime_added());
+                holder.getPerfusion().setText(model.getPerfusion());
+                holder.getSis_press().setText(model.getSystolic_Presure());
+                holder.getShock().setText(model.getShock_Index());
+                holder.getEbl().setText(model.getBlood_loss());
+                holder.getDis_press().setText(model.getDiastolic_Pressure());
             }
         };
         adapter.startListening();

@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/Sis_press"
         android:layout_marginTop="10dp"
-        android:text="Systolic Pressure:"
+        android:text="Diastolic Pressure:"
         android:textStyle="bold" />
 
     <TextView

@@ -106,10 +106,10 @@ public class DatabaseTransactions {
         usermap.put("Name", Pat_Name);
         usermap.put("Age", Integer.parseInt(Age));
         usermap.put("Room",room);
-        usermap.put("Status", Integer.parseInt(mStatus));
+        usermap.put("Stage", Integer.parseInt(mStatus));
         String key = myRef.push().getKey();
         usermap.put("ID",key);
-        usermap.put("Added by", mAuth.getUid());
+        usermap.put("Added_by", mAuth.getUid());
         myRef.child(key).setValue(usermap);
         /*Map<String, String> pressure = new HashMap<>();
         DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
