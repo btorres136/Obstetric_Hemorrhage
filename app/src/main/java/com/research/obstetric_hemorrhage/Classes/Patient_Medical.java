@@ -1,4 +1,4 @@
-package com.research.obstetric_hemorrhage;
+package com.research.obstetric_hemorrhage.Classes;
 
 public class Patient_Medical {
 

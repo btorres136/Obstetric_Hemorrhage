@@ -1,4 +1,4 @@
-package com.research.obstetric_hemorrhage;
+package com.research.obstetric_hemorrhage.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+import com.research.obstetric_hemorrhage.R;
 
 import static android.view.View.VISIBLE;
 

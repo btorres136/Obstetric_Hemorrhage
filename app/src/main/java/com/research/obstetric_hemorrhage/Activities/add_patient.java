@@ -1,4 +1,4 @@
-package com.research.obstetric_hemorrhage;
+package com.research.obstetric_hemorrhage.Activities;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,6 +14,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.research.obstetric_hemorrhage.Firebase.DatabaseTransactions;
+import com.research.obstetric_hemorrhage.R;
 
 
 public class add_patient extends Fragment {

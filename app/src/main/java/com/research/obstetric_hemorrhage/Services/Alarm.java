@@ -1,4 +1,4 @@
-package com.research.obstetric_hemorrhage;
+package com.research.obstetric_hemorrhage.Services;
 
 import android.app.AlarmManager;
 import android.app.Notification;
@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+
+import com.research.obstetric_hemorrhage.R;
 
 public class Alarm extends BroadcastReceiver {
     private NotificationManagerCompat mManager;

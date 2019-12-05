@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical"
-    tools:context=".LoginActivity"
+    tools:context=".Activities.LoginActivity"
     android:fillViewport="true">
 
 
@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="visible"
-        tools:context=".LoginActivity">
+        tools:context=".Activities.LoginActivity">
 
         <EditText
             android:id="@+id/email"

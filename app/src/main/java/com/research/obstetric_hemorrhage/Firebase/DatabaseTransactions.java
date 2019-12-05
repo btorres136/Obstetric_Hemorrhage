@@ -1,8 +1,4 @@
-package com.research.obstetric_hemorrhage;
-
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
+package com.research.obstetric_hemorrhage.Firebase;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,18 +10,16 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-import com.jjoe64.graphview.series.LineGraphSeries;
+
 
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import static android.os.Build.ID;
+
 
 public class DatabaseTransactions {
 
@@ -117,7 +111,7 @@ public class DatabaseTransactions {
         usermap.put("ID",key);
         usermap.put("Added by", mAuth.getUid());
         myRef.child(key).setValue(usermap);
-        Map<String, String> pressure = new HashMap<>();
+        /*Map<String, String> pressure = new HashMap<>();
         DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date date = new Date();
@@ -129,24 +123,24 @@ public class DatabaseTransactions {
         pressure.put("Value","0");
         DatabaseReference myRef2 = database.getReference("/Patients_Graphs/");
         String key2 = myRef.push().getKey();
-        myRef2.child(key).child("Pressure").child("Diastolic").child(key2).setValue(pressure);
-        myRef2.child(key).child("Pressure").child("Systolic").child(key2).setValue(pressure);
-        myRef2.child(key).child("Pressure").child("Diastolic").child(key2).setValue(pressure);
+        myRef2.child(key).child("PressureSys").child("Diastolic").child(key2).setValue(pressure);
+        myRef2.child(key).child("PressureSys").child("Systolic").child(key2).setValue(pressure);
+        myRef2.child(key).child("PressureSys").child("Diastolic").child(key2).setValue(pressure);
         myRef2.child(key).child("Blood_loss").child(key2).setValue(pressure);
         myRef2.child(key).child("Heart_Rate").child(key2).setValue(pressure);
         myRef2.child(key).child("Mental").child(key2).setValue(pressure);
         myRef2.child(key).child("Perfusion").child(key2).setValue(pressure);
-        myRef2.child(key).child("Shock_Index").child(key2).setValue(pressure);
+        myRef2.child(key).child("Shock_Index").child(key2).setValue(pressure);*/
     }
 
-    public void AddGraphDataDias(String Data, String Time, String id, String key){
+    /*public void AddGraphDataDias(String Data, String Time, String id, String key){
         DatabaseReference myRef = database.getReference("/Patients/");
         Map<String, Object> data = new HashMap<>();
         data.put("Time", Time);
         data.put("Added by", mAuth.getUid());
         data.put("Data",Data);
         DatabaseReference myRef2 = database.getReference("/Patients_Graphs/");
-        myRef2.child(id).child("Pressure").child("Diastolic").child(key).setValue(data);
+        myRef2.child(id).child("PressureSys").child("Diastolic").child(key).setValue(data);
 
     }
 
@@ -157,8 +151,8 @@ public class DatabaseTransactions {
         data.put("Added by", mAuth.getUid());
         data.put("Data",Data);
         DatabaseReference myRef2 = database.getReference("/Patients_Graphs/");
-        myRef2.child(id).child("Pressure").child("Systolic").child(key).setValue(data);
-    }
+        myRef2.child(id).child("PressureSys").child("Systolic").child(key).setValue(data);
+    }*/
 
 
     public void RemoveFromMyPatients(String ID){

@@ -1,9 +1,8 @@
-package com.research.obstetric_hemorrhage;
+package com.research.obstetric_hemorrhage.Fragments;
 
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,10 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.os.SystemClock;
-import android.provider.AlarmClock;
-import android.provider.Telephony;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,13 +22,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-
-import java.util.Random;
+import com.research.obstetric_hemorrhage.Activities.mypatient_info;
+import com.research.obstetric_hemorrhage.Services.Alarm;
+import com.research.obstetric_hemorrhage.Firebase.DatabaseTransactions;
+import com.research.obstetric_hemorrhage.Classes.Patient_Medical;
+import com.research.obstetric_hemorrhage.R;
 
 import static android.content.Context.ALARM_SERVICE;
 import static android.os.Build.VERSION.SDK_INT;

@@ -12,11 +12,11 @@
         android:roundIcon="@mipmap/dnew_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mypatient_info" />
-        <activity android:name=".patient_info" />
+        <activity android:name=".Activities.mypatient_info" />
+        <activity android:name=".Activities.patient_info" />
 
         <service
-            android:name=".FirebaseCloudFunctions"
+            android:name=".Firebase.FirebaseCloudFunctions"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
@@ -25,14 +25,14 @@
         </service>
 
         <activity
-            android:name=".SignupActivity"
+            android:name=".Activities.SignupActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/MainTheme" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activities.LoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,7 +41,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".Alarm">
+        <receiver android:name=".Services.Alarm">
             <intent-filter>
                 <action android:name="Alarm.class" />
             </intent-filter>

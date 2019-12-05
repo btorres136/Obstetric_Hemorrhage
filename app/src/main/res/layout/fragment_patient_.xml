@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E9E9E9"
-    tools:context=".Patient_Fragment">
+    tools:context=".Fragments.Patient_Fragment">
 
     <ProgressBar
         android:id="@+id/waittime"

@@ -5,14 +5,14 @@
     android:background="@drawable/gradient"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignupActivity"
+    tools:context=".Activities.SignupActivity"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible"
-        tools:context=".SignupActivity">
+        tools:context=".Activities.SignupActivity">
 
         <ProgressBar
             android:id="@+id/progressBar2"
