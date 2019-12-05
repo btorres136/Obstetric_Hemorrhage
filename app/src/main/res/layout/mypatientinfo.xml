@@ -45,6 +45,25 @@
         android:text="sis_press" />
 
     <TextView
+        android:id="@+id/Dis_press"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Sis_press"
+        android:layout_marginTop="10dp"
+        android:text="Systolic Pressure:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/dis_press"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sis_press"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/Dis_press"
+        android:text="sis_press" />
+
+    <TextView
         android:id="@+id/EBL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -92,7 +111,7 @@
         android:id="@+id/Pulse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Sis_press"
+        android:layout_below="@+id/Dis_press"
         android:layout_marginTop="10dp"
         android:text="Pulse:"
         android:textStyle="bold" />
@@ -101,7 +120,7 @@
         android:id="@+id/pulse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Sis_press"
+        android:layout_below="@+id/dis_press"
         android:layout_marginLeft="3dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/Pulse"
