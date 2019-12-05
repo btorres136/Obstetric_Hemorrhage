@@ -5,79 +5,18 @@
     android:id="@+id/actualpat_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="10dp"
     android:background="#FFFFFF"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/update_rl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/recycler_patientinfo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.186"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/pat_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Patient Info"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textStyle="bold" />
-
-    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_patientinfo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#E9E9E9"
-        android:paddingTop="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/update_rl"/>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/update_infoCV"
-        android:layout_width="165dp"
-        android:layout_height="76dp"
-        android:layout_gravity="center|center_horizontal"
-        android:clickable="true"
-        android:foreground="?attr/selectableItemBackground"
-        android:stateListAnimator="@drawable/lift_on_touch"
-        app:cardBackgroundColor="#a54195"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="10dp"
-        app:cardPreventCornerOverlap="false"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.837"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RelativeLayout
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center|center_horizontal"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/update_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Update Info"
-                android:textColor="#ffffff"
-                android:textSize="14sp" />
-
-        </RelativeLayout>
-
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

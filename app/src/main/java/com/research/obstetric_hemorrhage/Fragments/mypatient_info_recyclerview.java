@@ -30,7 +30,6 @@ public class mypatient_info_recyclerview extends RecyclerView.ViewHolder {
         ebl = itemView.findViewById(R.id.ebl);
         shock = itemView.findViewById(R.id.shock);
         perfusion = itemView.findViewById(R.id.perfusion);
-        sensorio = itemView.findViewById(R.id.sensorio);
         dis_press = itemView.findViewById(R.id.dis_press);
         Mental = itemView.findViewById(R.id.mental);
         Heart_Rate = itemView.findViewById(R.id.hr);
