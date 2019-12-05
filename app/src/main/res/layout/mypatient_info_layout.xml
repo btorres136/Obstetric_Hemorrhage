@@ -12,6 +12,7 @@
         android:id="@+id/update_rl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
         app:layout_constraintBottom_toTopOf="@+id/recycler_patientinfo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,15 +47,15 @@
             android:text="Systolic Pressure:"
             android:textStyle="bold" />
 
-        <TextView
+        <EditText
             android:id="@+id/sis_press"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
             android:layout_below="@+id/date"
             android:layout_marginLeft="3dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_toRightOf="@+id/Sis_press"
-            android:text="sis_press" />
+            android:text="" />
 
         <TextView
             android:id="@+id/Dis_press"
@@ -65,15 +66,15 @@
             android:text="Diastolic Pressure:"
             android:textStyle="bold" />
 
-        <TextView
+        <EditText
             android:id="@+id/dis_press"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
             android:layout_below="@+id/sis_press"
             android:layout_marginLeft="3dp"
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@+id/Dis_press"
-            android:text="dias_press" />
+            android:text="" />
 
         <TextView
             android:id="@+id/EBL"
@@ -87,15 +88,15 @@
             android:text="Blood Loss:"
             android:textStyle="bold" />
 
-        <TextView
+        <EditText
             android:id="@+id/ebl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
             android:layout_below="@+id/hour"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="28dp"
-            android:text="blood_loss" />
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="50dp"
+            android:text="" />
 
         <TextView
             android:id="@+id/Shock"
@@ -109,15 +110,15 @@
             android:text="Shock Index:"
             android:textStyle="bold" />
 
-        <TextView
+        <EditText
             android:id="@+id/shock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
             android:layout_below="@+id/ebl"
             android:layout_alignParentRight="true"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:text="shock_index" />
+            android:layout_marginRight="50dp"
+            android:text="" />
 
         <TextView
             android:id="@+id/Perfusion"
@@ -131,15 +132,15 @@
             android:text="Perfusion:"
             android:textStyle="bold" />
 
-        <TextView
+        <EditText
             android:id="@+id/perfusion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
             android:layout_below="@+id/shock"
             android:layout_alignParentRight="true"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="36dp"
-            android:text="perfusion" />
+            android:layout_marginRight="50dp"
+            android:text="" />
 
         <TextView
             android:id="@+id/HR"
@@ -151,15 +152,15 @@
             android:layout_marginRight="3dp"
             android:text="Heart Rate:"
             android:textStyle="bold"/>
-        <TextView
+        <EditText
             android:id="@+id/hr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
             android:layout_below="@+id/perfusion"
             android:layout_alignParentRight="true"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="36dp"
-            android:text="heart_rate" />
+            android:layout_marginRight="50dp"
+            android:text="" />
 
         <TextView
             android:id="@+id/Mental"
@@ -171,15 +172,15 @@
             android:text="Mental:"
             android:textStyle="bold" />
 
-        <TextView
+        <EditText
             android:id="@+id/mental"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
             android:layout_below="@+id/dis_press"
             android:layout_marginLeft="1dp"
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@+id/Mental"
-            android:text="mental" />
+            android:text="" />
 
     </RelativeLayout>
 
