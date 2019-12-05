@@ -145,8 +145,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/update_infoCV"
-            android:layout_width="165dp"
-            android:layout_height="76dp"
+            android:layout_width="135dp"
+            android:layout_height="50dp"
             android:layout_gravity="center|center_horizontal"
             android:clickable="true"
             android:foreground="?attr/selectableItemBackground"
@@ -154,7 +154,7 @@
             app:cardBackgroundColor="#a54195"
             android:layout_centerHorizontal="true"
             app:cardCornerRadius="10dp"
-            app:cardElevation="10dp"
+            app:cardElevation="6dp"
             app:cardPreventCornerOverlap="false"
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
