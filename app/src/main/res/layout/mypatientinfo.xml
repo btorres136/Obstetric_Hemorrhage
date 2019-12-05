@@ -61,7 +61,7 @@
         android:layout_marginLeft="3dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/Dis_press"
-        android:text="sis_press" />
+        android:text="dias_press" />
 
     <TextView
         android:id="@+id/EBL"
