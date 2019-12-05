@@ -28,7 +28,7 @@ public class mypatient_info extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mypatient_info_layout);
         recyclerView = findViewById(R.id.recycler_patientinfo);
-        //this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        //getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         //getSupportActionBar().setDisplayShowCustomEnabled(true);
         //getSupportActionBar().setCustomView(R.layout.custom_actionbar);
         //getSupportActionBar().setElevation(0);
