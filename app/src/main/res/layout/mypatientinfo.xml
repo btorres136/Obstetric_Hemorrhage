@@ -149,23 +149,43 @@
         android:text="perfusion" />
 
     <TextView
-        android:id="@+id/Sensorio"
+        android:id="@+id/HR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Pulse"
+        android:layout_below="@+id/Perfusion"
         android:layout_marginTop="10dp"
-        android:text="Sensorio:"
+        android:layout_toLeftOf="@+id/hr"
+        android:layout_marginRight="3dp"
+        android:text="Heart Rate:"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/hr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/perfusion"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="36dp"
+        android:text="heart_rate" />
+
+    <TextView
+        android:id="@+id/Mental"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Perfusion"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="3dp"
+        android:text="Mental:"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/sensorio"
+        android:id="@+id/mental"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/pulse"
-        android:layout_marginLeft="3dp"
+        android:layout_below="@+id/perfusion"
+        android:layout_marginLeft="1dp"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/Sensorio"
-        android:text="sensorio" />
-
+        android:layout_toRightOf="@+id/Mental"
+        android:text="mental" />
 
 </RelativeLayout>
