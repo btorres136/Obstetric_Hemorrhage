@@ -111,48 +111,35 @@ public class DatabaseTransactions {
         usermap.put("ID",key);
         usermap.put("Added_by", mAuth.getUid());
         myRef.child(key).setValue(usermap);
-        /*Map<String, String> pressure = new HashMap<>();
-        DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+    }
+    public void addPatientinfo(String PatientID, String
+                               Blood_loss, String Current_Stage,
+                               String Diastolic_Pressure,
+                               String Heart_Rate, String Mental,
+                               String Perfusion, String Shock_Index,
+                               String Systolic_Presure){
+        Map<String, String> data = new HashMap<>();
+        DateFormat timeFormat = new SimpleDateFormat("hh:mm:ss aa");
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date date = new Date();
         String timeformated = timeFormat.format(date);
         String dateformated = dateFormat.format(date);
-        pressure.put("Time added", timeformated);
-        pressure.put("Date added", dateformated);
-        pressure.put("Added by", "Default");
-        pressure.put("Value","0");
-        DatabaseReference myRef2 = database.getReference("/Patients_Graphs/");
-        String key2 = myRef.push().getKey();
-        myRef2.child(key).child("PressureSys").child("Diastolic").child(key2).setValue(pressure);
-        myRef2.child(key).child("PressureSys").child("Systolic").child(key2).setValue(pressure);
-        myRef2.child(key).child("PressureSys").child("Diastolic").child(key2).setValue(pressure);
-        myRef2.child(key).child("Blood_loss").child(key2).setValue(pressure);
-        myRef2.child(key).child("Heart_Rate").child(key2).setValue(pressure);
-        myRef2.child(key).child("Mental").child(key2).setValue(pressure);
-        myRef2.child(key).child("Perfusion").child(key2).setValue(pressure);
-        myRef2.child(key).child("Shock_Index").child(key2).setValue(pressure);*/
-    }
-
-    /*public void AddGraphDataDias(String Data, String Time, String id, String key){
-        DatabaseReference myRef = database.getReference("/Patients/");
-        Map<String, Object> data = new HashMap<>();
-        data.put("Time", Time);
-        data.put("Added by", mAuth.getUid());
-        data.put("Data",Data);
-        DatabaseReference myRef2 = database.getReference("/Patients_Graphs/");
-        myRef2.child(id).child("PressureSys").child("Diastolic").child(key).setValue(data);
+        data.put("Added_by", mAuth.getUid());
+        data.put("Blood_loss", Blood_loss);
+        data.put("Current_Stage", Current_Stage);
+        data.put("Date_added", dateformated);
+        data.put("Diastolic_Presure", Diastolic_Pressure);
+        data.put("Heart_Rate", Heart_Rate);
+        data.put("Mental", Mental);
+        data.put("Perfusion",Perfusion);
+        data.put("Shock_Index", Shock_Index);
+        data.put("Systolic_Presure", Systolic_Presure);
+        data.put("Time_added", timeformated);
+        DatabaseReference myRef = database.getReference("/Data/"+PatientID+"/");
+        String key= myRef.push().getKey();
+        myRef.child(key).setValue(data);
 
     }
-
-    public void AddGraphDataSys(String Data, String Time, String id, String key){
-        DatabaseReference myRef = database.getReference("/Patients/");
-        Map<String, Object> data = new HashMap<>();
-        data.put("Time", Time);
-        data.put("Added by", mAuth.getUid());
-        data.put("Data",Data);
-        DatabaseReference myRef2 = database.getReference("/Patients_Graphs/");
-        myRef2.child(id).child("PressureSys").child("Systolic").child(key).setValue(data);
-    }*/
 
     public Query ListentoDatabaseOnData(String PatientID){
         Query query = FirebaseDatabase.getInstance()
