@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="10dp"
+    android:padding="5dp"
     android:background="#FFFFFF"
     android:orientation="vertical">
 
@@ -17,131 +18,79 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+        <EditText
             android:id="@+id/Sis_press"
-            android:layout_width="115dp"
-            android:layout_height="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textColor="#000000"
-            android:layout_below="@+id/date"
-            android:text="Systolic Pressure:"
-            android:textStyle="bold" />
+            android:ems="8"
+            android:layout_alignParentLeft="true"
+            android:background="#11000000"
+            android:inputType="number"
+            android:hint="Systolic Pressure:"/>
 
         <EditText
-            android:id="@+id/sis_press"
-            android:layout_width="70dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/date"
-            android:textColor="#000000"
-            android:inputType="number"
-            android:layout_toRightOf="@+id/Sis_press"
-            android:text="" />
-
-        <TextView
             android:id="@+id/Dis_press"
-            android:layout_width="120dp"
-            android:layout_height="20dp"
-            android:layout_below="@+id/Sis_press"
-            android:textColor="#000000"
-            android:layout_marginTop="30dp"
-            android:text="Diastolic Pressure:"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/dis_press"
-            android:layout_width="70dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/sis_press"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:inputType="number"
-            android:textColor="#000000"
-            android:layout_marginTop="8dp"
-            android:layout_toRightOf="@+id/Dis_press"
-            android:text="" />
-
-        <TextView
-            android:id="@+id/EBL"
-            android:layout_width="75dp"
-            android:layout_height="30dp"
-            android:layout_below="@+id/hour"
+            android:layout_below="@+id/Sis_press"
+            android:background="#11000000"
+            android:ems="8"
+            android:layout_alignParentLeft="true"
             android:textColor="#000000"
             android:layout_marginTop="15dp"
-            android:layout_toLeftOf="@+id/ebl"
-            android:text="Blood Loss:"
-            android:textStyle="bold" />
+            android:hint="Diastolic Pressure:"/>
 
         <EditText
-            android:id="@+id/ebl"
-            android:layout_width="70dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/hour"
-            android:inputType="number"
-            android:textColor="#000000"
+            android:id="@+id/EBL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="" />
+            android:inputType="number"
+            android:ems="8"
+            android:background="#11000000"
+            android:textColor="#000000"
+            android:hint="Blood Loss:"/>
 
-
-        <TextView
+        <EditText
             android:id="@+id/Perfusion"
-            android:layout_width="70dp"
-            android:layout_height="25dp"
-            android:layout_below="@+id/EBL"
-            android:textColor="#000000"
-            android:layout_marginTop="20dp"
-            android:layout_toLeftOf="@+id/perfusion"
-            android:text="Perfusion:"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/perfusion"
-            android:layout_width="70dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/ebl"
-            android:inputType="text"
-            android:textColor="#000000"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:text="" />
-
-        <TextView
-            android:id="@+id/HR"
-            android:layout_width="75dp"
-            android:layout_height="30dp"
-            android:layout_below="@+id/Perfusion"
-            android:textColor="#000000"
-            android:layout_marginTop="20dp"
-            android:layout_toLeftOf="@+id/hr"
-            android:text="Heart Rate:"
-            android:textStyle="bold"/>
-        <EditText
-            android:id="@+id/hr"
-            android:layout_width="70dp"
-            android:layout_height="40dp"
-            android:inputType="number"
-            android:layout_below="@+id/perfusion"
-            android:textColor="#000000"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:text="" />
-
-        <TextView
-            android:id="@+id/Mental"
-            android:layout_width="50dp"
-            android:layout_height="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/Dis_press"
-            android:layout_marginTop="30dp"
+            android:inputType="text"
+            android:ems="8"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentRight="true"
+            android:background="#11000000"
             android:textColor="#000000"
-            android:text="Mental:"
-            android:textStyle="bold" />
+            android:hint="Perfusion:" />
 
         <EditText
-            android:id="@+id/mental"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/dis_press"
-            android:inputType="text"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@+id/Mental"
+            android:id="@+id/HR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/EBL"
+            android:background="#11000000"
             android:textColor="#000000"
-            android:text="" />
+            android:ems="8"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentRight="true"
+            android:inputType="number"
+            android:hint="Heart Rate:" />
+
+        <EditText
+            android:id="@+id/Mental"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Dis_press"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="15dp"
+            android:ems="8"
+            android:background="#11000000"
+            android:inputType="text"
+            android:textColor="#000000"
+            android:hint="Mental:"/>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/update_infoCV"
@@ -159,7 +108,7 @@
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_below="@+id/HR"
+            android:layout_below="@+id/Mental"
             app:layout_constraintTop_toTopOf="parent">
 
             <RelativeLayout
