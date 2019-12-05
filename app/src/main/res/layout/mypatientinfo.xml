@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
     android:orientation="vertical">
 
     <TextView
@@ -164,7 +165,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/dis_press"
-        android:layout_marginLeft="1dp"
+        android:layout_marginLeft="3dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/Mental"
         android:text="mental" />
