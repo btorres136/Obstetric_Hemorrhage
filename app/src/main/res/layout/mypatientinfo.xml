@@ -2,6 +2,151 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/date"
+        android:layout_marginLeft="70dp"
+        android:text="Date"
+        android:textStyle="bold"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:id="@+id/hour"
+        android:layout_marginRight="70dp"
+        android:text="Hour"
+        android:textStyle="bold"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/Sis_press"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/date"
+        android:layout_marginTop="10dp"
+        android:text="Systolic Pressure:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/sis_press"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/date"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/Sis_press"
+        android:text="sis_press" />
+
+    <TextView
+        android:id="@+id/EBL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hour"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="102dp"
+        android:layout_toLeftOf="@+id/ebl"
+        android:text="Blood Loss:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/ebl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hour"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="28dp"
+        android:text="blood_loss" />
+
+    <TextView
+        android:id="@+id/Shock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/EBL"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="102dp"
+        android:layout_toLeftOf="@+id/ebl"
+        android:text="Shock Index:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/shock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ebl"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:text="shock_index" />
+
+    <TextView
+        android:id="@+id/Pulse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Sis_press"
+        android:layout_marginTop="10dp"
+        android:text="Pulse:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/pulse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Sis_press"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/Pulse"
+        android:text="pulse" />
+
+    <TextView
+        android:id="@+id/Perfusion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Shock"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="102dp"
+        android:layout_toLeftOf="@+id/perfusion"
+        android:text="Perfusion:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/perfusion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shock"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="36dp"
+        android:text="perfusion" />
+
+    <TextView
+        android:id="@+id/Sensorio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Pulse"
+        android:layout_marginTop="10dp"
+        android:text="Sensorio:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/sensorio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pulse"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/Sensorio"
+        android:text="sensorio" />
+
 
 </RelativeLayout>
