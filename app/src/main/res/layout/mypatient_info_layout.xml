@@ -21,28 +21,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:textColor="#000000"
-            android:id="@+id/date"
-            android:layout_marginLeft="70dp"
-            android:text="Date"
-            android:textStyle="bold"
-            android:textAlignment="center"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:id="@+id/hour"
-            android:textColor="#000000"
-            android:layout_marginRight="70dp"
-            android:text="Hour"
-            android:textStyle="bold"
-            android:textAlignment="center"/>
-
-        <TextView
             android:id="@+id/Sis_press"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,6 +36,7 @@
             android:layout_height="20dp"
             android:layout_below="@+id/date"
             android:textColor="#000000"
+            android:inputType="number"
             android:layout_marginLeft="3dp"
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@+id/Sis_press"
@@ -78,6 +57,7 @@
             android:layout_width="40dp"
             android:layout_height="20dp"
             android:layout_below="@+id/sis_press"
+            android:inputType="number"
             android:textColor="#000000"
             android:layout_marginLeft="3dp"
             android:layout_marginTop="10dp"
@@ -102,41 +82,19 @@
             android:layout_width="50dp"
             android:layout_height="20dp"
             android:layout_below="@+id/hour"
+            android:inputType="number"
             android:textColor="#000000"
             android:layout_alignParentRight="true"
             android:layout_marginTop="15dp"
             android:layout_marginRight="50dp"
             android:text="" />
 
-        <TextView
-            android:id="@+id/Shock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/EBL"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:textColor="#000000"
-            android:layout_marginRight="102dp"
-            android:layout_toLeftOf="@+id/ebl"
-            android:text="Shock Index:"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/shock"
-            android:layout_width="50dp"
-            android:layout_height="20dp"
-            android:layout_below="@+id/ebl"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:textColor="#000000"
-            android:layout_marginRight="50dp"
-            android:text="" />
 
         <TextView
             android:id="@+id/Perfusion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Shock"
+            android:layout_below="@+id/EBL"
             android:layout_alignParentRight="true"
             android:textColor="#000000"
             android:layout_marginTop="10dp"
@@ -149,7 +107,8 @@
             android:id="@+id/perfusion"
             android:layout_width="50dp"
             android:layout_height="20dp"
-            android:layout_below="@+id/shock"
+            android:layout_below="@+id/ebl"
+            android:inputType="text"
             android:textColor="#000000"
             android:layout_alignParentRight="true"
             android:layout_marginTop="10dp"
@@ -171,6 +130,7 @@
             android:id="@+id/hr"
             android:layout_width="50dp"
             android:layout_height="20dp"
+            android:inputType="number"
             android:layout_below="@+id/perfusion"
             android:textColor="#000000"
             android:layout_alignParentRight="true"
@@ -194,6 +154,7 @@
             android:layout_width="50dp"
             android:layout_height="20dp"
             android:layout_below="@+id/dis_press"
+            android:inputType="text"
             android:layout_marginLeft="1dp"
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@+id/Mental"
