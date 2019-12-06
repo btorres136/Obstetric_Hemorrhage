@@ -72,7 +72,7 @@ public class Patient_Fragment extends Fragment implements SwipeRefreshLayout.OnR
                                 model.getAge(), model.getStage(), model.getRoom(), model.getID());
                     }
                 });
-                holder.getSee_info().setOnClickListener(new View.OnClickListener() {
+               /* holder.getSee_info().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(view.getContext(), patient_info.class);
@@ -83,7 +83,7 @@ public class Patient_Fragment extends Fragment implements SwipeRefreshLayout.OnR
                         intent.putExtra("PATIENT_STATE",Integer.toString(model.getStage()));
                         startActivity(intent);
                     }
-                });
+                });*/
 
 
 
