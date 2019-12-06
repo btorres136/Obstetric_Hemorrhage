@@ -138,19 +138,19 @@ public class mypatient_info extends AppCompatActivity {
                     per+=" Pallor";
                 }
                 if(per_sweating.isChecked()){
-                    per+=" sweating";
+                    per+=" Sweating";
                 }
                 if(men_normal.isChecked()){
                     men=" Normal";
                 }
                 if(men_agitated.isChecked()){
-                    men+=" agitated";
+                    men+=" Agitated";
                 }
                 if(men_Lethargic.isChecked()){
                     men+=" Lethargic";
                 }
                 if(men_unconsicious.isChecked()){
-                    men+=" inconsicious";
+                    men+=" Unconscious";
                 }
                 if(capillary.isChecked()){
                     per+=" Capillary";
@@ -167,7 +167,6 @@ public class mypatient_info extends AppCompatActivity {
                     per_sweating.setChecked(false);
                     per_pallor.setChecked(false);
 
-
                     per_coldness.setChecked(false);
                     per_normal.setChecked(false);
                     capillary.setChecked(false);
@@ -178,25 +177,6 @@ public class mypatient_info extends AppCompatActivity {
                     DecimalFormat df = new DecimalFormat("###.###");
                     double shock = (Double.parseDouble(hrs)/Double.parseDouble(sis));
                     final MediaPlayer md = MediaPlayer.create(view.getContext(), R.raw.alert);
-
-
-                    if(shock < 0.9)
-                    {
-                        AlertDialog.Builder builder3 = new AlertDialog.Builder(view.getContext(),R.style.red);
-                        builder3.setTitle("Stage 3");
-                        builder3.setNegativeButton("Ok", null);
-
-                        AlertDialog dialog = builder3.create();
-                        dialog.show();
-                    }
-                    else {
-                        AlertDialog.Builder builder3 = new AlertDialog.Builder(view.getContext(),R.style.green);
-                        builder3.setTitle("Index is okay");
-                        builder3.setNegativeButton("Ok", null);
-
-                        AlertDialog dialog = builder3.create();
-                        dialog.show();
-                    }
 
                     if ((Integer.parseInt(sis) >= 90))
                     {
