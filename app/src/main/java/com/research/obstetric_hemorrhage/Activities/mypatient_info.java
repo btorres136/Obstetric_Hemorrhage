@@ -110,15 +110,37 @@ public class mypatient_info extends AppCompatActivity {
                 String sis = sis_press.getText().toString();
                 String dis = dis_press.getText().toString();
                 String ebls = ebl.getText().toString();
-                //String perf = perfusion.getText().toString();
-                //String mentals = mental.getText().toString();
                 String hrs = hr.getText().toString();
                 sis_press.getText().clear();
                 dis_press.getText().clear();
                 ebl.getText().clear();
-                //perfusion.getText().clear();
-                //mental.getText().clear();
                 hr.getText().clear();
+                String men="";
+                String per="";
+                if(per_normal.isChecked()){
+                    per+=" Normal";
+                }
+                if(per_coldness.isChecked()){
+                    per+=" Coldness";
+                }
+                if(per_pallor.isChecked()){
+                    per+=" Pallor";
+                }
+                if(per_sweating.isChecked()){
+                    per+=" sweating";
+                }
+                if(men_normal.isChecked()){
+                    men=" Normal";
+                }
+                if(men_agitated.isChecked()){
+                    men+=" agitated";
+                }
+                if(men_Lethargic.isChecked()){
+                    men+=" Lethargic";
+                }
+                if(men_unconsicious.isChecked()){
+                    men+=" inconsicious";
+                }
                 if(sis.isEmpty() || dis.isEmpty() || ebls.isEmpty() || hrs.isEmpty()){
                     Toast.makeText(view.getContext(), "Please fill all the fields", Toast.LENGTH_LONG).show();
                 }else{
@@ -126,7 +148,7 @@ public class mypatient_info extends AppCompatActivity {
                     double shock = (Double.parseDouble(hrs)/Double.parseDouble(sis));
                     final MediaPlayer md = MediaPlayer.create(view.getContext(), R.raw.alert);
                     databaseTransactions.addPatientinfo(getIntent().getExtras().getString("PATIENT_ID"),ebls,"0",
-                            dis,hrs,"0","0",df.format(shock),sis);
+                            dis,hrs,men,per,df.format(shock),sis);
 
                     if (Integer.parseInt(sis) >= 90)
                     {
