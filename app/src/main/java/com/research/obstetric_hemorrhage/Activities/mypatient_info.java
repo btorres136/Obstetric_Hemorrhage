@@ -14,8 +14,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -32,8 +34,6 @@ public class mypatient_info extends AppCompatActivity {
     EditText sis_press;
     EditText dis_press;
     EditText ebl;
-    //EditText perfusion;
-    //EditText mental;
     CheckBox men_normal;
     CheckBox men_agitated;
     CheckBox men_Lethargic;
@@ -43,6 +43,8 @@ public class mypatient_info extends AppCompatActivity {
     CheckBox per_coldness;
     CheckBox per_sweating;
     CheckBox capillary;
+    Spinner spinner;
+
 
     EditText hr;
     CardView update_infoCV;
@@ -68,6 +70,11 @@ public class mypatient_info extends AppCompatActivity {
         per_coldness = findViewById(R.id.coldness);
         per_sweating = findViewById(R.id.sweating);
         capillary = findViewById(R.id.capillary);
+        spinner = findViewById(R.id.time_spinner);
+        ArrayAdapter<CharSequence> adapterspinner = ArrayAdapter.createFromResource(this, R.array.time_spinner, android.R.layout.simple_spinner_item);
+        adapterspinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapterspinner);
+
 
         hr = findViewById(R.id.hr);
         update_infoCV = findViewById(R.id.update_infoCV);
