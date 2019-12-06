@@ -177,7 +177,7 @@ public class mypatient_info extends AppCompatActivity {
                     databaseTransactions.addPatientinfo(getIntent().getExtras().getString("PATIENT_ID"),ebls,"0",
                             dis,hrs,men,per,df.format(shock),sis);
 
-                    if (Integer.parseInt(sis) >= 90 )
+                    if ((Integer.parseInt(sis) >= 90))
                     {
                         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext(), R.style.green);
                         builder.setTitle("Stage 0");
