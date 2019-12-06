@@ -181,6 +181,7 @@ public class mypatient_info extends AppCompatActivity {
                             dis,hrs,men,per,df.format(shock),sis);
 
                     if ((Integer.parseInt(sis) >= 90))
+                    //ay diojjjj
                     {
                         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext(), R.style.green);
                         builder.setTitle("Stage 0");
