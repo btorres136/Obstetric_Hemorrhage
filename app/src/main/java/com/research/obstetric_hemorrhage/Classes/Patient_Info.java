@@ -6,6 +6,7 @@ public class Patient_Info {
     private String Date_added;
     private String Diastolic_Presure;
     private String Heart_Rate;
+    private String Stage;
     private String Mental;
     private String Perfusion;
     private String Shock_Index;
@@ -14,7 +15,7 @@ public class Patient_Info {
 
     public Patient_Info(String added_by, String blood_loss, String date_added, String diastolic_Pressure,
                         String heart_Rate, String mental, String perfusion, String shock_Index,
-                        String systolic_Presure, String time_added) {
+                        String systolic_Presure, String time_added, String rstage) {
         Added_by = added_by;
         Blood_loss = blood_loss;
         Date_added = date_added;
@@ -25,10 +26,18 @@ public class Patient_Info {
         Shock_Index = shock_Index;
         Systolic_Presure = systolic_Presure;
         Time_added = time_added;
+        Stage = rstage;
     }
 
 
     Patient_Info(){}
+    public String getStage() {
+        return Stage;
+    }
+
+    public void setStage(String stage) {
+        Stage = stage;
+    }
 
     public String getTime_added() {
         return Time_added;

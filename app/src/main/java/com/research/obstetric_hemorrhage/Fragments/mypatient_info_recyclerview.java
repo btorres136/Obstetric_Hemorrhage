@@ -20,6 +20,7 @@ public class mypatient_info_recyclerview extends RecyclerView.ViewHolder {
     private TextView dis_press;
     private TextView Mental;
     private TextView Heart_Rate;
+    private TextView Stage;
 
 
     public mypatient_info_recyclerview(@NonNull View itemView) {
@@ -33,6 +34,10 @@ public class mypatient_info_recyclerview extends RecyclerView.ViewHolder {
         dis_press = itemView.findViewById(R.id.dis_press);
         Mental = itemView.findViewById(R.id.mental);
         Heart_Rate = itemView.findViewById(R.id.hr);
+        Stage = itemView.findViewById(R.id.stage);
+    }
+    public TextView getStage() {
+        return Stage;
     }
     public TextView getHeart_Rate() {
         return Heart_Rate;

@@ -110,6 +110,7 @@ public class mypatient_info extends AppCompatActivity {
                 holder.getDis_press().setText(model.getDiastolic_Presure());
                 holder.getMental().setText(model.getMental());
                 holder.getHeart_Rate().setText(model.getHeart_Rate());
+                holder.getStage().setText(model.getStage());
             }
         };
         adapter.startListening();
