@@ -165,6 +165,8 @@ public class mypatient_info extends AppCompatActivity {
                     men_normal.setChecked(false);
                     per_sweating.setChecked(false);
                     per_pallor.setChecked(false);
+
+
                     per_coldness.setChecked(false);
                     per_normal.setChecked(false);
                     capillary.setChecked(false);
