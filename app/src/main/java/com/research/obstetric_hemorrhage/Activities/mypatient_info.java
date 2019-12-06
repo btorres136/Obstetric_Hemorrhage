@@ -7,9 +7,13 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +30,7 @@ import com.research.obstetric_hemorrhage.Classes.Patient_Info;
 import com.research.obstetric_hemorrhage.Firebase.DatabaseTransactions;
 import com.research.obstetric_hemorrhage.Fragments.mypatient_info_recyclerview;
 import com.research.obstetric_hemorrhage.R;
+import com.research.obstetric_hemorrhage.Services.Alarm;
 
 import java.text.DecimalFormat;
 
@@ -79,7 +84,8 @@ public class mypatient_info extends AppCompatActivity {
 
         hr = findViewById(R.id.hr);
         update_infoCV = findViewById(R.id.update_infoCV);
-        String PatientID = getIntent().getExtras().getString("PATIENT_ID");
+        final String PatientID = getIntent().getExtras().getString("PATIENT_ID");
+        final String PatientName = getIntent().getExtras().getString("PATIENT_NAME");
         FirebaseRecyclerOptions<Patient_Info> options =
                 new FirebaseRecyclerOptions.Builder<Patient_Info>()
                         .setQuery(databaseTransactions.ListentoDatabaseOnData(PatientID), Patient_Info.class)
@@ -149,6 +155,10 @@ public class mypatient_info extends AppCompatActivity {
                 if(men_unconsicious.isChecked()){
                     men+=" inconsicious";
                 }
+                if(capillary.isChecked()){
+                    per+=" Capillary";
+                }
+
                 if(sis.isEmpty() || dis.isEmpty() || ebls.isEmpty() || hrs.isEmpty() || per.isEmpty() || men.isEmpty()){
                     Toast.makeText(view.getContext(), "Please fill all the fields", Toast.LENGTH_LONG).show();
                 }else{
@@ -160,6 +170,7 @@ public class mypatient_info extends AppCompatActivity {
                     per_pallor.setChecked(false);
                     per_coldness.setChecked(false);
                     per_normal.setChecked(false);
+                    capillary.setChecked(false);
                     DecimalFormat df = new DecimalFormat("###.###");
                     double shock = (Double.parseDouble(hrs)/Double.parseDouble(sis));
                     final MediaPlayer md = MediaPlayer.create(view.getContext(), R.raw.alert);
@@ -222,6 +233,16 @@ public class mypatient_info extends AppCompatActivity {
                         dialog3.show();
                     }
 
+                }
+                int number = Integer.parseInt(spinner.getSelectedItem().toString());
+                Intent intent = new Intent(view.getContext(), Alarm.class);
+                intent.putExtra("PATIENT_NAME",PatientName);
+                final int _id = (int) System.currentTimeMillis();
+                intent.putExtra("ID",_id);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(view.getContext(),_id,intent,PendingIntent.FLAG_ONE_SHOT);
+                AlarmManager alarmManager = (AlarmManager) view.getContext().getSystemService(ALARM_SERVICE);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+number*1000,pendingIntent);
                 }
 
             }
