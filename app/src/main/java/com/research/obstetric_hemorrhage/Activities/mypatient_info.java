@@ -70,6 +70,7 @@ public class mypatient_info extends AppCompatActivity {
         per_coldness = findViewById(R.id.coldness);
         per_sweating = findViewById(R.id.sweating);
         capillary = findViewById(R.id.capillary);
+
         spinner = findViewById(R.id.time_spinner);
         ArrayAdapter<CharSequence> adapterspinner = ArrayAdapter.createFromResource(this, R.array.time_spinner, android.R.layout.simple_spinner_item);
         adapterspinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
