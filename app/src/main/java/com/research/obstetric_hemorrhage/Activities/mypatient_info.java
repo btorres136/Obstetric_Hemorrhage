@@ -125,10 +125,6 @@ public class mypatient_info extends AppCompatActivity {
                 String dis = dis_press.getText().toString();
                 String ebls = ebl.getText().toString();
                 String hrs = hr.getText().toString();
-                sis_press.getText().clear();
-                dis_press.getText().clear();
-                ebl.getText().clear();
-                hr.getText().clear();
                 String men="";
                 String per="";
                 if(per_normal.isChecked()){
@@ -162,6 +158,7 @@ public class mypatient_info extends AppCompatActivity {
                 if(sis.isEmpty() || dis.isEmpty() || ebls.isEmpty() || hrs.isEmpty() || per.isEmpty() || men.isEmpty()){
                     Toast.makeText(view.getContext(), "Please fill all the fields", Toast.LENGTH_LONG).show();
                 }else{
+
                     men_unconsicious.setChecked(false);
                     men_Lethargic.setChecked(false);
                     men_agitated.setChecked(false);
@@ -171,6 +168,10 @@ public class mypatient_info extends AppCompatActivity {
                     per_coldness.setChecked(false);
                     per_normal.setChecked(false);
                     capillary.setChecked(false);
+                    sis_press.getText().clear();
+                    dis_press.getText().clear();
+                    ebl.getText().clear();
+                    hr.getText().clear();
                     DecimalFormat df = new DecimalFormat("###.###");
                     double shock = (Double.parseDouble(hrs)/Double.parseDouble(sis));
                     final MediaPlayer md = MediaPlayer.create(view.getContext(), R.raw.alert);
@@ -236,18 +237,18 @@ public class mypatient_info extends AppCompatActivity {
                         AlertDialog dialog3 = builder3.create();
                         dialog3.show();
                     }
+                    int number = Integer.parseInt(spinner.getSelectedItem().toString());
+                    Intent intent = new Intent(view.getContext(), Alarm.class);
+                    intent.putExtra("PATIENT_NAME",PatientName);
+                    final int _id = (int) System.currentTimeMillis();
+                    intent.putExtra("ID",_id);
+                    PendingIntent pendingIntent = PendingIntent.getBroadcast(view.getContext(),_id,intent,PendingIntent.FLAG_ONE_SHOT);
+                    AlarmManager alarmManager = (AlarmManager) view.getContext().getSystemService(ALARM_SERVICE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+number*1000,pendingIntent);
+                    }
+                }
 
-                }
-                int number = Integer.parseInt(spinner.getSelectedItem().toString());
-                Intent intent = new Intent(view.getContext(), Alarm.class);
-                intent.putExtra("PATIENT_NAME",PatientName);
-                final int _id = (int) System.currentTimeMillis();
-                intent.putExtra("ID",_id);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(view.getContext(),_id,intent,PendingIntent.FLAG_ONE_SHOT);
-                AlarmManager alarmManager = (AlarmManager) view.getContext().getSystemService(ALARM_SERVICE);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+number*1000,pendingIntent);
-                }
 
             }
         });
