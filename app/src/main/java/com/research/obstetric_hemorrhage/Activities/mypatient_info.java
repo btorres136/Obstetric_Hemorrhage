@@ -138,19 +138,19 @@ public class mypatient_info extends AppCompatActivity {
                     per+=" Pallor";
                 }
                 if(per_sweating.isChecked()){
-                    per+=" sweating";
+                    per+=" Sweating";
                 }
                 if(men_normal.isChecked()){
                     men=" Normal";
                 }
                 if(men_agitated.isChecked()){
-                    men+=" agitated";
+                    men+=" Agitated";
                 }
                 if(men_Lethargic.isChecked()){
                     men+=" Lethargic";
                 }
                 if(men_unconsicious.isChecked()){
-                    men+=" inconsicious";
+                    men+=" Inconspicuous";
                 }
                 if(capillary.isChecked()){
                     per+=" Capillary";
@@ -180,7 +180,7 @@ public class mypatient_info extends AppCompatActivity {
                     final MediaPlayer md = MediaPlayer.create(view.getContext(), R.raw.alert);
 
 
-                    if(shock < 0.9)
+                    /*if(shock < 0.9)
                     {
                         AlertDialog.Builder builder3 = new AlertDialog.Builder(view.getContext(),R.style.red);
                         builder3.setTitle("Stage 3");
@@ -196,56 +196,8 @@ public class mypatient_info extends AppCompatActivity {
 
                         AlertDialog dialog = builder3.create();
                         dialog.show();
-                    }
-
-                    if ((Integer.parseInt(sis) >= 90))
-                    {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext(), R.style.green);
-                        builder.setTitle("Stage 0");
-                        builder.setNegativeButton("Ok", null);
-                        databaseTransactions.addPatientinfo(getIntent().getExtras().getString("PATIENT_ID"),ebls,"0",
-                                dis,hrs,men,per,df.format(shock),sis);
-
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
-                    }
-                    else if (Integer.parseInt(sis) <=89 && Integer.parseInt(sis) >=80)
-                    {
-                        md.start();
-                        AlertDialog.Builder builder1 = new AlertDialog.Builder(view.getContext(), R.style.yellow);
-                        builder1.setTitle("Stage 1");
-                        databaseTransactions.addPatientinfo(getIntent().getExtras().getString("PATIENT_ID"),ebls,"1",
-                                dis,hrs,men,per,df.format(shock),sis);
-                        builder1.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                md.stop();
-                            }
-                        });
-
-
-                        AlertDialog dialog1 = builder1.create();
-                        dialog1.show();
-                    }
-                    else if (Integer.parseInt(sis) <=79 && Integer.parseInt(sis) >=71)
-                    {
-                        md.start();
-                        AlertDialog.Builder builder2 = new AlertDialog.Builder(view.getContext(), R.style.orange);
-                        databaseTransactions.addPatientinfo(getIntent().getExtras().getString("PATIENT_ID"),ebls,"2",
-                                dis,hrs,men,per,df.format(shock),sis);
-                        builder2.setTitle("Stage 2");
-                        builder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                md.stop();
-                            }
-                        });
-
-                        AlertDialog dialog2 = builder2.create();
-                        dialog2.show();
-                    }
-                    else if (Integer.parseInt(sis) <= 70)
-                    {
+                    }*/
+                    if(shock>=90){
                         md.start();
                         AlertDialog.Builder builder3 = new AlertDialog.Builder(view.getContext(), R.style.red);
                         builder3.setTitle("Stage 3");
@@ -260,7 +212,83 @@ public class mypatient_info extends AppCompatActivity {
 
                         AlertDialog dialog3 = builder3.create();
                         dialog3.show();
+                    }else{
+                        if ((Integer.parseInt(sis) >= 90) && Double.parseDouble(ebls) < 1000 &&
+                                men_normal.isChecked() && per_normal.isChecked() && Double.parseDouble(hrs) > 90 &&
+                                shock < 0.89)
+                        {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext(), R.style.green);
+                            builder.setTitle("Stage 0");
+                            builder.setNegativeButton("Ok", null);
+                            databaseTransactions.addPatientinfo(getIntent().getExtras().getString("PATIENT_ID"),ebls,"0",
+                                    dis,hrs,men,per,df.format(shock),sis);
+
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        }
+                        else if ((Double.parseDouble(ebls) >= 1001 && Double.parseDouble(ebls) <= 1500) && (Integer.parseInt(sis) <=89 && Integer.parseInt(sis) >=80) && (men_normal.isChecked() || men_agitated.isChecked())
+                                && (per_pallor.isChecked() || per_coldness.isChecked()) && (Double.parseDouble(hrs)>=91 && Double.parseDouble(hrs)<=100))
+                        {
+                            md.start();
+                            AlertDialog.Builder builder1 = new AlertDialog.Builder(view.getContext(), R.style.yellow);
+                            builder1.setTitle("Stage 1");
+                            databaseTransactions.addPatientinfo(getIntent().getExtras().getString("PATIENT_ID"),ebls,"1",
+                                    dis,hrs,men,per,df.format(shock),sis);
+                            builder1.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    md.stop();
+                                }
+                            });
+
+
+                            AlertDialog dialog1 = builder1.create();
+                            dialog1.show();
+                        }
+                        else if ((Double.parseDouble(ebls) >= 1501 && Double.parseDouble(ebls) <= 2000) && (Integer.parseInt(sis) <=79 && Integer.parseInt(sis) >=71) && men_agitated.isChecked() &&
+                                (per_pallor.isChecked() || per_coldness.isChecked() || per_sweating.isChecked()) &&
+                                (Double.parseDouble(hrs)>=70 && Double.parseDouble(hrs)<=79) && shock>=0.90)
+                        {
+                            md.start();
+                            AlertDialog.Builder builder2 = new AlertDialog.Builder(view.getContext(), R.style.orange);
+                            databaseTransactions.addPatientinfo(getIntent().getExtras().getString("PATIENT_ID"),ebls,"2",
+                                    dis,hrs,men,per,df.format(shock),sis);
+                            builder2.setTitle("Stage 2");
+                            builder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    md.stop();
+                                }
+                            });
+
+                            AlertDialog dialog2 = builder2.create();
+                            dialog2.show();
+                        }
+                        else if (Double.parseDouble(ebls) > 2000 && Integer.parseInt(sis) <= 70 && (men_Lethargic.isChecked()||men_unconsicious.isChecked()) && (per_pallor.isChecked()
+                                || per_coldness.isChecked() || per_sweating.isChecked() || capillary.isChecked()) && Double.parseDouble(hrs) >=120 &&
+                                shock >=90)
+                        {
+                            md.start();
+                            AlertDialog.Builder builder3 = new AlertDialog.Builder(view.getContext(), R.style.red);
+                            builder3.setTitle("Stage 3");
+                            databaseTransactions.addPatientinfo(getIntent().getExtras().getString("PATIENT_ID"),ebls,"3",
+                                    dis,hrs,men,per,df.format(shock),sis);
+                            builder3.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    md.stop();
+                                }
+                            });
+
+                            AlertDialog dialog3 = builder3.create();
+                            dialog3.show();
+                        }else{
+                            Toast.makeText(view.getContext(),"Stage Can't be Identified",Toast.LENGTH_LONG).show();
+                        }
+
                     }
+
+
                     int number = Integer.parseInt(spinner.getSelectedItem().toString());
                     Intent intent = new Intent(view.getContext(), Alarm.class);
                     intent.putExtra("PATIENT_NAME",PatientName);
