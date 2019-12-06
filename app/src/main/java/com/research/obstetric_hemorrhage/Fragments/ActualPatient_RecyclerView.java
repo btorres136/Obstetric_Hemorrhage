@@ -36,9 +36,9 @@ public class ActualPatient_RecyclerView extends RecyclerView.ViewHolder{
         spinner_timer = itemView.findViewById(R.id.time_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(itemView.getContext(), R.array.time_spinner, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_timer.setAdapter(adapter);
+        /*spinner_timer.setAdapter(adapter);
         cardView_set_timer = itemView.findViewById(R.id.set_noti_timerCV);
-        cardView_see_info = itemView.findViewById(R.id.update_infoCV);
+        cardView_see_info = itemView.findViewById(R.id.update_infoCV);*/
     }
 
     public TextView getTextView_Patient() {

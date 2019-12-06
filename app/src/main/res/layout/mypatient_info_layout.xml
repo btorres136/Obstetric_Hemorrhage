@@ -215,11 +215,57 @@
             android:text="Yes"
             android:layout_below="@+id/sweating" />
 
+        <Spinner
+            android:id="@+id/time_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_below="@+id/question"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="34dp"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/set_noti_timerCV" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/set_noti_timerCV"
+            android:layout_width="165dp"
+            android:layout_height="76dp"
+            android:layout_below="@+id/capillary"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center|center_horizontal"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:stateListAnimator="@drawable/lift_on_touch"
+            app:cardBackgroundColor="#a54195"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:layout_width="150dp"
+                android:layout_height="46dp"
+                android:layout_gravity="center|center_horizontal"
+                android:gravity="center" >
+
+                <TextView
+                    android:id="@+id/set_noti_timer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set Notification"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_patientinfo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/capillary"
+            android:layout_below="@+id/set_noti_timerCV"
             android:background="#E9E9E9"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
