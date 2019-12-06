@@ -149,16 +149,24 @@ public class mypatient_info extends AppCompatActivity {
                 if(men_unconsicious.isChecked()){
                     men+=" inconsicious";
                 }
-                if(sis.isEmpty() || dis.isEmpty() || ebls.isEmpty() || hrs.isEmpty()){
+                if(sis.isEmpty() || dis.isEmpty() || ebls.isEmpty() || hrs.isEmpty() || per.isEmpty() || men.isEmpty()){
                     Toast.makeText(view.getContext(), "Please fill all the fields", Toast.LENGTH_LONG).show();
                 }else{
+                    men_unconsicious.setChecked(false);
+                    men_Lethargic.setChecked(false);
+                    men_agitated.setChecked(false);
+                    men_normal.setChecked(false);
+                    per_sweating.setChecked(false);
+                    per_pallor.setChecked(false);
+                    per_coldness.setChecked(false);
+                    per_normal.setChecked(false);
                     DecimalFormat df = new DecimalFormat("###.###");
                     double shock = (Double.parseDouble(hrs)/Double.parseDouble(sis));
                     final MediaPlayer md = MediaPlayer.create(view.getContext(), R.raw.alert);
                     databaseTransactions.addPatientinfo(getIntent().getExtras().getString("PATIENT_ID"),ebls,"0",
                             dis,hrs,men,per,df.format(shock),sis);
 
-                    if (Integer.parseInt(sis) >= 90)
+                    if (Integer.parseInt(sis) >= 90 )
                     {
                         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext(), R.style.green);
                         builder.setTitle("Stage 0");
