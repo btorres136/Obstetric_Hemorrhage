@@ -53,18 +53,15 @@
             android:textColor="#000000"
             android:hint="Blood Loss:"/>
 
-        <EditText
+        <TextView
             android:id="@+id/perfusion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/dis_press"
-            android:inputType="text"
-            android:ems="8"
             android:layout_marginTop="15dp"
             android:layout_alignParentRight="true"
-            android:background="#11000000"
             android:textColor="#000000"
-            android:hint="Perfusion:" />
+            android:text="Perfusion:" />
 
         <EditText
             android:id="@+id/hr"
@@ -79,18 +76,25 @@
             android:inputType="number"
             android:hint="Heart Rate:" />
 
-        <EditText
+        <TextView
             android:id="@+id/mental"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/dis_press"
             android:layout_alignParentLeft="true"
             android:layout_marginTop="15dp"
-            android:ems="8"
-            android:background="#11000000"
-            android:inputType="text"
             android:textColor="#000000"
-            android:hint="Mental:"/>
+            android:text="Mental:"/>
+
+        <TextView
+            android:id="@+id/question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/update_infoCV"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="87dp"
+            android:text="The capillary takes more than 3 seconds to load:"
+            android:textColor="#000000" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/update_infoCV"
@@ -128,13 +132,97 @@
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
+        <CheckBox
+            android:id="@+id/normal"
+            android:layout_marginTop="3dp"
+            android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content"
+            android:text="Normal"
+            android:layout_below="@+id/mental" />
+
+        <CheckBox
+            android:id="@+id/agitated"
+            android:layout_marginTop="3dp"
+            android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content"
+            android:text="Agitated"
+            android:layout_below="@+id/normal" />
+
+        <CheckBox
+            android:id="@+id/lethargic"
+            android:layout_marginTop="3dp"
+            android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content"
+            android:text="Lethargic"
+            android:layout_below="@+id/agitated" />
+
+        <CheckBox
+            android:id="@+id/unconscious"
+            android:layout_marginTop="3dp"
+            android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content"
+            android:text="Unconscious"
+            android:layout_below="@+id/lethargic" />
+
+        <CheckBox
+            android:id="@+id/normal1"
+            android:layout_marginTop="3dp"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:text="Normal"
+            android:layout_below="@+id/perfusion" />
+
+        <CheckBox
+            android:id="@+id/pallor"
+            android:layout_marginTop="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Pallor"
+            android:layout_below="@+id/normal1" />
+
+        <CheckBox
+            android:id="@+id/coldness"
+            android:layout_marginTop="3dp"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:text="Coldness"
+            android:layout_below="@+id/pallor" />
+
+        <CheckBox
+            android:id="@+id/sweating"
+            android:layout_marginTop="3dp"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:text="Sweating"
+            android:layout_below="@+id/coldness" />
+
+        <CheckBox
+            android:id="@+id/capillary"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            android:text="Yes"
+            android:layout_below="@+id/sweating" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_patientinfo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/update_infoCV"
+            android:layout_below="@+id/capillary"
             android:background="#E9E9E9"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
