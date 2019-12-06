@@ -70,8 +70,8 @@
         app:cardBackgroundColor="#a54195"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/patient_age"
-        android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
@@ -99,43 +99,4 @@
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/see_info"
-        android:layout_width="165dp"
-        android:layout_height="76dp"
-        app:cardBackgroundColor="#a54195"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="10dp"
-        android:layout_below="@+id/patient_age"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:foreground="?attr/selectableItemBackground"
-        android:stateListAnimator="@drawable/lift_on_touch"
-        android:clickable="true"
-        app:cardPreventCornerOverlap="false"
-        app:cardUseCompatPadding="true">
-
-        <RelativeLayout
-            android:layout_width="150dp"
-            android:layout_height="46dp"
-            android:layout_gravity="center|center_horizontal"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/textView_see_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="See Patient Info"
-                android:textColor="#ffffff"
-                android:textSize="14sp" />
-
-        </RelativeLayout>
-
-    </androidx.cardview.widget.CardView>
-
-
 </RelativeLayout>
