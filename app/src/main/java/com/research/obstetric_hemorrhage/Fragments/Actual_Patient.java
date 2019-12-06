@@ -71,7 +71,7 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
                 holder.getTextView_id().setText("ID: "+model.getID());
                 holder.getTextView_room().setText("Room: "+model.getRoom());
                 holder.getTextView_status().setText("Stage: "+model.getStage());
-                final Spinner spinner = holder.getSpinner_timer();
+                /*final Spinner spinner = holder.getSpinner_timer();
                 holder.getCardView_set_timer().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -86,7 +86,7 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
                             alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+number*1000,pendingIntent);
                         }
                     }
-                });
+                });*/
                 holder.getCardView_erase().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -115,7 +115,7 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
                     }
                 });
 
-                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.time_spinner, android.R.layout.simple_spinner_item);
+/*                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.time_spinner, android.R.layout.simple_spinner_item);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 holder.getSpinner_timer().setAdapter(adapter);
                 holder.getSpinner_timer().setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -128,7 +128,7 @@ public class Actual_Patient extends Fragment implements SwipeRefreshLayout.OnRef
                     public void onNothingSelected(AdapterView<?> adapterView) {
 
                     }
-                });
+                });*/
 
                 holder.getCardView_see_info().setOnClickListener(new View.OnClickListener() {
                     @Override
