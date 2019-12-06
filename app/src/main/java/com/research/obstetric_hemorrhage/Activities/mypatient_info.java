@@ -180,8 +180,25 @@ public class mypatient_info extends AppCompatActivity {
                     final MediaPlayer md = MediaPlayer.create(view.getContext(), R.raw.alert);
 
 
+                    if(shock < 0.9)
+                    {
+                        AlertDialog.Builder builder3 = new AlertDialog.Builder(view.getContext(),R.style.red);
+                        builder3.setTitle("Stage 3");
+                        builder3.setNegativeButton("Ok", null);
+
+                        AlertDialog dialog = builder3.create();
+                        dialog.show();
+                    }
+                    else {
+                        AlertDialog.Builder builder3 = new AlertDialog.Builder(view.getContext(),R.style.green);
+                        builder3.setTitle("Index is okay");
+                        builder3.setNegativeButton("Ok", null);
+
+                        AlertDialog dialog = builder3.create();
+                        dialog.show();
+                    }
+
                     if ((Integer.parseInt(sis) >= 90))
-                    //ay diojjjj
                     {
                         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext(), R.style.green);
                         builder.setTitle("Stage 0");
