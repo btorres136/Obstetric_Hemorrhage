@@ -126,7 +126,7 @@ public class DatabaseTransactions {
         String dateformated = dateFormat.format(date);
         data.put("Added_by", mAuth.getUid());
         data.put("Blood_loss", Blood_loss);
-        data.put("Current_Stage", Current_Stage);
+        data.put("Stage", Current_Stage);
         data.put("Date_added", dateformated);
         data.put("Diastolic_Presure", Diastolic_Pressure);
         data.put("Heart_Rate", Heart_Rate);

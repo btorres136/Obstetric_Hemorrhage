@@ -177,8 +177,7 @@ public class mypatient_info extends AppCompatActivity {
                     DecimalFormat df = new DecimalFormat("###.###");
                     double shock = (Double.parseDouble(hrs)/Double.parseDouble(sis));
                     final MediaPlayer md = MediaPlayer.create(view.getContext(), R.raw.alert);
-                    databaseTransactions.addPatientinfo(getIntent().getExtras().getString("PATIENT_ID"),ebls,"0",
-                            dis,hrs,men,per,df.format(shock),sis);
+
 
                     if ((Integer.parseInt(sis) >= 90))
                     //ay diojjjj
@@ -186,6 +185,8 @@ public class mypatient_info extends AppCompatActivity {
                         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext(), R.style.green);
                         builder.setTitle("Stage 0");
                         builder.setNegativeButton("Ok", null);
+                        databaseTransactions.addPatientinfo(getIntent().getExtras().getString("PATIENT_ID"),ebls,"0",
+                                dis,hrs,men,per,df.format(shock),sis);
 
                         AlertDialog dialog = builder.create();
                         dialog.show();
@@ -195,6 +196,8 @@ public class mypatient_info extends AppCompatActivity {
                         md.start();
                         AlertDialog.Builder builder1 = new AlertDialog.Builder(view.getContext(), R.style.yellow);
                         builder1.setTitle("Stage 1");
+                        databaseTransactions.addPatientinfo(getIntent().getExtras().getString("PATIENT_ID"),ebls,"1",
+                                dis,hrs,men,per,df.format(shock),sis);
                         builder1.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -210,6 +213,8 @@ public class mypatient_info extends AppCompatActivity {
                     {
                         md.start();
                         AlertDialog.Builder builder2 = new AlertDialog.Builder(view.getContext(), R.style.orange);
+                        databaseTransactions.addPatientinfo(getIntent().getExtras().getString("PATIENT_ID"),ebls,"2",
+                                dis,hrs,men,per,df.format(shock),sis);
                         builder2.setTitle("Stage 2");
                         builder2.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
                             @Override
@@ -226,6 +231,8 @@ public class mypatient_info extends AppCompatActivity {
                         md.start();
                         AlertDialog.Builder builder3 = new AlertDialog.Builder(view.getContext(), R.style.red);
                         builder3.setTitle("Stage 3");
+                        databaseTransactions.addPatientinfo(getIntent().getExtras().getString("PATIENT_ID"),ebls,"3",
+                                dis,hrs,men,per,df.format(shock),sis);
                         builder3.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
